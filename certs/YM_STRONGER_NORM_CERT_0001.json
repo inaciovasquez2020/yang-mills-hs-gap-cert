@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "toolkit_version": "urf/ym/1.0",
+    "cert_version": "ym-stronger-norm/0.1"
+  },
+  "params": {
+    "L": 24.0,
+    "Lambda": 96.0,
+    "m0": 0.20,
+    "norm": "trace-per-volume-heat-kernel"
+  },
+  "inputs": {},
+  "results": {
+    "bound": 0.0,
+    "pass": false
+  },
+  "status": {
+    "type": "draft"
+  }
+}
+

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YM Stronger-Norm Gap Certificate",
+  "type": "object",
+  "required": ["meta", "params", "results", "inputs", "status"],
+  "properties": {
+    "meta": { "type": "object" },
+    "params": {
+      "type": "object",
+      "required": ["L", "Lambda", "m0", "norm"],
+      "properties": {
+        "L": { "type": "number" },
+        "Lambda": { "type": "number" },
+        "m0": { "type": "number" },
+        "norm": { "type": "string" }
+      }
+    },
+    "inputs": { "type": "object" },
+    "results": {
+      "type": "object",
+      "required": ["bound", "pass"],
+      "properties": {
+        "bound": { "type": "number" },
+        "pass": { "type": "boolean" }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string" }
+      }
+    }
+  }
+}
+
