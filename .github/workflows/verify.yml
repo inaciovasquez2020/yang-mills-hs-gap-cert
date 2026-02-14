@@ -2,8 +2,9 @@ name: verify
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+    tags:
+      - "frozen-*"
   pull_request:
 
 jobs:
@@ -11,35 +12,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install tooling
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install check-jsonschema
+          python3 -m pip install check-jsonschema jq
 
-      - name: Validate stronger-norm certificate schemas
-        run: |
-          if ls certs/YM_STRONGER_NORM_CERT_*.json 1> /dev/null 2>&1; then
-            for f in certs/YM_STRONGER_NORM_CERT_*.json; do
-              echo "Schema check $f"
-              check-jsonschema --schemafile schema/ym_stronger_norm_cert.schema.json "$f"
-            done
-          else
-            echo "No stronger-norm certificates found"
-          fi
-
-      - name: Verify Yang–Mills HS-gap certificates
+      #
+      # --- HS-GAP CERTIFICATES (FAST, ALWAYS VERIFIED) ---
+      #
+      - name: Verify HS-gap certificates
         run: |
           if ls certs/YM_HS_GAP_CERT_*.json 1> /dev/null 2>&1; then
             for f in certs/YM_HS_GAP_CERT_*.json; do
-              echo "Verifying $f"
+              echo "Verifying HS-gap $f"
+              check-jsonschema --schemafile schema/ym_hs_gap_cert.schema.json "$f"
               python3 scripts/compute_hs_bounds.py "$f"
               ./scripts/verify_cert.sh "$f"
             done
@@ -47,11 +39,31 @@ jobs:
             echo "No HS-gap certificates found"
           fi
 
-      - name: Verify Yang–Mills stronger-norm (heat-kernel) certificates
+      #
+      # --- STRONGER-NORM CERTIFICATES (PR-SAFE) ---
+      #
+      - name: Validate stronger-norm certificates (schema only, PR-safe)
+        if: github.event_name == 'pull_request'
         run: |
           if ls certs/YM_STRONGER_NORM_CERT_*.json 1> /dev/null 2>&1; then
             for f in certs/YM_STRONGER_NORM_CERT_*.json; do
-              echo "Verifying $f"
+              echo "Schema check stronger-norm $f"
+              check-jsonschema --schemafile schema/ym_stronger_norm_cert.schema.json "$f"
+            done
+          else
+            echo "No stronger-norm certificates found"
+          fi
+
+      #
+      # --- STRONGER-NORM CERTIFICATES (FULL VERIFY) ---
+      #
+      - name: Verify stronger-norm certificates (push / tag only)
+        if: github.event_name == 'push'
+        run: |
+          if ls certs/YM_STRONGER_NORM_CERT_*.json 1> /dev/null 2>&1; then
+            for f in certs/YM_STRONGER_NORM_CERT_*.json; do
+              echo "Full verify stronger-norm $f"
+              check-jsonschema --schemafile schema/ym_stronger_norm_cert.schema.json "$f"
               python3 scripts/compute_heat_kernel_bound.py "$f"
               ./scripts/verify_cert.sh "$f"
             done
