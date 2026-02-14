@@ -22,7 +22,18 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          python3 -m pip install jsonschema
+          python3 -m pip install check-jsonschema
+
+      - name: Validate stronger-norm certificate schemas
+        run: |
+          if ls certs/YM_STRONGER_NORM_CERT_*.json 1> /dev/null 2>&1; then
+            for f in certs/YM_STRONGER_NORM_CERT_*.json; do
+              echo "Schema check $f"
+              check-jsonschema --schemafile schema/ym_stronger_norm_cert.schema.json "$f"
+            done
+          else
+            echo "No stronger-norm certificates found"
+          fi
 
       - name: Verify Yang–Mills HS-gap certificates
         run: |
