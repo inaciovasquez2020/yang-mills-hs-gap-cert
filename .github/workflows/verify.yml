@@ -15,3 +15,4 @@ jobs:
       - run: python3 -m pip install jsonschema
       - run: python3 scripts/compute_hs_bounds.py certs/YM_HS_GAP_CERT_0001.json
       - run: ./scripts/verify_cert.sh certs/YM_HS_GAP_CERT_0001.json
+      - run: python3 scripts/check_monotonicity.py
