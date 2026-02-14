@@ -1,6 +1,8 @@
 #!/bin/bash
 CERT_FILE=$1
-STATUS=$(jq -r '.status // .type' "$CERT_FILE")
+
+# Improved jq query to handle both string and object formats
+STATUS=$(jq -r 'if .status | type == "object" then .status.type else (.status // .type) end' "$CERT_FILE")
 
 echo "status: $STATUS"
 
