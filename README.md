@@ -6,6 +6,10 @@ This repository provides executable, CI-verified certificates establishing a Yan
 The approach is operator-theoretic and certificate-driven:
 numerical bounds are encoded as immutable artifacts, validated by scripts, enforced by CI, and frozen by signed tags.
 
+Negative Result
+
+See docs/NEGATIVE_RESULT.md for a certified counterexample showing why naive Hilbert–Schmidt coercivity cannot establish the Yang–Mills mass gap.
+
 Status
 Frozen at P3 with monotonicity enforced.
 Tag: frozen-ym-hs-gap-P3
