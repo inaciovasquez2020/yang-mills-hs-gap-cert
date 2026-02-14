@@ -1,0 +1,14 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Experimental modules (not certified)
+analytic/
+numeric/
+
+# Scratch scripts
+scripts/lattice_lambda_min.py
+
+# Draft prose
+docs/CLAY_STATEMENT.md
+
