@@ -17,4 +17,5 @@ jobs:
       - run: ./scripts/verify_cert.sh certs/YM_HS_GAP_CERT_0001.json
       - run: python3 scripts/check_monotonicity.py
       - run: python3 -m jsonschema schema/ym_stronger_norm_cert.schema.json certs/YM_STRONGER_NORM_CERT_0001.json
+      - run: python3 scripts/compute_heat_kernel_bound.py certs/YM_STRONGER_NORM_CERT_0001.json
 

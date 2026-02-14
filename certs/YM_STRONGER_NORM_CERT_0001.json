@@ -1,21 +1,26 @@
 {
   "meta": {
     "toolkit_version": "urf/ym/1.0",
-    "cert_version": "ym-stronger-norm/0.1"
+    "cert_version": "ym-heat-kernel/0.1"
   },
   "params": {
     "L": 24.0,
     "Lambda": 96.0,
-    "m0": 0.20,
-    "norm": "trace-per-volume-heat-kernel"
+    "m0": 0.2,
+    "norm": "heat-kernel-trace-per-volume",
+    "t": 1.0,
+    "volume": 1.0
   },
-  "inputs": {},
+  "inputs": {
+    "lambda_min_lower_bound": 0.0
+  },
   "results": {
-    "bound": 0.0,
+    "B_t": Infinity,
+    "t": 1.0,
+    "volume": 1.0,
     "pass": false
   },
   "status": {
-    "type": "draft"
+    "type": "inconclusive"
   }
 }
-

@@ -16,13 +16,16 @@
       }
     },
     "inputs": { "type": "object" },
-    "results": {
-      "type": "object",
-      "required": ["bound", "pass"],
-      "properties": {
-        "bound": { "type": "number" },
-        "pass": { "type": "boolean" }
-      }
+"results": {
+  "type": "object",
+  "required": ["B_t", "t", "volume", "pass"],
+  "properties": {
+    "B_t": { "type": "number" },
+    "t": { "type": "number" },
+    "volume": { "type": "number" },
+    "pass": { "type": "boolean" }
+  }
+}
     },
     "status": {
       "type": "object",
