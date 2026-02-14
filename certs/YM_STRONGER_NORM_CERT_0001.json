@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "toolkit_version": "urf/ym/1.0",
+    "cert_version": "ym-heat-kernel/0.1",
+    "generator": "compute_heat_kernel_bound.py",
+    "status_note": "Stronger-norm successor program after certified HS obstruction"
+  },
+  "params": {
+    "L": 24.0,
+    "Lambda": 20.0,
+    "m0": 0.20,
+    "norm": "heat-kernel-trace-per-volume",
+    "t": 1.0,
+    "volume": 1.0,
+    "dim": 4
+  },
+  "inputs": {},
+  "results": {
+    "B_t": 0.0,
+    "t": 1.0,
+    "volume": 1.0,
+    "pass": false
+  },
+  "status": {
+    "type": "draft",
+    "interpretation": "Heat-kernel trace norm evaluated at finite cutoff; no coercivity or mass gap claimed"
+  }
+}
+

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vasquezresearch.com/schemas/ym_stronger_norm_cert.schema.json",
+  "title": "Yang–Mills Stronger-Norm Certificate",
+  "type": "object",
+  "required": ["meta", "params", "inputs", "results", "status"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["toolkit_version", "cert_version"],
+      "properties": {
+        "toolkit_version": { "type": "string" },
+        "cert_version": { "type": "string" },
+        "generator": { "type": "string" },
+        "status_note": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "params": {
+      "type": "object",
+      "required": ["L", "Lambda", "m0", "norm", "t", "volume", "dim"],
+      "properties": {
+        "L": { "type": "number", "exclusiveMinimum": 0 },
+        "Lambda": { "type": "number", "exclusiveMinimum": 0 },
+        "m0": { "type": "number", "minimum": 0 },
+        "norm": { "type": "string", "enum": ["heat-kernel-trace-per-volume"] },
+        "t": { "type": "number", "exclusiveMinimum": 0 },
+        "volume": { "type": "number", "exclusiveMinimum": 0 },
+        "dim": { "type": "integer", "enum": [2, 3, 4] }
+      },
+      "additionalProperties": false
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "results": {
+      "type": "object",
+      "required": ["B_t", "t", "volume", "pass"],
+      "properties": {
+        "B_t": { "type": "number" },
+        "t": { "type": "number" },
+        "volume": { "type": "number" },
+        "pass": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["draft", "verified", "counterexample"]
+        },
+        "interpretation": { "type": "string" },
+        "reason": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
+
