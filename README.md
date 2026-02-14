@@ -10,6 +10,16 @@ Status
 Frozen at P3 with monotonicity enforced.
 Tag: frozen-ym-hs-gap-P3
 
+Certified Status
+
+This repository contains a frozen, CI-verified counterexample to the naive Hilbert–Schmidt coercivity route for the Yang–Mills mass gap.
+
+Registry entry:
+registries/certified/yang-mills-hs-gap.json
+
+Frozen tag:
+frozen-ym-hs-gap-divergence
+
 Core Idea
 Work in Landau gauge at the vacuum.
 Let H_YM be the Yang–Mills Hessian.
