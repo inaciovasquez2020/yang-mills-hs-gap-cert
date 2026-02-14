@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "toolkit_version": "urf/ym/1.0",
+    "cert_version": "ym-hs-gap/stress"
+  },
+  "inputs": {
+    "kernel": "data/kernel_Rhat.bin",
+    "projector": "data/projector_PiT.bin"
+  },
+  "hashes": {
+    "kernel_sha256": "0b29cde1fc084ea8d7ef649f2dde78bec0b7f4bf97f19a42dd5f42357fde75bc",
+    "projector_sha256": "3bd94b24eac353c78ad93bcf017a678efbecac1c30c7b30b4f5abb685a031d84"
+  },
+  "params": {
+    "L": 16.0,
+    "Lambda": 64.0,
+    "m0": 0.2
+  },
+  "results": {
+    "eta": 0.55,
+    "delta": 0.18,
+    "pass": true
+  }
+}
