@@ -8,7 +8,7 @@
   "params": {
     "L": 24.0,
     "Lambda": 20.0,
-    "m0": 0.20,
+    "m0": 0.2,
     "norm": "heat-kernel-trace-per-volume",
     "t": 1.0,
     "volume": 1.0,
@@ -16,14 +16,13 @@
   },
   "inputs": {},
   "results": {
-    "B_t": 0.0,
+    "B_t": 9.873688933918954,
     "t": 1.0,
     "volume": 1.0,
     "pass": false
   },
   "status": {
     "type": "draft",
-    "interpretation": "Heat-kernel trace norm evaluated at finite cutoff; no coercivity or mass gap claimed"
+    "reason": "Finite bound computed but no coercivity threshold met"
   }
 }
-
