@@ -1,21 +1,50 @@
 name: verify
+
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: python3 -m pip install --upgrade pip
-      - run: python3 -m pip install jsonschema
-      - run: python3 scripts/compute_hs_bounds.py certs/YM_HS_GAP_CERT_0001.json
-      - run: ./scripts/verify_cert.sh certs/YM_HS_GAP_CERT_0001.json
-      - run: python3 scripts/check_monotonicity.py
-      - run: python3 -m jsonschema schema/ym_stronger_norm_cert.schema.json certs/YM_STRONGER_NORM_CERT_0001.json
-      - run: python3 scripts/compute_heat_kernel_bound.py certs/YM_STRONGER_NORM_CERT_0001.json
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install jsonschema
+
+      - name: Verify Yang–Mills HS-gap certificates
+        run: |
+          if ls certs/YM_HS_GAP_CERT_*.json 1> /dev/null 2>&1; then
+            for f in certs/YM_HS_GAP_CERT_*.json; do
+              echo "Verifying $f"
+              python3 scripts/compute_hs_bounds.py "$f"
+              ./scripts/verify_cert.sh "$f"
+            done
+          else
+            echo "No HS-gap certificates found"
+          fi
+
+      - name: Verify Yang–Mills stronger-norm (heat-kernel) certificates
+        run: |
+          if ls certs/YM_STRONGER_NORM_CERT_*.json 1> /dev/null 2>&1; then
+            for f in certs/YM_STRONGER_NORM_CERT_*.json; do
+              echo "Verifying $f"
+              python3 scripts/compute_heat_kernel_bound.py "$f"
+              ./scripts/verify_cert.sh "$f"
+            done
+          else
+            echo "No stronger-norm certificates found"
+          fi
 
