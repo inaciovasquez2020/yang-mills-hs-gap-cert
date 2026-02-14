@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "Yang–Mills HS-Gap Certificate: Operator Coercivity and Executable Bounds"
+message: "If you use this software or its results, please cite it as below."
+type: software
+authors:
+  - family-names: Vasquez
+    given-names: Inacio F.
+    orcid: "https://orcid.org/0009-0008-8459-3400"
+repository-code: "https://github.com/inaciovasquez2020/yang-mills-hs-gap-cert"
+url: "https://github.com/inaciovasquez2020/yang-mills-hs-gap-cert"
+version: "frozen-ym-hs-gap-P3"
+date-released: 2026-02-14
+keywords:
+  - Yang–Mills
+  - mass gap
+  - Hilbert–Schmidt
+  - operator theory
+  - coercivity
+  - executable certificates
+license: "Research use"

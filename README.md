@@ -84,6 +84,16 @@ Scope
 This repository certifies the operator inequality and its monotone stability.
 Replacement of placeholder kernels with fully computed analytic kernels is a planned tightening step but not required for the certified structure.
 
+Citation
+
+If you use or reference this work, cite as:
+
+Vasquez, Inacio F. (2026).
+Yang–Mills HS-Gap Certificate: Operator Coercivity and Executable Bounds.
+GitHub repository.
+https://github.com/inaciovasquez2020/yang-mills-hs-gap-cert
+Tag: frozen-ym-hs-gap-P3
+
 License
 Research use. See repository metadata.
 
