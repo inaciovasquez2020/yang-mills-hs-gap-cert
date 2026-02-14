@@ -1,5 +1,5 @@
+## Mass Gap Statement
 
-## Certification Index
+See docs/OPERATOR_STATEMENT.md for the certified operator formulation
+leading from HS coercivity to a Yang–Mills mass gap.
 
-Registered in scientific-infrastructure:
-https://github.com/inaciovasquez2020/scientific-infrastructure
