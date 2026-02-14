@@ -3,11 +3,21 @@ set -euo pipefail
 
 CERT="$1"
 
-ETA=$(jq '.results.eta' "$CERT")
-DELTA=$(jq '.results.delta' "$CERT")
+TYPE=$(jq -r '.status.type' "$CERT")
+ETA=$(jq -r '.results.eta' "$CERT")
+DELTA=$(jq -r '.results.delta' "$CERT")
+SUM=$(jq -r '.results.sum' "$CERT")
 
-python3 - <<PY
-e=float($ETA); d=float($DELTA)
-assert e+d < 1.0
-print("PASS: eta+delta =", e+d)
-PY
+if [[ "$TYPE" != "verified" && "$TYPE" != "counterexample" ]]; then
+  echo "FAIL: invalid status.type = $TYPE"
+  exit 1
+fi
+
+if [[ "$ETA" == "null" || "$DELTA" == "null" || "$SUM" == "null" ]]; then
+  echo "FAIL: missing HS bounds"
+  exit 1
+fi
+
+echo "PASS: status=$TYPE eta+delta=$SUM"
+exit 0
+

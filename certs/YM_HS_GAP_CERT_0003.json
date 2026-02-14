@@ -7,19 +7,29 @@
     "L": 32.0,
     "Lambda": 128.0,
     "m0": 0.18,
-    "P": 10
+    "P": 20
   },
   "inputs": {
     "kernel": "data/kernel_Rhat.bin",
     "projector": "data/projector_PiT.bin"
   },
   "results": {
-    "eta": 0.43,
-    "delta": 0.08,
-    "pass": true
+    "eta": 0.5108904487544684,
+    "delta": 20.0,
+    "sum": 20.51089044875447,
+    "pass": false
   },
   "hashes": {
     "kernel_sha256": "0b29cde1fc084ea8d7ef649f2dde78bec0b7f4bf97f19a42dd5f42357fde75bc",
     "projector_sha256": "3bd94b24eac353c78ad93bcf017a678efbecac1c30c7b30b4f5abb685a031d84"
+  },
+  "status": {
+    "type": "counterexample",
+    "reason": "Hilbert\u2013Schmidt norm diverges with truncation P; explicit lattice growth violates HS-gap inequality",
+    "monotonicity": {
+      "delta": "non-decreasing in P",
+      "eta": "bounded",
+      "sum": "divergent"
+    }
   }
 }
