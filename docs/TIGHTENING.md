@@ -21,3 +21,7 @@ Future Work
 Exact kernel evaluation can replace analytic bounds without
 changing the certification framework.
 
+Refinement v2: Explicit Fourier-mode HS evaluation
+The HS components are computed as truncated lattice sums over (2π/L)Z^4 up to |n_i|≤P with a continuous tail bound.
+Certificates record P in params and CI recomputes eta,delta deterministically.
+

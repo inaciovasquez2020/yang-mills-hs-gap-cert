@@ -6,7 +6,8 @@
   "params": {
     "L": 32.0,
     "Lambda": 128.0,
-    "m0": 0.18
+    "m0": 0.18,
+    "P": 10
   },
   "inputs": {
     "kernel": "data/kernel_Rhat.bin",
