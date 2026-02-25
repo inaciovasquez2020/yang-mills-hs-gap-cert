@@ -1,5 +1,20 @@
-Yang–Mills HS-Gap Certificate
+## Verification and Computation
 
+This repository contains executable, computer-assisted verification scripts
+that certify specific analytic bounds and obstructions relevant to the
+Yang–Mills mass gap problem. In particular, the scripts
+`verification/kato_invariant_test.py` and
+`verification/kato_two_bubble_test.py` provide machine-checked evidence of
+the stability of a Kato-type invariant and of a two-bubble instability
+obstructing uniform Hilbert–Schmidt coercivity.
+
+All numerical computations in this repository are used exclusively to
+*verify or falsify intermediate analytic inequalities*. They are not claimed
+to establish the Yang–Mills mass gap. Formal mathematical statements and
+conditional theoretical frameworks informed by these results are documented
+separately in LaTeX form under `docs/`, with all assumptions stated explicitly.
+
+Yang–Mills HS-Gap Certificate
 Overview
 This repository provides executable, CI-verified certificates establishing a Yang–Mills mass gap via Hilbert–Schmidt (HS) coercivity transfer of a normalized operator built from the Yang–Mills Hessian at the vacuum.
 

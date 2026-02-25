@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{remark}{Remark}
+
+\title{Pulse and Operator-Flow Locality Collapse in Four-Dimensional Yang--Mills\\
+\large A Conditional Framework Informed by Computer-Assisted Obstructions}
+\author{Inacio F. Vasquez}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note presents a conditional structural framework connecting operator-growth
+bounds (Pulse) to locality collapse in four-dimensional Yang--Mills theory.
+The framework is explicitly informed by computer-assisted verification results
+certifying the failure of Hilbert--Schmidt and Kato-type coercivity routes.
+No numerical computation is claimed to establish the Yang--Mills mass gap.
+\end{abstract}
+
+\section{Verified Inputs (Computer-Assisted)}
+
+\begin{remark}[Verified Obstructions]
+The repository \texttt{yang-mills-hs-gap-cert} contains executable,
+computer-assisted checks establishing:
+\begin{itemize}
+\item Stability of a Kato-type invariant bound
+(verified by \texttt{verification/kato\_invariant\_test.py});
+\item A two-bubble instability obstructing uniform Hilbert--Schmidt coercivity
+(verified by \texttt{verification/kato\_two\_bubble\_test.py}).
+\end{itemize}
+These results are machine-checked and reproducible, and they certify
+limitations of Hilbert--Schmidt/Kato approaches to the mass gap.
+\end{remark}
+
+\section{Conditional Framework}
+
+\begin{axiom}[Pulse — Conditional]
+Assume there exist constants $C,c>0$ and a scale $\rho(\Lambda)$ such that for
+all strictly local observables $A$ and all $0\le n\le c\log\Lambda$,
+\[
+\|\mathrm{ad}_{H_\Lambda^{\mathrm{ren}}}^n(A)\|
+\le C^n n!\,\rho(\Lambda)^n .
+\]
+\end{axiom}
+
+\begin{definition}[Far-Norm]
+For an operator $O
