@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry,hyperref}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{axiom}{Axiom}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{hypothesis}{Hypothesis}
+
+\title{Importing Hilbert--Schmidt and Kato Obstructions into\\
+Pulse and Operator--Flow Locality Collapse}
+\author{Inacio F. Vasquez}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note imports certified Hilbert--Schmidt and Kato-type obstructions into
+the Pulse and Operator--Flow Locality Collapse (OFLC) framework.
+The imported results are established by computer-assisted verification
+and are used solely as negative inputs constraining admissible locality-based
+approaches to the Yang--Mills mass gap problem.
+\end{abstract}
+
+\section{Imported Computer-Assisted Results}
+
+\begin{remark}[Certified HS/Kato Obstructions]
+The following results are imported from the repository
+\texttt{yang-mills-hs-gap-cert}:
+\begin{itemize}
+\item Stability of a Kato-type invariant under cutoff variation,
+verified by the executable script
+\texttt{verification/kato\_invariant\_test.py};
+\item A two-bubble instability demonstrating the failure of uniform
+Hilbert--Schmidt coercivity, verified by
+\texttt{verification/kato\_two\_bubble\_test.py}.
+\end{itemize}
+These results are machine-checked, reproducible, and certify
+limitations of Hilbert--Schmidt and Kato-based coercivity arguments.
+\end{remark}
+
+\section{Pulse and OFLC (Conditional)}
+
+\begin{axiom}[Pulse — Conditional]
+Assume there exist constants $C,c>0$ and a scale $\rho(\Lambda)$ such that
+for all strictly local observables $A$ and all $0 \le n \le c\log\Lambda$,
+\[
+\|\mathrm{ad}_{H_\Lambda^{\mathrm{ren}}}^n(A)\|
+\le C^n n!\,\rho(\Lambda)^n .
+\]
+\end{axiom}
+
+\begin{definition}[Operator--Flow Locality Collapse]
+Operator--Flow Locality Collapse (OFLC) refers to the regime in which
+operator growth under Heisenberg evolution cannot be bounded by any
+cutoff-uniform Lieb--Robinson velocity.
+\end{definition}
+
+\begin{theorem}[Conditional OFLC Constraint]
+Assume the Pulse axiom holds with $\rho(\Lambda)\to\infty$ as
+$\Lambda\to\infty$.  
+Given the certified failure of Hilbert--Schmidt and Kato-type coercivity,
+no locality-based argument relying on such coercivity can establish
+a uniform mass gap in the continuum limit.
+\end{theorem}
+
+\section{Scope and Status}
+
+All statements in this note are conditional.
+Computer-assisted verification is used exclusively to certify
+analytic obstructions, not to establish the Yang--Mills mass gap.
+Any positive resolution must therefore invoke nonlocal or
+non-coercive mechanisms beyond the excluded classes.
+
+\end{document}

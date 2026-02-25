@@ -8,6 +8,19 @@ Yang–Mills mass gap problem. In particular, the scripts
 the stability of a Kato-type invariant and of a two-bubble instability
 obstructing uniform Hilbert–Schmidt coercivity.
 
+### Verification and Computational Evidence
+
+Portions of the analysis rely on computer-assisted verification to certify
+specific analytic bounds and obstructions. In particular, executable scripts
+verify the stability of a Kato-type invariant and demonstrate a two-bubble
+instability obstructing uniform Hilbert–Schmidt coercivity. These computations
+are fully reproducible and are used solely to validate or falsify intermediate
+analytic inequalities.
+
+No numerical computation is claimed to establish the Yang–Mills mass gap.
+All theoretical conclusions are explicitly labeled as conditional and are
+derived only from stated assumptions together with the certified obstructions.
+
 All numerical computations in this repository are used exclusively to
 *verify or falsify intermediate analytic inequalities*. They are not claimed
 to establish the Yang–Mills mass gap. Formal mathematical statements and
