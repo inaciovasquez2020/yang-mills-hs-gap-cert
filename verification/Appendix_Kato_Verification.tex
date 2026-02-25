@@ -16,3 +16,24 @@ A numerical quadrature in the scale-free variable \(u\) confirms convergence to
 \(64\pi^2\) with uniform accuracy across several decades of \(\lambda\).
 Naïve discretizations in the physical variable \(r\) or with fixed cutoffs
 produce artificial divergences; these are eliminated by the invariant formulation above.
+
+\paragraph{Two-bubble stability (numerical).}
+We estimate the centered Kato functional
+\[
+K_x(F):=\int_{\mathbb R^4}\frac{|F(y)|^2}{|x-y|^2}\,dy,
+\qquad
+K_{\sup}(F):=\sup_{x\in\mathbb R^4}K_x(F),
+\]
+for a two-bubble configuration \(F=F_1+F_2\) with bubble centers at \(0\) and \(de_1\).
+Using a ratio-calibrated 4D importance-sampling estimator (see \texttt{verification/kato\_two\_bubble\_test.py}),
+we obtain
+\[
+\frac{K_{\sup}(F_1+F_2)}{64\pi^2}\approx
+\begin{cases}
+1.1045 & d=5,\\
+1.0656 & d=10,\\
+1.0549 & d=20,\\
+1.0536 & d=40,
+\end{cases}
+\]
+demonstrating bounded interaction and decay toward \(1\) with separation.
