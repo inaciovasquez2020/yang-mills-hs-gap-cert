@@ -139,3 +139,8 @@ Tag: frozen-ym-hs-gap-P3
 License
 Research use. See repository metadata.
 
+
+## Counterexamples
+
+See `counterexamples/` for falsifying instances and stress-tests that bound the
+scope of locality/precision claims and support certificate interpretation.
