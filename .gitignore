@@ -23,3 +23,11 @@ urf-*/
 overlap-rigidity-*/
 phase-transition-pnp*/
 yang-mills-hs-gap-cert/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
