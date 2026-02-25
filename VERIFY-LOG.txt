@@ -1,0 +1,1 @@
+2026-02-25T19:18:38-03:00 : ran kato_invariant_test.py and kato_two_bubble_test.py; HS coercivity obstruction verified
