@@ -1,0 +1,27 @@
+name: lean-build
+
+on:
+  push:
+    paths:
+      - "formal-alstar/**"
+      - ".github/workflows/lean-build.yml"
+  pull_request:
+    paths:
+      - "formal-alstar/**"
+      - ".github/workflows/lean-build.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up elan
+        uses: leanprover/elan-action@v1
+
+      - name: Build formal-alstar
+        working-directory: formal-alstar
+        run: |
+          lake update
+          lake build
