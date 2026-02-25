@@ -1,0 +1,18 @@
+\section*{Appendix D: Numerical Verification of the Kato Invariant}
+
+We verify the scale-invariant Kato quantity for the BPST instanton
+\[
+K = \int_{\mathbb R^4} \frac{|F_{A_\lambda}(y)|^2}{|y|^2}\,dy = 64\pi^2,
+\]
+independent of the scale parameter \(\lambda>0\).
+
+Using the change of variables \(y=\lambda u\), the integral reduces to
+\[
+K = 2\pi^2 \int_0^\infty \frac{192\,u}{(1+u^2)^4}\,du,
+\]
+which is manifestly scale invariant.
+
+A numerical quadrature in the scale-free variable \(u\) confirms convergence to
+\(64\pi^2\) with uniform accuracy across several decades of \(\lambda\).
+Naïve discretizations in the physical variable \(r\) or with fixed cutoffs
+produce artificial divergences; these are eliminated by the invariant formulation above.

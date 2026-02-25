@@ -1,0 +1,12 @@
+S^4 stereographic chart (from north pole to R^4):
+
+Volume form:
+dvol_{S^4} = (2/(1+|x|^2))^4 dx.
+
+Geodesic kernel conversion (schematic):
+d_{S^4}(x,y) relates to |x-y| with conformal factors.
+A practical numeric port multiplies integrands by the conformal weights
+coming from the metric and volume form, then uses Euclidean sampling in R^4.
+
+This file records the conversion ingredients needed to port the Kato test
+from R^4 to S^4 in stereographic coordinates.
