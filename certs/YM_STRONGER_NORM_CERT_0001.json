@@ -22,7 +22,7 @@
     "pass": false
   },
   "status": {
-    "type": "draft",
+    "type": "final",
     "reason": "Finite bound computed but no coercivity threshold met"
   }
 }
