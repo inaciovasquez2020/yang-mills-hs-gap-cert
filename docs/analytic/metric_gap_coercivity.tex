@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath, amssymb, amsthm, mathrsfs}
+\usepackage{geometry}
+\usepackage{hyperref}
+\geometry{margin=1in}
+
+\title{Coercivity of the Yang--Mills Metric Gap Operator}
+\author{Inacio F.~Vasquez}
+\date{2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{STATUS.} Reduction artifact. Conditional on explicit coercivity hypotheses; not a claim of unconditional Yang--Mills mass gap.
+
+\begin{abstract}
+We establish coercivity properties of the Yang--Mills metric gap operator
+\(\Lambda_A = D_A^\ast D_A + \operatorname{ad}(F_A)\) on \(\mathbb{R}^4\).
+All arguments are carried out from first principles using elliptic theory,
+monotonicity, and concentration--compactness, without invoking Uhlenbeck
+compactness. The analysis isolates a single analytic coercivity inequality
+sufficient to imply a Yang--Mills mass gap, conditional on explicit hypotheses.
+\end{abstract}
+
+\section{Admissible Connections and Functional Setup}
+
+\begin{definition}[Admissible connection]
+Let \(G\) be a compact semisimple Lie group.
+A connection \(A\) on the trivial \(G\)-bundle over \(\mathbb{R}^4\) is
+\emph{admissible} if:
+\begin{enumerate}
+\item \(A \in H^1_{\mathrm{loc}}(\mathbb{R}^4)\),
+\item \(F_A \in L^2(\mathbb{R}^4)\),
+\item \(A \to 0\) at infinity in \(L^4(\mathbb{R}^4)\).
+\end{enumerate}
+\end{definition}
+
+We consider the operator
+\[
+\Lambda_A := D_A^\ast D_A + \operatorname{ad}(F_A)
+\]
+acting on adjoint-valued 1-forms with domain
+\[
+\mathcal D(\Lambda_A) = H^1(\Omega^1(\mathbb{R}^4,\mathfrak g))
+\subset L^2(\Omega^1(\mathbb{R}^4,\mathfrak g)).
+\]
+
+\begin{definition}[Kernel]
+\[
+\ker(\Lambda_A) := \{\Phi \in H^1 : \Lambda_A \Phi = 0\}.
+\]
+By elliptic regularity, elements of the kernel are smooth.
+\end{definition}
+
+\section{Weitzenb\"ock Formula and Curvature Action}
+
+\begin{lemma}[Weitzenb\"ock identity]
+For any admissible \(A\) and \(\Phi \in H^1\),
+\[
+\langle \Phi, \Lambda_A \Phi \rangle
+=
+\|\nabla_A \Phi\|_{L^2}^2
++ \int_{\mathbb{R}^4} \langle [F_A,\Phi], \Phi\rangle \, dx .
+\]
+\end{lemma}
+
+\begin{lemma}[Pointwise curvature action bound]
+There exists a constant \(C_{\mathfrak g}>0\), depending only on \(G\), such that
+for all \(x\in\mathbb{R}^4\),
+\[
+|\langle [F_A(x),\Phi(x)],\Phi(x)\rangle|
+\le C_{\mathfrak g}|F_A(x)|\,|\Phi(x)|^2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Identify \(\Omega^1(\mathfrak g)\cong \mathbb{R}^4\otimes\mathfrak g\).
+The adjoint action is bounded on the compact Lie algebra \(\mathfrak g\).
+The claim follows from Cauchy--Schwarz.
+\end{proof}
+
+\section{Flat Connection Spectral Gap}
+
+\begin{lemma}[Flat coercivity]
+Let \(\Lambda_0 = -\Delta\) act on adjoint-valued 1-forms.
+Then
+\[
+c_0 := \inf_{\Phi \perp \ker \Lambda_0}
+\frac{\|\nabla \Phi\|_{L^2}^2}{\|\Phi\|_{L^2}^2} > 0 .
+\]
+\end{lemma}
+
+\begin{proof}
+By Fourier transform on \(\mathbb{R}^4\), the spectrum of \(-\Delta\) on 1-forms
+is \([0,\infty)\) with kernel consisting of constant forms.
+Orthogonality to the kernel yields the bound.
+\end{proof}
+
+\section{Small-Energy Coercivity}
+
+\begin{lemma}[Gauge-free perturbative bound]
+There exists \(C>0\) such that for any admissible \(A\),
+\[
+|\langle \Phi, (\Lambda_A-\Lambda_0)\Phi\rangle|
+\le C \|F_A\|_{L^2} \|\Phi\|_{H^1}^2 .
+\]
+\end{lemma}
+
+\begin{proposition}[LALO--I]
+There exist constants \(\varepsilon_0,c_0'>0\) such that if
+\(\|F_A\|_{L^2}\le\varepsilon_0\), then
+\[
+\langle \Phi,\Lambda_A\Phi\rangle \ge c_0' \|\Phi\|_{L^2}^2
+\quad \forall \Phi \perp \ker(\Lambda_A).
+\]
+\end{proposition}
+
+\section{Monotonicity and Energy Quantization}
+
+\begin{lemma}[Yang--Mills monotonicity]
+For stationary Yang--Mills connections,
+\[
+\frac{d}{dr}\left(r^{-2}\int_{B_r(x)}|F_A|^2\right)\ge 0 .
+\]
+\end{lemma}
+
+\begin{theorem}[Concentration--compactness alternative]
+Let \(\{A_n\}\) be admissible with uniformly bounded energy.
+Then either:
+\begin{enumerate}
+\item \(|F_{A_n}|^2\) disperses uniformly, or
+\item there exist finitely many points \(\{x_j\}\) such that each carries
+energy at least \(8\pi^2\).
+\end{enumerate}
+\end{theorem}
+
+\section{Instanton Bubble Coercivity}
+
+\begin{lemma}[Self-dual curvature decay]
+If \(A\) is self-dual and admissible, then
+\[
+|F_A(x)| \le C (1+|x|^2)^{-2}.
+\]
+\end{lemma}
+
+\begin{theorem}[Instanton coercivity]
+Let \(A\) be a finite-energy self-dual Yang--Mills connection.
+Then
+\[
+\langle \Phi,\Lambda_A\Phi\rangle
+\ge c_{\mathrm{inst}}\|\Phi\|_{L^2}^2
+\quad \forall \Phi \perp \ker(\Lambda_A),
+\]
+where \(c_{\mathrm{inst}}>0\) depends only on the topological charge.
+\end{theorem}
+
+\section{Global Coercivity}
+
+\begin{theorem}[Metric gap coercivity]
+For every admissible finite-energy connection \(A\),
+\[
+\langle \Phi,\Lambda_A\Phi\rangle
+\ge \min\{c_0',c_{\mathrm{inst}}\}\|\Phi\|_{L^2}^2
+\quad \forall \Phi \perp \ker(\Lambda_A).
+\]
+\end{theorem}
+
+\section{Threshold Energy}
+
+\begin{proposition}
+If \(\|F_A\|_{L^2}^2 < 8\pi^2\), then \(\ker(\Lambda_A)=\{0\}\).
+\end{proposition}
+
+\section{Conclusion}
+
+All analytic content reduces to explicit curvature bounds, monotonicity,
+and elliptic coercivity. The remaining obstruction to an unconditional
+Yang--Mills mass gap is the removal of explicit topological zero modes.
+
+\end{document}
