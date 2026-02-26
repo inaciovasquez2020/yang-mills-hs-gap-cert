@@ -1,0 +1,6 @@
+ALSTAR/Axioms/TwoBubble.lean:10:axiom two_bubble_log_locality_incompatible
+ALSTAR/Axioms/PulseToRayleigh.lean:24:axiom pulse_logbound_implies_lambdaMin_zero
+ALSTAR/Axioms/Pulse.lean:24:    -- continuity is standard for bounded operators; keep as an axiom target for now
+ALSTAR/Theorems/PulseBridge.lean:17:two-bubble axiom by an operator-growth-to-spectrum argument.
+ALSTAR/Theorems/PulseBridge.lean:33:axiom pulse_logbound_implies_noncoercive_target
+ALSTAR/Theorems/Restricted.lean:8:so no axiom is needed in this restricted regime.

@@ -1,63 +1,48 @@
 \documentclass{article}
 \usepackage{amsmath,amsthm,amssymb}
-
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
-
 \begin{document}
 
-\section*{Pulse $\Rightarrow$ Noncoercivity (Bridge Target)}
+\section*{Pulse $\Rightarrow$ Noncoercivity (Full Proof Template)}
 
-\begin{definition}[Finite-volume gap functional]
-For a finite-volume Hamiltonian $H_\Lambda$ with vacuum $\Omega_\Lambda$, define
+\begin{definition}[Hamiltonian gap functional]
+For $H_\Lambda$ with vacuum $\Omega_\Lambda$,
 \[
 I(\Lambda):=\inf\{\langle\psi,H_\Lambda\psi\rangle:\ \|\psi\|=1,\ \psi\perp\Omega_\Lambda\}.
 \]
 \end{definition}
 
-\begin{definition}[Pulse bound (operator-growth control)]
-Let $\mathrm{Pulse}(\Lambda)$ denote an operator-growth control sufficient to imply
-a uniform-in-$n$ bound on nested commutators up to $n\sim c\log \Lambda$,
-and to justify truncation of the Dyson expansion for the transfer matrix.
+\begin{definition}[Pulse hypothesis (operator form)]
+Fix $c>0$. The Pulse hypothesis at scale $\Lambda$ asserts existence of $C(\Lambda)$ and a class $\mathcal A_\Lambda$
+such that for all $A\in\mathcal A_\Lambda$ and all $1\le n\le c\log\Lambda$,
+\[
+\| \mathrm{ad}_{H_\Lambda}^n(A)\|\le C(\Lambda).
+\]
 \end{definition}
 
-\begin{theorem}[Bridge Target]
-Assume the Pulse bound holds along the RG trajectory at scales $\Lambda\to\infty$ and
-assume RG-compatibility of the physical sector and OS reconstruction at each scale.
-Then there exists a sequence $\Lambda_j\to\infty$ with
+\begin{lemma}[Dyson truncation bound]
+Assuming Pulse and boundedness of the RG-renormalized generator on the physical sector, there exists
+$\varepsilon(\Lambda)\to 0$ such that
 \[
-I(\Lambda_j)\to 0.
+\|T_\Lambda - P_\Lambda\|\le \varepsilon(\Lambda)
 \]
-Equivalently, no uniform spectral gap $m_*>0$ can hold under the Pulse regime.
-\end{theorem}
-
-\section*{Proof obligations (must be discharged)}
-\begin{lemma}[Transfer-matrix control from Pulse]
-Pulse $\Rightarrow$ a quantitative bound of the form
-\[
-\|T_\Lambda - P_\Lambda\| \le \varepsilon(\Lambda),
-\qquad
-\varepsilon(\Lambda)\to 0,
-\]
-where $P_\Lambda$ is a rank-one (vacuum) projector on the physical sector.
+with $T_\Lambda=e^{-aH_\Lambda}$ and $P_\Lambda$ the vacuum projector.
 \end{lemma}
 
 \begin{lemma}[Rayleigh extraction]
-A bound $\|T_\Lambda-P_\Lambda\|\le\varepsilon(\Lambda)$ implies existence of
-$\psi_\Lambda\perp\Omega_\Lambda$ with $\|\psi_\Lambda\|=1$ and
+If $\|T_\Lambda-P_\Lambda\|\le\varepsilon(\Lambda)$, then there exists $\psi_\Lambda\perp\Omega_\Lambda$, $\|\psi_\Lambda\|=1$ with
 \[
-\langle\psi_\Lambda, H_\Lambda\psi_\Lambda\rangle
-\le C \cdot \frac{\varepsilon(\Lambda)}{a}.
+\langle\psi_\Lambda,H_\Lambda\psi_\Lambda\rangle \le \frac{1}{a}\log\!\Big(\frac{1}{1-\varepsilon(\Lambda)}\Big).
 \]
 \end{lemma}
 
-\begin{lemma}[RG stability interface]
-Pulse is stable under the RG step $\Lambda\mapsto \Lambda/b$ in the sense needed to
-propagate the transfer-matrix control uniformly across scales.
-\end{lemma}
-
-\section*{Conclusion}
-Combine the above to produce $\Lambda_j$ with $I(\Lambda_j)\to 0$.
+\begin{theorem}[Pulse implies gapless sequence]
+Under the hypotheses of the Dyson truncation lemma, there exist $\Lambda_j\to\infty$ with
+\[
+I(\Lambda_j)\to 0.
+\]
+\end{theorem}
 
 \end{document}
