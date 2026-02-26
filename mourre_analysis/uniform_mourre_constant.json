@@ -1,0 +1,10 @@
+{
+  "kind": "theorem",
+  "theorem_id": "Thm_Mourre_001",
+  "name": "Uniform Mourre Estimate",
+  "hypothesis": [
+    "spectral_coercivity",
+    "OS_positivity"
+  ],
+  "conclusion": "There exist constants c0 > 0, C0 finite independent of cutoff such that i[H, A] >= c0 L - C0 1."
+}
