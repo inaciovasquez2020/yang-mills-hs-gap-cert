@@ -1,0 +1,13 @@
+Strong-coupling GOE test summary (finite group S3):
+
+- Exact enumeration on 2x2 reflection-symmetric lattice
+- Heat-kernel-type plaquette weight exp(beta * chi2)
+- Conditional mutual information I(P;F|B) computed exactly
+
+Observed:
+- I(P;F|B) > 0 for all beta in [0,6]
+- No near-zero or cancellation regime found
+- Clear separation from abelian Z2 behavior
+
+Interpretation:
+- No refutation of GOE in strongest accessible nonabelian regime
