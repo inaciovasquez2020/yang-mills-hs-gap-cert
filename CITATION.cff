@@ -10,3 +10,5 @@ abstract: >
   Executable certificates demonstrating divergence of the naive Hilbert–Schmidt
   coercivity bound for the Yang–Mills Hessian, ruling out a direct HS-gap proof
   of the mass gap.
+
+doi: 10.5281/zenodo.18790231
