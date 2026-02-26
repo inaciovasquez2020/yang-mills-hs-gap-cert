@@ -144,3 +144,8 @@ Research use. See repository metadata.
 
 See `counterexamples/` for falsifying instances and stress-tests that bound the
 scope of locality/precision claims and support certificate interpretation.
+
+## No-Go / Final Wall Notes
+
+- RP–Throughput Final Wall (candidate; requires a single external interface lemma): `docs/no-go/RP_THROUGHPUT_FINAL_WALL.md`
+- No-Go template manuscript (conditional): `papers/no-go-rp-throughput/no_go_rp_throughput_final_wall.tex`
