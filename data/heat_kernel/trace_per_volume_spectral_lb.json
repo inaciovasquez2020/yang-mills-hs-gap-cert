@@ -1,0 +1,19 @@
+{
+  "operator": "reduced_radial_S4",
+  "d": 4,
+  "k": 1,
+  "ell": 0,
+  "n": 800,
+  "t": 0.1,
+  "eigenvalues_used": [
+    8.307632038511862,
+    13.88374241413114,
+    22.174980739387184,
+    33.03617791930305,
+    46.388050792598044,
+    62.174895302707185
+  ],
+  "trace_per_volume_lower_bound": 0.0010531147913374675,
+  "method": "finite-spectrum lower bound",
+  "status": "numerical_witness_only"
+}
