@@ -1,0 +1,29 @@
+\begin{definition}[Block Mourre Conjugate Operator]
+Fix an RG scale $j$ and let $\mathcal B_j$ be the partition of $\mathbb R^4$
+into hypercubic blocks of side $\ell_j=2^j a$.
+Let $x$ denote block coordinates and define the generator of dilations
+\[
+A_j \;:=\; \frac12 \sum_{x\in\mathcal B_j}
+\Big( x\cdot \nabla_x + \nabla_x\cdot x \Big)
+\]
+acting on block-local fields via the OS-reconstructed representation.
+\end{definition}
+
+\begin{lemma}[Positive Commutator]
+Let $P_j$ be the renormalized plaquette-block operator at scale $j$.
+Then on the orthogonal complement of gauge zero-modes,
+\[
+[P_j,\, iA_j] \;\ge\; c\, P_j \;-\; K_j,
+\]
+where $c>0$ is independent of $j$ and $\|K_j\|\le C\,2^{-2j}$.
+\end{lemma}
+
+\begin{corollary}[Mourre Estimate]
+There exists $\kappa>0$ such that
+\[
+\mathbf 1_{(0,\infty)}(P_j)\,[P_j,iA_j]\,
+\mathbf 1_{(0,\infty)}(P_j)\;\ge\;\kappa\,
+\mathbf 1_{(0,\infty)}(P_j)
+\]
+uniformly for $j\le c\log\Lambda$.
+\end{corollary}
