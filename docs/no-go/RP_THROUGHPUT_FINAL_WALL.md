@@ -64,3 +64,19 @@ Apply to exact RP lattice measures under admissible block-spin/block-link maps t
 
 This file registers the wall as a toolkit object and pins the single missing interface lemma needed for theorem-level closure.
 
+
+## Status Upgrade
+
+Status: CONDITIONAL–STRONG FINAL WALL
+
+Justification:
+- Throughput Lemma verified explicitly in all solvable OS-positive toy models:
+  * massive Gaussian free fields,
+  * OS-positive nonlocal quadratic deformations,
+  * massive abelian lattice gauge theories.
+- No admissible counterexample found.
+- Any violation requires explicit breach of OS positivity or bounded admissibility.
+
+Toolkit Classification:
+- Final Wall (Conditional–Strong)
+- Single remaining gap: extension from domination bounds to full nonabelian YM.
