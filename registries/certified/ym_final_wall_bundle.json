@@ -1,0 +1,71 @@
+{
+  "id": "ym-final-wall-summary",
+  "problem": "Clay Millennium: Yang\u2013Mills Mass Gap",
+  "status": "frozen",
+  "components": {
+    "hs_gap": {
+      "id": "yang-mills-hs-gap",
+      "title": "Yang\u2013Mills HS-Gap Divergence Certificate",
+      "problem": "Clay Millennium: Yang\u2013Mills Mass Gap",
+      "claim_type": "certified counterexample",
+      "summary": "Executable certificates demonstrate divergence of the naive Hilbert\u2013Schmidt coercivity bound for the Yang\u2013Mills Hessian under explicit truncation, ruling out a direct HS-gap proof of the mass gap.",
+      "status": {
+        "type": "NEGATIVE_RESULT",
+        "state": "frozen"
+      },
+      "frozen_tag": "frozen-ym-hs-gap-divergence",
+      "repository": "https://github.com/inaciovasquez2020/yang-mills-hs-gap-cert",
+      "verification": {
+        "ci": "GitHub Actions",
+        "checks": [
+          "schema validation",
+          "monotonicity enforcement",
+          "counterexample acceptance"
+        ]
+      },
+      "implication": "Any Yang\u2013Mills mass gap proof must use a stronger norm or additional structure beyond Hilbert\u2013Schmidt coercivity.",
+      "date_frozen": "2026-02-14"
+    },
+    "heat_kernel": {
+      "operator": "reduced_radial_S4",
+      "d": 4,
+      "k": 1,
+      "ell": 0,
+      "n": 800,
+      "t": 0.1,
+      "eigenvalues_used": [
+        8.307395847099789,
+        13.883606497544745,
+        22.174762758590422,
+        33.036168961714566,
+        46.38770396404154,
+        62.17539735772823
+      ],
+      "trace_per_volume_lower_bound": 0.001053135196138196,
+      "method": "finite-spectrum lower bound",
+      "status": "numerical_witness_only"
+    },
+    "schatten_p": {
+      "operator": "reduced_radial_S4",
+      "norm": "Schatten-4 per volume (spectral lower bound)",
+      "d": 4,
+      "k": 1,
+      "ell": 0,
+      "n": 800,
+      "t": 0.1,
+      "p": 4,
+      "eigenvalues_used": [
+        8.307395847099789,
+        13.883606497544745,
+        22.174762758590422,
+        33.036168961714566,
+        46.38770396404154,
+        62.17539735772823
+      ],
+      "schatten_p_lower_bound": 5.007815434100974e-05,
+      "status": "numerical_witness_only"
+    }
+  },
+  "conclusion": "Hilbert\u2013Schmidt route is blocked (certified). Stronger-norm routes instantiated as numerical witnesses only.",
+  "claims": "no_positive_mass_gap_claim"
+}

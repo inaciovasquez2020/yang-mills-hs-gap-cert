@@ -1,0 +1,20 @@
+{
+  "operator": "reduced_radial_S4",
+  "norm": "Schatten-4 per volume (spectral lower bound)",
+  "d": 4,
+  "k": 1,
+  "ell": 0,
+  "n": 800,
+  "t": 0.1,
+  "p": 4,
+  "eigenvalues_used": [
+    8.307395847099789,
+    13.883606497544745,
+    22.174762758590422,
+    33.036168961714566,
+    46.38770396404154,
+    62.17539735772823
+  ],
+  "schatten_p_lower_bound": 5.007815434100974e-05,
+  "status": "numerical_witness_only"
+}
