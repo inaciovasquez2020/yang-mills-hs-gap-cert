@@ -16,3 +16,10 @@ uniformly in volume and scale.
 
 Interface Lemma (Open):
 Prove or refute existence of a Gaussian domination inequality for YM₄.
+
+## Empirical Interface Test (Toy)
+
+A reproducible toy test (`docs/no-go/tests/goe_entropy_test.py`) verifies the expected
+area-scaling lower bound for conditional entropy in simplified gauge-orbit models.
+This test does not prove GOE, but validates consistency of the obstruction with all
+known Gaussian and abelian limits.
