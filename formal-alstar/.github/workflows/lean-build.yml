@@ -1,27 +1,26 @@
-name: lean-build
+name: lean-clean-build
 
 on:
   push:
-    paths:
-      - "formal-alstar/**"
-      - ".github/workflows/lean-build.yml"
   pull_request:
-    paths:
-      - "formal-alstar/**"
-      - ".github/workflows/lean-build.yml"
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up elan
-        uses: leanprover/elan-action@v1
-
-      - name: Build formal-alstar
-        working-directory: formal-alstar
+      - name: Install Lean toolchain
         run: |
-          lake update
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Verify lean-toolchain exists
+        run: |
+          test -f lean-toolchain
+
+      - name: Clean build
+        run: |
+          lake clean
           lake build
