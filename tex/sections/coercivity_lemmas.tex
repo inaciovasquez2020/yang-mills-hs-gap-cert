@@ -1,7 +1,16 @@
-\section{Coercivity Lemma Chain}
+\documentclass[11pt]{article}
 
-\begin{lemma}[Local Gauge Poincaré]
-Let $A$ be gauge-fixed on a block $B$. Then
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\section*{Uniform Block Coercivity: Lemma Chain}
+
+\begin{lemma}[Local Gauge Poincaré (Balaban)]
+Let $B$ be a gauge-fixed block and $\mathcal Z_B$ the gauge zero modes.
+There exists $c_0>0$ such that
 \[
 \langle \psi, P_B \psi\rangle \ge c_0 \|\psi\|^2
 \quad \forall \psi \perp \mathcal Z_B .
@@ -9,11 +18,11 @@ Let $A$ be gauge-fixed on a block $B$. Then
 \end{lemma}
 
 \begin{lemma}[IMS Localization]
-For any partition $\{\chi_i\}$,
+For any smooth partition $\{\chi_i\}$,
 \[
-P = \sum_i \chi_i P \chi_i - \sum_i |\nabla \chi_i|^2 ,
+P_B = \sum_i \chi_i P_B \chi_i - \sum_i |\nabla \chi_i|^2 ,
 \]
-with error uniformly bounded.
+with the error term uniformly bounded.
 \end{lemma}
 
 \begin{lemma}[Mourre Estimate]
@@ -25,8 +34,11 @@ on $\mathcal Z_B^\perp$.
 \end{lemma}
 
 \begin{lemma}[Uniform Block Coercivity]
-There exists $\kappa>0$ independent of scale such that
+There exists $\kappa>0$, independent of scale, such that
 \[
-P_B \ge \kappa \quad \text{on } \mathcal Z_B^\perp .
+P_B \ge \kappa
+\quad \text{on } \mathcal Z_B^\perp .
 \]
 \end{lemma}
+
+\end{document}
