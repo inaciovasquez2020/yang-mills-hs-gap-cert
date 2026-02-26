@@ -33,3 +33,12 @@ yang-mills-hs-gap-cert/
 *.blg
 .venv/
 __pycache__/
+
+# Local / frozen workspace artifacts
+scripts/heat_kernel/ENV.sh
+scripts/heat_kernel/compute_trace_per_volume.py
+scripts/heat_kernel/compute_trace_per_volume_fast.py
+ym-final-wall-zenodo.zip
+ym-final-wall-zenodo.sha256
+certs/heat_kernel/trace_per_volume.sha256
+certs/heat_kernel/ym_heat_kernel_cert_0001.json
