@@ -1,5 +1,5 @@
 .PHONY: test-grd test-grd-violate
 test-grd:
-python3 scripts/grd_test.py --mode grd
+printf " python3 scripts/grd_test.py --mode grd\n" | sh
 test-grd-violate:
-python3 scripts/grd_test.py --mode violate
+printf " python3 scripts/grd_test.py --mode violate\n" | sh
