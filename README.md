@@ -149,3 +149,11 @@ scope of locality/precision claims and support certificate interpretation.
 
 - RP–Throughput Final Wall (candidate; requires a single external interface lemma): `docs/no-go/RP_THROUGHPUT_FINAL_WALL.md`
 - No-Go template manuscript (conditional): `papers/no-go-rp-throughput/no_go_rp_throughput_final_wall.tex`
+
+## Chronos Linkage
+
+This repository establishes a FINAL-WALL result for gauge suppression and late-scale decay in the Yang–Mills HS-gap framework.  
+The corresponding Chronos integration is tagged as:
+
+chronos-final-wall-ym-gauge  
+https://github.com/inaciovasquez2020/Chronos-EntropyDepth/releases/tag/chronos-final-wall-ym-gauge
