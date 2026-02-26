@@ -1,0 +1,56 @@
+\begin{proposition}[Windowed exceedance test: negative result]\label{prop:rh-negative}
+Let
+\[
+Q_{T,H}:=\int_T^{T+H}\bigl|\zeta(\tfrac12+it)\bigr|^2\,dt,
+\qquad
+\mathbb E_{\mathrm{mf}}Q_{T,H}:=
+H\bigl(\log T+2\gamma-\log(2\pi)\bigr),
+\]
+and let $\sigma_{T,H}$ denote any conjectured ``benign'' fluctuation scale.
+For $\lambda>0$, define the exceedance event
+\[
+A_{T,H}(\lambda):=
+\Bigl\{Q_{T,H}-\mathbb E_{\mathrm{mf}}Q_{T,H}
+>\lambda\,\sigma_{T,H}\Bigr\}.
+\]
+
+\begin{enumerate}
+\item
+A direct evaluation at $(T,H)=(10^4,20)$ yields
+\[
+Q_{10^4,20}<\mathbb E_{\mathrm{mf}}Q_{10^4,20},
+\]
+hence $A_{10^4,20}(\lambda)$ fails for every $\lambda>0$ under any
+$\sigma_{10^4,20}>0$.
+
+\item
+A law-invariant surrogate model based on a log-correlated Gaussian field,
+implemented via FFT synthesis and exponentiation, produces stable empirical
+exceedance rates
+\[
+\hat p(\lambda)\approx
+\begin{cases}
+0.117 & \lambda=1.0,\\
+0.055 & \lambda=1.5,\\
+0.027 & \lambda=2.0,
+\end{cases}
+\]
+uniformly across resolutions $(N,K)=(4096,1024)$ and $(8192,2048)$ with
+$m=2\times10^4$ samples per setting.
+\end{enumerate}
+
+At the tested scales, the data therefore certify neither
+\[
+\liminf_{T\to\infty}\mathbb P\bigl(A_{T,H}(\lambda)\bigr)\ge\varepsilon>0
+\quad\text{(uniform obstruction)}
+\]
+nor
+\[
+\mathbb P\bigl(A_{T,H}(\lambda)\bigr)\to 0
+\quad\text{(domination)}.
+\]
+Moreover, direct Monte Carlo estimation using high-precision evaluation of
+$\zeta(\tfrac12+it)$ becomes computationally prohibitive for replicated window
+sampling at $T\ge10^4$, necessitating surrogate-based calibration for any
+higher-power exceedance test.
+\end{proposition}
