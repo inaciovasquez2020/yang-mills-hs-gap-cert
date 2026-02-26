@@ -68,18 +68,18 @@ def build_local_H(N, seed, delocalized=False, R=0, eps=0.0):
 rng = np.random.default_rng(seed)
 H = np.zeros((2N, 2N), dtype=complex)
 for i in range(N-1):
-a = rng.integers(1,4)
-b = rng.integers(1,4)
-J = rng.normal()
+a = int(rng.integers(1,4))
+b = int(rng.integers(1,4))
+J = float(rng.normal())
 H += J * embed_two(N, i, i+1, P[a], P[b])
 for i in range(N):
-a = rng.integers(1,4)
-h = rng.normal()
+a = int(rng.integers(1,4))
+h = float(rng.normal())
 H += h * embed_single(N, i, P[a])
 if delocalized:
-a = rng.integers(1,4)
-b = rng.integers(1,4)
-H += eps * embed_two(N, 0, min(N-1, R), P[a], P[b])
+a = int(rng.integers(1,4))
+b = int(rng.integers(1,4))
+H += float(eps) * embed_two(N, 0, min(N-1, int(R)), P[a], P[b])
 return 0.5 * (H + H.conj().T)
 def build_local_A(N, center):
 A = embed_single(N, center, P[1])
@@ -98,19 +98,16 @@ ap.add_argument("--alpha", type=float, default=12.0)
 ap.add_argument("--beta", type=float, default=0.7)
 args = ap.parse_args()
 N = args.N
-if args.mode == "grd":
-    H = build_local_H(N, args.seed)
-else:
-    H = build_local_H(N, args.seed, True, args.R, args.eps)
-
+H = build_local_H(N, args.seed, args.mode == "violate", args.R, args.eps)
 A0 = build_local_A(N, args.center)
 S0 = {args.center}
 
 digs, ops = pauli_basis_operators(N)
+
 X = A0.copy()
 base = op_norm(A0) + 1e-12
-
 passed = True
+
 for n in range(1, args.nmax + 1):
     X = comm(H, X)
     cn = op_norm(X) / base
