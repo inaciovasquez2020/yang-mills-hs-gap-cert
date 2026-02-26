@@ -1,10 +1,10 @@
 One hard mechanism
 
 Option A: coercive inequality
-Provide a single inequality that implies the spectral floor in ym/SPECTRAL_TARGET.md.
+Provide a single inequality that implies the spectral floor in SPECTRAL_TARGET.md.
 
 Option B: gapless mechanism
-Provide an explicit construction of states psi_n with energy -> 0 that survive all constraints in ym/IR_OBSTRUCTIONS.md and the continuum entry ticket.
+Provide an explicit construction of states psi_n with energy -> 0 that survive all constraints in IR_OBSTRUCTIONS.md and the continuum entry ticket.
 
 Deliverable:
 - exact statement

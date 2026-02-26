@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "YM witness schema",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/$defs/wilson_eigenvalue_bound" },
+    { "$ref": "#/$defs/ball_coercivity_witness" },
+    { "$ref": "#/$defs/rg_step_bound" },
+    { "$ref": "#/$defs/gapless_sequence" },
+    { "$ref": "#/$defs/axiom" }
+  ],
+  "$defs": {
+    "common_meta": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string" },
+        "volume": { "type": "string" },
+        "cutoff": { "type": "string" },
+        "notes": { "type": "string" },
+        "reference": { "type": "string" }
+      },
+      "required": ["kind","volume","cutoff"]
+    },
+    "wilson_eigenvalue_bound": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/common_meta" }
+      ],
+      "properties": {
+        "kind": { "const": "wilson_eigenvalue_bound" },
+        "operator": { "type": "string" },
+        "plaquette": { "type": "string" },
+        "lambda2_upper_bound": { "type": "number" },
+        "uniform_in_volume": { "type": "boolean" },
+        "uniform_in_cutoff": { "type": "boolean" },
+        "derivation_sketch": { "type": "string" }
+      },
+      "required": [
+        "operator","plaquette","lambda2_upper_bound",
+        "uniform_in_volume","uniform_in_cutoff","derivation_sketch"
+      ]
+    },
+    "ball_coercivity_witness": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/common_meta" }
+      ],
+      "properties": {
+        "kind": { "const": "ball_coercivity_witness" },
+        "mode": { "type": "string", "enum": ["counterexample","lower_bound"] },
+        "background_A": { "type": "string" },
+        "ball_radius_R": { "type": "string" },
+        "test_function_phi_R": { "type": "string" },
+        "quantity": { "type": "string", "enum": ["lambda1(A,R)","m_loc"] },
+        "bound_or_limit": { "type": "string" },
+        "derivation_sketch": { "type": "string" }
+      },
+      "required": [
+        "mode","background_A","ball_radius_R","test_function_phi_R",
+        "quantity","bound_or_limit","derivation_sketch"
+      ]
+    },
+    "rg_step_bound": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/common_meta" }
+      ],
+      "properties": {
+        "kind": { "const": "rg_step_bound" },
+        "b": { "type": "number" },
+        "inequality": { "type": "string" },
+        "constants": { "type": "object" },
+        "eta_behavior": { "type": "string" },
+        "derivation_sketch": { "type": "string" }
+      },
+      "required": ["b","inequality","constants","eta_behavior","derivation_sketch"]
+    },
+    "gapless_sequence": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/common_meta" }
+      ],
+      "properties": {
+        "kind": { "const": "gapless_sequence" },
+        "state_formula": { "type": "string" },
+        "physicality_argument": { "type": "string" },
+        "energy_formula": { "type": "string" },
+        "limit_statement": { "type": "string" },
+        "derivation_sketch": { "type": "string" }
+      },
+      "required": [
+        "state_formula","physicality_argument","energy_formula","limit_statement","derivation_sketch"
+      ]
+    },
+    "axiom": {
+      "type": "object",
+      "allOf": [
+        { "$ref": "#/$defs/common_meta" }
+      ],
+      "properties": {
+        "kind": { "const": "axiom" },
+        "axiom_name": { "type": "string" },
+        "single_inequality": { "type": "string" },
+        "implies": { "type": "string", "enum": ["wilson_eigenvalue_bound","ball_coercivity_witness","rg_step_bound"] },
+        "consistency_notes": { "type": "string" }
+      },
+      "required": ["axiom_name","single_inequality","implies","consistency_notes"]
+    }
+  }
+}

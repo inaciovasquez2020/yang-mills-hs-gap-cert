@@ -1,0 +1,9 @@
+{
+  "kind": "axiom",
+  "volume": "finite volume (specify)",
+  "cutoff": "UV cutoff Λ (specify)",
+  "axiom_name": "Uniform Wilson-loop channel gap",
+  "single_inequality": "∃ m_*>0 such that for the transfer matrix T_Λ restricted to the plaquette Wilson-loop channel, the second eigenvalue satisfies λ_2(T_Λ) ≤ e^{-m_*} uniformly in volume and Λ.",
+  "implies": "wilson_eigenvalue_bound",
+  "consistency_notes": "To be justified against known limits."
+}

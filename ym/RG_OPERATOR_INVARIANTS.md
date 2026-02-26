@@ -8,4 +8,4 @@ Goal: define an operator-norm invariant I(Λ) along a renormalization flow such 
 Deliverables:
 - precise definition of I(Λ)
 - required inequalities along the RG map
-- interface with ym/SPECTRAL_TARGET.md
+- interface with SPECTRAL_TARGET.md

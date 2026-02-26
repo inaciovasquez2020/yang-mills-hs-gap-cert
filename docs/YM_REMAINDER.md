@@ -6,16 +6,16 @@ Yang–Mills remainder checklist (operational)
 
 2. Spectral floor target
 - State the exact operator, domain, vacuum sector, orthogonality condition.
-- Output artifact: ym/SPECTRAL_TARGET.md
+- Output artifact: SPECTRAL_TARGET.md
 
 3. Infrared exclusion taxonomy
 - Enumerate all candidate low-energy sequences not covered by semiclassics.
-- Output artifact: ym/IR_OBSTRUCTIONS.md
+- Output artifact: IR_OBSTRUCTIONS.md
 
 4. Operator-level RG control
 - Define the operator-norm invariants required along the flow.
-- Output artifact: ym/RG_OPERATOR_INVARIANTS.md
+- Output artifact: RG_OPERATOR_INVARIANTS.md
 
 5. One hard mechanism
 - Either a coercive inequality or an explicit gapless mechanism.
-- Output artifact: ym/MECHANISM.md
+- Output artifact: MECHANISM.md
