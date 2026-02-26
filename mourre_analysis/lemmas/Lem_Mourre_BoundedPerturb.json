@@ -1,0 +1,7 @@
+{
+  "kind": "lemma",
+  "lemma_id": "Lem_Mourre_BoundedPerturb",
+  "name": "Bounded commutator for counterterms",
+  "statement": "The renormalization counterterm contribution V_ct satisfies ||i[V_ct, A]|| <= C0 uniformly in cutoff.",
+  "dependencies": ["Lem_Mourre_C1"]
+}
