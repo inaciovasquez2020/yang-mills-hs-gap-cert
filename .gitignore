@@ -31,3 +31,5 @@ yang-mills-hs-gap-cert/
 *.toc
 *.bbl
 *.blg
+.venv/
+__pycache__/
