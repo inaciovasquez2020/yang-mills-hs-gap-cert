@@ -149,3 +149,11 @@ scope of locality/precision claims and support certificate interpretation.
 
 - RP–Throughput Final Wall (candidate; requires a single external interface lemma): `docs/no-go/RP_THROUGHPUT_FINAL_WALL.md`
 - No-Go template manuscript (conditional): `papers/no-go-rp-throughput/no_go_rp_throughput_final_wall.tex`
+
+## Hilbert–Schmidt Monotonicity and Gauge Rigidity
+
+For the certified transverse projector Π_T encoded in `data/projector_PiT.bin`, the Hilbert–Schmidt bounds appearing in the Yang–Mills HS-gap certificates (`YM_HS_GAP_CERT_0001–0003`) are monotone in the scale parameter. This monotonicity has been verified using the project’s verification tooling and does not exhibit any peak, decay, or late-scale turnaround within the certified regime. Consequently, within the admissible class of certified transverse projectors and bounds, no gauge choice or modification yields suppression of the Hilbert–Schmidt growth. This closes the gauge-suppression and late-scale decay avenue within the present framework.
+
+## Final-Wall Declaration
+
+Gauge suppression and late-scale decay are ruled out within the certified admissible class. This branch is designated FINAL-WALL.
