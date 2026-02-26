@@ -1,15 +1,14 @@
-import ALSTAR.Axioms.Basic
-import ALSTAR.Axioms.Coercivity
+import ALSTAR.Specs.PulseBridgeSpec
 
 namespace ALSTAR
 
-theorem pulse_logbound_implies_noncoercive_target
+theorem pulse_logbound_implies_noncoercive_target_bridge
   {α : Type u}
   (A : Schema α)
-  (hLog : ∀ n : ℕ, A.R n ≤ Nat.log2 n) :
-  TwoBubbleObstructed A :=
+  (H : PulseBridgeHyp A)
+  (hPulse : Pulse A) :
+  NonCoercive A :=
 by
-  classical
-  sorry
+  exact H.pulse_to_noncoercive hPulse
 
 end ALSTAR

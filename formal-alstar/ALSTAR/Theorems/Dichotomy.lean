@@ -1,26 +1,16 @@
-import ALSTAR.Axioms.Basic
-import ALSTAR.Axioms.Coercivity
-import ALSTAR.Axioms.TwoBubble
+import ALSTAR.Specs.PulseBridgeSpec
 
 namespace ALSTAR
 
-/--
-Dichotomy theorem (structured):
-either R exceeds log₂ somewhere, or coercivity fails (two-bubble obstruction).
--/
-theorem dichotomy_theorem
+open Nat
+
+theorem dichotomy_applies_two_bubble
   {α : Type u}
-  (A : Schema α) :
-  (∃ n : ℕ, A.R n > log₂ n) ∨ TwoBubbleObstructed A :=
+  (A : Schema α)
+  (H : PulseBridgeHyp A)
+  (hBounded : ∀ n : Nat, A.R n ≤ log₂ n) :
+  False :=
 by
-  classical
-  by_cases h : LogBound A
-  · right
-    exact two_bubble_log_locality_incompatible A h
-  · left
-    -- ¬(∀ n, A.R n ≤ log₂ n)  ⇒  ∃ n, A.R n > log₂ n
-    unfold LogBound at h
-    push_neg at h
-    exact h
+  exact H.twoBubble hBounded
 
 end ALSTAR
