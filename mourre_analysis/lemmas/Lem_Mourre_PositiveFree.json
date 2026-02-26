@@ -1,0 +1,7 @@
+{
+  "kind": "lemma",
+  "lemma_id": "Lem_Mourre_PositiveFree",
+  "name": "Positive commutator for the free energy",
+  "statement": "On the core domain D, i[H_E + H_B, A] >= 2(H_E + H_B) - Err with Err controlled uniformly in cutoff.",
+  "dependencies": ["Lem_Mourre_C1"]
+}

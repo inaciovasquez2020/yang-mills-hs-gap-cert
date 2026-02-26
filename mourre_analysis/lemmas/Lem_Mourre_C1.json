@@ -1,0 +1,7 @@
+{
+  "kind": "lemma",
+  "lemma_id": "Lem_Mourre_C1",
+  "name": "C1 regularity of H with respect to A",
+  "statement": "H_ren is of class C1(A) on a specified core domain D and the commutator form extends to a bounded form on D.",
+  "dependencies": []
+}

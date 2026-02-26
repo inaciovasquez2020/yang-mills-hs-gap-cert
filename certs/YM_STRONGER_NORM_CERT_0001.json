@@ -1,6 +1,6 @@
 {
   "meta": {
-    "toolkit_version": "urf/ym/1.0",
+    "toolkit_version": "urf/1.0",
     "cert_version": "ym-heat-kernel/0.1",
     "generator": "compute_heat_kernel_bound.py",
     "status_note": "Stronger-norm successor program after certified HS obstruction"

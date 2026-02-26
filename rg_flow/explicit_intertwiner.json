@@ -1,0 +1,11 @@
+{
+  "kind": "theorem",
+  "theorem_id": "Thm_RG_001",
+  "name": "Explicit RG Intertwiner with Gauge Invariance",
+  "hypothesis": [
+    "gauge_invariance",
+    "lattice_discretization",
+    "finite_volume_approximation"
+  ],
+  "conclusion": "There exists an explicit RG step map U such that [U, L] = 0 on the physical subspace."
+}

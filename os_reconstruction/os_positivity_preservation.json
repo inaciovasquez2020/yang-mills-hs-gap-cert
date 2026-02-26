@@ -1,0 +1,10 @@
+{
+  "kind": "theorem",
+  "theorem_id": "Thm_OS_001",
+  "name": "OS Positivity Preservation",
+  "hypothesis": [
+    "reflection_symmetry",
+    "OS_axioms"
+  ],
+  "conclusion": "The semigroup e^{-tH} preserves the OS cone."
+}

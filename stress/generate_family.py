@@ -3,7 +3,7 @@ import json, pathlib
 out = pathlib.Path("stress")
 base = {
   "meta": {
-    "toolkit_version": "urf/ym/1.0",
+    "toolkit_version": "urf/1.0",
     "cert_version": "ym-hs-gap/stress"
   },
   "inputs": {

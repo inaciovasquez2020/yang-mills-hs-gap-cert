@@ -1,0 +1,8 @@
+{
+  "kind": "lemma",
+  "lemma_id": "Lem_RG_Monotonicity",
+  "name": "Nonperturbative RG Monotonicity",
+  "statement": "There exists c > 0 and scale regime S such that for sufficiently small g_n in S, g_{n+1}^2 <= g_n^2 (1 - c g_n^2).",
+  "dependencies": [],
+  "role": "Ensures boundedness of running coupling along RG flow."
+}

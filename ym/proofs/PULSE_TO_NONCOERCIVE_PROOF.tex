@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\begin{document}
+
+\section*{Pulse $\Rightarrow$ Noncoercivity (Full Proof Template)}
+
+\begin{definition}[Hamiltonian gap functional]
+For $H_\Lambda$ with vacuum $\Omega_\Lambda$,
+\[
+I(\Lambda):=\inf\{\langle\psi,H_\Lambda\psi\rangle:\ \|\psi\|=1,\ \psi\perp\Omega_\Lambda\}.
+\]
+\end{definition}
+
+\begin{definition}[Pulse hypothesis (operator form)]
+Fix $c>0$. The Pulse hypothesis at scale $\Lambda$ asserts existence of $C(\Lambda)$ and a class $\mathcal A_\Lambda$
+such that for all $A\in\mathcal A_\Lambda$ and all $1\le n\le c\log\Lambda$,
+\[
+\| \mathrm{ad}_{H_\Lambda}^n(A)\|\le C(\Lambda).
+\]
+\end{definition}
+
+\begin{lemma}[Dyson truncation bound]
+Assuming Pulse and boundedness of the RG-renormalized generator on the physical sector, there exists
+$\varepsilon(\Lambda)\to 0$ such that
+\[
+\|T_\Lambda - P_\Lambda\|\le \varepsilon(\Lambda)
+\]
+with $T_\Lambda=e^{-aH_\Lambda}$ and $P_\Lambda$ the vacuum projector.
+\end{lemma}
+
+\begin{lemma}[Rayleigh extraction]
+If $\|T_\Lambda-P_\Lambda\|\le\varepsilon(\Lambda)$, then there exists $\psi_\Lambda\perp\Omega_\Lambda$, $\|\psi_\Lambda\|=1$ with
+\[
+\langle\psi_\Lambda,H_\Lambda\psi_\Lambda\rangle \le \frac{1}{a}\log\!\Big(\frac{1}{1-\varepsilon(\Lambda)}\Big).
+\]
+\end{lemma}
+
+\begin{theorem}[Pulse implies gapless sequence]
+Under the hypotheses of the Dyson truncation lemma, there exist $\Lambda_j\to\infty$ with
+\[
+I(\Lambda_j)\to 0.
+\]
+\end{theorem}
+
+\end{document}

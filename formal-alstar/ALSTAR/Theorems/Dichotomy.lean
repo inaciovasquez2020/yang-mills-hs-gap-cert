@@ -1,17 +1,16 @@
-import Mathlib
-import ALSTAR.Axioms.Basic
-import ALSTAR.Axioms.TwoBubble
+import ALSTAR.Specs.PulseBridgeSpec
 
 namespace ALSTAR
 
-theorem no_log_locality
-  {α : Type} (A : Schema α)
-  (hR : ∀ n, A.R n ≤ Nat.log n)
-  (hPrecise : True) :
+open Nat
+
+theorem dichotomy_applies_two_bubble
+  {α : Type u}
+  (A : Schema α)
+  (H : PulseBridgeHyp A)
+  (hBounded : ∀ n : Nat, A.R n ≤ log₂ n) :
   False :=
 by
-  -- mark hPrecise as intentionally used (semantic dependency)
-  have _ := hPrecise
-  exact two_bubble_log_locality_incompatible (A := A) hR
+  exact H.twoBubble hBounded
 
 end ALSTAR

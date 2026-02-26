@@ -1,0 +1,8 @@
+{
+  "kind": "lemma",
+  "lemma_id": "Lem_IMS_001",
+  "name": "IMS Localization Bound",
+  "statement": "There exists a partition of unity {chi_R} on the lattice such that sum_R |grad chi_R|^2 <= epsilon L_Lambda with epsilon < c0.",
+  "used_in": ["Thm_Mourre_001"],
+  "proof_ref": "mourre_analysis/ims_proof.md"
+}
