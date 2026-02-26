@@ -1,24 +1,16 @@
 import ALSTAR.Axioms.Basic
-import ALSTAR.Axioms.CoercivityGI
+import ALSTAR.Axioms.QuotientGI
 
 namespace ALSTAR
 
-/--
-Concrete (placeholder) model tying Schema to a YM growth functional.
-
-Interpretation: `R n` is the certified growth/complexity functional at lattice scale n.
-You will later replace this with the actual operator-growth / pulse functional.
--/
+/-- Concrete (placeholder) model tying Schema to a YM growth functional Rym. -/
 structure YMParams where
   Rym : ℕ → ℕ
 
 def YM.Schema (p : YMParams) : Schema Unit :=
   { R := p.Rym }
 
-/--
-Gauge-invariant operator placeholder for YM.
-Replace `Q` by the physical/gauge-invariant Hamiltonian/Jacobi operator after quotient.
--/
+/-- YM operator package (placeholder for the gauge-invariant Hamiltonian/Jacobi map). -/
 structure YMOperator where
   H : Type
   [Hn : NormedAddCommGroup H]
@@ -27,7 +19,11 @@ structure YMOperator where
 
 attribute [instance] YMOperator.Hn YMOperator.Hi
 
-def YM.Coercive (op : YMOperator) : Prop :=
-  CoerciveGI op.Q
+/--
+Gauge-invariant coercivity statement, *after quotienting zero modes*:
+coercivity of Q on (ker Q)ᗮ.
+-/
+def YM.CoerciveGI (op : YMOperator) : Prop :=
+  CoerciveGIQ (Q := op.Q)
 
 end ALSTAR
