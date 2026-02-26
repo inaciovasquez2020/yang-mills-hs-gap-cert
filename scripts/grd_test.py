@@ -72,7 +72,7 @@ w += (abs(coeffs[k])**2)
 return float(np.sqrt(w))
 def build_local_H(N, seed, delocalized=False, R=0, eps=0.0):
 rng = np.random.default_rng(seed)
-H = np.zeros((2N, 2N), dtype=complex)
+H = np.zeros((2**N, 2**N), dtype=complex)
 for i in range(N-1):
 a = rng.integers(1,4)
 b = rng.integers(1,4)
