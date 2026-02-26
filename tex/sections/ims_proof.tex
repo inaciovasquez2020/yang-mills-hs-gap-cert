@@ -1,0 +1,20 @@
+\begin{proof}[Proof of IMS Localization]
+Let $\{\chi_k\}$ be a smooth partition of unity subordinate to blocks at scale $j$,
+$\sum_k \chi_k^2=1$.
+Then
+\[
+P_j = \sum_k \chi_k P_j \chi_k - \sum_k |\nabla \chi_k|^2
+\]
+as quadratic forms.
+For any $\psi$,
+\[
+\langle \psi,P_j\psi\rangle
+= \sum_k \langle \chi_k\psi,P_j\chi_k\psi\rangle
+- \sum_k \|\nabla\chi_k\,\psi\|^2.
+\]
+Since $\|\nabla\chi_k\|_\infty\le C\ell_j^{-1}$,
+\[
+\sum_k \|\nabla\chi_k\,\psi\|^2 \le C\,\ell_j^{-2}\|\psi\|^2
+= C\,2^{-2j}\|\psi\|^2.
+\]
+\end{proof}

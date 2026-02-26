@@ -1,2 +1,5 @@
-test-flux:
-	zsh scripts/test_flux_local.sh
+test-grd:
+	sh -c 'python3 scripts/grd_test.py --mode grd'
+
+test-grd-violate:
+	sh -c 'python3 scripts/grd_test.py --mode violate'
