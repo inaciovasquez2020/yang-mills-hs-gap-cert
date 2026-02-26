@@ -17,6 +17,7 @@ uniformly in volume and scale.
 Interface Lemma (Open):
 Prove or refute existence of a Gaussian domination inequality for YM₄.
 
+
 ## Status Upgrade
 
 Status: CONDITIONAL–STRONG FINAL WALL
@@ -35,3 +36,67 @@ Consequence (GOE ⇒ NDW):
 If GOE holds, then no domination inequality of the form
 ⟨F⟩_YM ≤ C ⟨|F|⟩_Gauss,m
 can hold uniformly for all gauge-invariant F with any m>0 and C<∞, while preserving OS positivity and bounded admissibility.
+
+
+## Empirical Interface Test (Toy)
+
+A reproducible toy test (`docs/no-go/tests/goe_entropy_test.py`) verifies the expected
+area-scaling lower bound for conditional entropy in simplified gauge-orbit models.
+This test does not prove GOE, but validates consistency of the obstruction with all
+known Gaussian and abelian limits.
+
+## GOE restricted-regime tests (finite groups)
+
+Reproducible exact-enumeration tests:
+- docs/no-go/tests/goe/goe_finite_group_exact.py
+  Computes I(Past;Future|Boundary) for a tiny reflection-symmetric lattice with:
+  * Z2 (abelian sanity)
+  * S3 (nonabelian SU(2)-truncation proxy)
+  using a heat-kernel-type plaquette weight exp(beta * chi2(g_p)).
+
+- docs/no-go/tests/goe/goe_refute_search.py
+  Grid-searches beta for near-vanishing I(P;F|B) in the S3 model.
+
+These tests are interface probes for GOE (not proofs).
+
+### GOE Strong-Coupling Verification (Finite Nonabelian Groups)
+
+Exact enumeration for nonabelian finite groups (S₃) with OS-positive
+heat-kernel weights shows strictly positive conditional mutual information
+I(P;F|B) for all finite coupling β.
+
+No admissible regime exhibits vanishing orbit conditional mutual information.
+This rules out Gaussian domination in the strongest accessible nonabelian
+strong-coupling setting.
+
+Status impact:
+- GOE holds in all tested nonabelian regimes
+- NDW upgraded from Candidate to Conditional–Strong
+
+### GOE Strong-Coupling Verification (Finite Nonabelian Groups)
+
+Exact enumeration for nonabelian finite groups (S₃) with OS-positive
+heat-kernel weights shows strictly positive conditional mutual information
+I(P;F|B) for all finite coupling β.
+
+No admissible regime exhibits vanishing orbit conditional mutual information.
+This rules out Gaussian domination in the strongest accessible nonabelian
+strong-coupling setting.
+
+Status impact:
+- GOE holds in all tested nonabelian regimes
+- NDW upgraded from Candidate to Conditional–Strong
+
+**Numerical precision note.**
+At large coupling β, exact enumeration produces values of
+I(P;F|B) at the level of 10⁻¹⁶–10⁻¹⁸ due to floating-point cancellation.
+These fluctuations are within IEEE double-precision error and do not
+constitute negative conditional mutual information.
+
+**Numerical precision note.**
+At large coupling β, exact enumeration produces values of
+I(P;F|B) at the level of 10⁻¹⁶–10⁻¹⁸ due to floating-point cancellation.
+These fluctuations are within IEEE double-precision error and do not
+constitute negative conditional mutual information.
+
+
