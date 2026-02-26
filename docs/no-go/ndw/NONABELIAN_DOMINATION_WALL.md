@@ -64,3 +64,9 @@ At large coupling β, exact enumeration produces values of
 I(P;F|B) at the level of 10⁻¹⁶–10⁻¹⁸ due to floating-point cancellation.
 These fluctuations are within IEEE double-precision error and do not
 constitute negative conditional mutual information.
+
+**Numerical precision note.**
+At large coupling β, exact enumeration produces values of
+I(P;F|B) at the level of 10⁻¹⁶–10⁻¹⁸ due to floating-point cancellation.
+These fluctuations are within IEEE double-precision error and do not
+constitute negative conditional mutual information.
