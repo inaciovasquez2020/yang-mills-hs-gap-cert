@@ -24,3 +24,9 @@ jobs:
         run: |
           lake clean
           lake build
+
+      - name: Reject axioms
+        run: bash scripts/no_axioms.sh
+
+      - name: Reject conditional lemmas
+        run: bash scripts/no_conditionals.sh
