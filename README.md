@@ -157,3 +157,17 @@ The corresponding Chronos integration is tagged as:
 
 chronos-final-wall-ym-gauge  
 https://github.com/inaciovasquez2020/Chronos-EntropyDepth/releases/tag/chronos-final-wall-ym-gauge
+
+## Final Wall Summary (Yang–Mills Mass Gap)
+
+- The Hilbert–Schmidt coercivity route is **provably blocked** by a certified divergence counterexample.
+- This repository freezes that obstruction as a NEGATIVE_RESULT certificate.
+- Stronger-norm approaches are instantiated only as **numerical witnesses**.
+- Heat-kernel trace-per-volume admits a finite-spectrum lower bound.
+- Schatten-p (p>2) norms admit finite-spectrum lower bounds.
+- All successor bounds are **non-claiming** and do not imply a mass gap.
+- No expm/Hutchinson methods are relied upon.
+- All artifacts are reproducible, checksummed, and frozen.
+- The obstruction is terminal for HS-based locality arguments.
+- Any valid mass-gap proof must exit this regime.
+
