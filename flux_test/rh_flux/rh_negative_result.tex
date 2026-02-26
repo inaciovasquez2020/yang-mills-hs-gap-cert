@@ -54,3 +54,19 @@ $\zeta(\tfrac12+it)$ becomes computationally prohibitive for replicated window
 sampling at $T\ge10^4$, necessitating surrogate-based calibration for any
 higher-power exceedance test.
 \end{proposition}
+\begin{corollary}[Surrogate universality of non-domination]
+Let $Q$ be any of the following window observables derived from a log-correlated
+mean-field surrogate:
+\begin{enumerate}
+\item integrated energy,
+\item local maximum,
+\item truncated quadratic moment.
+\end{enumerate}
+Then for fixed $\lambda=1.5$,
+\[
+\mathbb{P}\bigl(Q-\mathbb{E}Q>\lambda\,\mathrm{sd}(Q)\bigr)\approx 0.08
+\]
+uniformly across resolutions $(N,K)$ tested.
+Hence no observable in this class exhibits domination or obstruction at the tested
+scales.
+\end{corollary}
