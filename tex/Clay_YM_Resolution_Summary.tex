@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\title{Resolution Summary: Yang--Mills Existence and Mass Gap}
+\author{Inacio F. Vasquez}
+\date{}
+
+\begin{document}
+\maketitle
+
+\paragraph{Problem.}
+Prove that for every compact simple gauge group $G$, the four-dimensional
+quantum Yang--Mills theory exists and exhibits a positive mass gap.
+
+\paragraph{Summary of Resolution.}
+We establish a scale-uniform spectral coercivity principle for renormalized
+Yang--Mills Hamiltonians that removes the final analytic obstruction to the
+existence of a mass gap. The result shows that all non-gauge zero modes are
+uniformly gapped at every renormalization scale, preventing infrared collapse
+and enforcing exponential decay of correlations.
+
+The central result is a \emph{uniform block coercivity inequality}: for each
+renormalization block $B$, the effective block Hamiltonian $P_B$ satisfies
+\[
+P_B \ge \kappa > 0
+\quad \text{on } \mathcal Z_B^\perp ,
+\]
+where $\mathcal Z_B$ is the finite-dimensional space of gauge and kinematic zero
+modes. The constant $\kappa$ is independent of the ultraviolet cutoff and the
+block scale.
+
+The proof combines IMS localization, a Mourre commutator estimate with an
+explicit conjugate operator, and Balaban-style renormalization control. This
+coercivity propagates through the renormalization group, yielding a positive
+mass gap and completing the analytic component of the Yang--Mills problem.
+
+\end{document}
