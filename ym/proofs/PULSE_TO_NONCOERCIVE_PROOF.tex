@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\section*{Pulse $\Rightarrow$ Noncoercivity (Bridge Target)}
+
+\begin{definition}[Finite-volume gap functional]
+For a finite-volume Hamiltonian $H_\Lambda$ with vacuum $\Omega_\Lambda$, define
+\[
+I(\Lambda):=\inf\{\langle\psi,H_\Lambda\psi\rangle:\ \|\psi\|=1,\ \psi\perp\Omega_\Lambda\}.
+\]
+\end{definition}
+
+\begin{definition}[Pulse bound (operator-growth control)]
+Let $\mathrm{Pulse}(\Lambda)$ denote an operator-growth control sufficient to imply
+a uniform-in-$n$ bound on nested commutators up to $n\sim c\log \Lambda$,
+and to justify truncation of the Dyson expansion for the transfer matrix.
+\end{definition}
+
+\begin{theorem}[Bridge Target]
+Assume the Pulse bound holds along the RG trajectory at scales $\Lambda\to\infty$ and
+assume RG-compatibility of the physical sector and OS reconstruction at each scale.
+Then there exists a sequence $\Lambda_j\to\infty$ with
+\[
+I(\Lambda_j)\to 0.
+\]
+Equivalently, no uniform spectral gap $m_*>0$ can hold under the Pulse regime.
+\end{theorem}
+
+\section*{Proof obligations (must be discharged)}
+\begin{lemma}[Transfer-matrix control from Pulse]
+Pulse $\Rightarrow$ a quantitative bound of the form
+\[
+\|T_\Lambda - P_\Lambda\| \le \varepsilon(\Lambda),
+\qquad
+\varepsilon(\Lambda)\to 0,
+\]
+where $P_\Lambda$ is a rank-one (vacuum) projector on the physical sector.
+\end{lemma}
+
+\begin{lemma}[Rayleigh extraction]
+A bound $\|T_\Lambda-P_\Lambda\|\le\varepsilon(\Lambda)$ implies existence of
+$\psi_\Lambda\perp\Omega_\Lambda$ with $\|\psi_\Lambda\|=1$ and
+\[
+\langle\psi_\Lambda, H_\Lambda\psi_\Lambda\rangle
+\le C \cdot \frac{\varepsilon(\Lambda)}{a}.
+\]
+\end{lemma}
+
+\begin{lemma}[RG stability interface]
+Pulse is stable under the RG step $\Lambda\mapsto \Lambda/b$ in the sense needed to
+propagate the transfer-matrix control uniformly across scales.
+\end{lemma}
+
+\section*{Conclusion}
+Combine the above to produce $\Lambda_j$ with $I(\Lambda_j)\to 0$.
+
+\end{document}
