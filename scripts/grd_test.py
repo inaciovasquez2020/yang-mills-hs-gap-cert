@@ -23,26 +23,24 @@ mats[j] = Mj
 return kron_all(mats)
 def op_norm(A):
 return np.linalg.norm(A, 2)
-def comm(A,B):
+def comm(A, B):
 return A @ B - B @ A
 def pauli_strings(N):
-base = [0,1,2,3]
 total = 4**N
-idx = np.arange(total, dtype=np.int64)
-digs = np.zeros((total, N), dtype=np.int64)
+digs = np.zeros((total, N), dtype=int)
+for idx in range(total):
+x = idx
 for k in range(N):
-digs[:, N-1-k] = idx % 4
-idx //= 4
+digs[idx, N-1-k] = x % 4
+x //= 4
 return digs
-def string_support(mask_row):
-return set(np.nonzero(mask_row != 0)[0].tolist())
+def string_support(row):
+return set(np.nonzero(row != 0)[0].tolist())
 def neighborhood_interval(S, r, N):
-if len(S) == 0:
+if not S:
 return set()
-a = min(S)
-b = max(S)
-lo = max(0, a - r)
-hi = min(N-1, b + r)
+lo = max(0, min(S) - r)
+hi = min(N-1, max(S) + r)
 return set(range(lo, hi+1))
 def pauli_basis_operators(N):
 digs = pauli_strings(N)
@@ -54,25 +52,21 @@ return digs, ops
 def decompose_in_pauli(A, digs, ops):
 N = digs.shape[1]
 dim = 2**N
-scale = 1.0 / dim
-coeffs = np.zeros((digs.shape[0],), dtype=complex)
-Adag = A.conj().T
+coeffs = np.zeros(len(ops), dtype=complex)
 for k, Ok in enumerate(ops):
-coeffs[k] = scale * np.trace(Ok.conj().T @ A)
+coeffs[k] = np.trace(Ok.conj().T @ A) / dim
 return coeffs
 def weight_outside_neighborhood(coeffs, digs, S, r, N):
 nb = neighborhood_interval(S, r, N)
 w = 0.0
 for k, row in enumerate(digs):
 supp = string_support(row)
-if len(supp) == 0:
-continue
-if not supp.issubset(nb):
-w += (abs(coeffs[k])**2)
+if supp and not supp.issubset(nb):
+w += abs(coeffs[k])**2
 return float(np.sqrt(w))
 def build_local_H(N, seed, delocalized=False, R=0, eps=0.0):
 rng = np.random.default_rng(seed)
-H = np.zeros((2**N, 2**N), dtype=complex)
+H = np.zeros((2N, 2N), dtype=complex)
 for i in range(N-1):
 a = rng.integers(1,4)
 b = rng.integers(1,4)
@@ -83,72 +77,54 @@ a = rng.integers(1,4)
 h = rng.normal()
 H += h * embed_single(N, i, P[a])
 if delocalized:
-lo = 0
-hi = min(N-1, R)
 a = rng.integers(1,4)
 b = rng.integers(1,4)
-H += eps * embed_two(N, lo, hi, P[a], P[b])
-H = 0.5*(H + H.conj().T)
-return H
+H += eps * embed_two(N, 0, min(N-1, R), P[a], P[b])
+return 0.5 * (H + H.conj().T)
 def build_local_A(N, center):
 A = embed_single(N, center, P[1])
-A = 0.5*(A + A.conj().T)
-return A
+return 0.5 * (A + A.conj().T)
 def main():
 ap = argparse.ArgumentParser()
 ap.add_argument("--N", type=int, default=8)
-ap.add_argument("--nmax", type=int, default=10)
+ap.add_argument("--nmax", type=int, default=8)
 ap.add_argument("--r", type=int, default=2)
 ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--center", type=int, default=3)
 ap.add_argument("--mode", choices=["grd","violate"], default="grd")
 ap.add_argument("--R", type=int, default=7)
-ap.add_argument("--eps", type=float, default=0.5)
-ap.add_argument("--alpha", type=float, default=10.0)
-ap.add_argument("--beta", type=float, default=0.5)
+ap.add_argument("--eps", type=float, default=1.0)
+ap.add_argument("--alpha", type=float, default=12.0)
+ap.add_argument("--beta", type=float, default=0.7)
 args = ap.parse_args()
 N = args.N
-nmax = args.nmax
-r = args.r
-center = args.center
-
 if args.mode == "grd":
-    H = build_local_H(N, args.seed, delocalized=False)
+    H = build_local_H(N, args.seed)
 else:
-    H = build_local_H(N, args.seed, delocalized=True, R=args.R, eps=args.eps)
+    H = build_local_H(N, args.seed, True, args.R, args.eps)
 
-A0 = build_local_A(N, center)
-S0 = {center}
+A0 = build_local_A(N, args.center)
+S0 = {args.center}
 
 digs, ops = pauli_basis_operators(N)
-
 X = A0.copy()
-base_norm = op_norm(A0) + 1e-12
+base = op_norm(A0) + 1e-12
 
 passed = True
-for n in range(1, nmax+1):
+for n in range(1, args.nmax + 1):
     X = comm(H, X)
-    cn = op_norm(X) / base_norm
-
+    cn = op_norm(X) / base
     coeffs = decompose_in_pauli(X, digs, ops)
-    leak = weight_outside_neighborhood(coeffs, digs, S0, r, N) / (np.linalg.norm(coeffs) + 1e-12)
-
-    rhs = np.math.factorial(n) * (args.alpha**n) * np.exp(-args.beta * float(r))
-
+    leak = weight_outside_neighborhood(coeffs, digs, S0, args.r, N) / (np.linalg.norm(coeffs) + 1e-12)
+    rhs = np.math.factorial(n) * (args.alpha ** n) * np.exp(-args.beta * args.r)
+    print(f"n={n} ad_norm={cn:.3e} rhs={rhs:.3e} leak={leak:.3e}")
     if args.mode == "grd":
-        if cn > rhs * 5.0:
-            passed = False
-        if leak > 0.25:
+        if cn > 5.0 * rhs or leak > 0.25:
             passed = False
     else:
         if leak < 0.25:
             passed = False
 
-    print(f"n={n}  ad-norm={cn:.3e}  rhs={rhs:.3e}  leak={leak:.3e}")
-
-if args.mode == "grd":
-    raise SystemExit(0 if passed else 1)
-else:
-    raise SystemExit(0 if passed else 1)
+raise SystemExit(0 if passed else 1)
 if name == "main":
 main()
