@@ -66,3 +66,13 @@ def test_contraction_implies_no_weyl_obstruction():
             rate = transfer_matrix_contraction_rate(W)
             if rate < 1.0:
                 assert not weyl_sequence_obstruction(W, tol=1e-6)
+
+def test_uniform_kernel_characterization():
+    m = 8
+    W_unif = np.ones((m, m))
+
+    rate = transfer_matrix_contraction_rate(W_unif)
+    obstruction = weyl_sequence_obstruction(W_unif, tol=1e-6)
+
+    assert abs(rate - 0.0) < 1e-12
+    assert obstruction == False
