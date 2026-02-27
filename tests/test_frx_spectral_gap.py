@@ -39,3 +39,22 @@ def test_uniform_kernel_no_gap():
     assert abs(rate - 0.0) < 1e-12
 
     assert not weyl_sequence_obstruction(W_unif, tol=1e-6)
+
+def test_confining_kernel_monotone_in_g():
+    m = 8
+    gs = [0.2, 0.5, 1.0]
+    rates = []
+    for g in gs:
+        W = toy_confining_kernel(m, g)
+        rates.append(transfer_matrix_contraction_rate(W))
+    assert rates[0] <= rates[1] <= rates[2]
+
+def test_uniform_is_min_contraction_against_confining_family():
+    m = 8
+    W_unif = np.ones((m, m))
+    rate_unif = transfer_matrix_contraction_rate(W_unif)
+
+    for g in [0.2, 0.5, 1.0]:
+        W = toy_confining_kernel(m, g)
+        rate = transfer_matrix_contraction_rate(W)
+        assert rate_unif <= rate
