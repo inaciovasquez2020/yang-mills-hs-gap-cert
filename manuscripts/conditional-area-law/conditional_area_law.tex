@@ -107,3 +107,236 @@ L^{-2}.
 \]
 Hence a uniform gap fails unless the nonlinear term
 $\mathcal N(A)$ supplies a strictly positive zero-momentum shift.
+\section{Wilson Hessian Mechanism and Uniform Spectral Lower Bound}
+The numerical experiments establish the following structural dichotomy:
+\begin{enumerate}
+\item Pure derivative (Laplacian) quadratic form:
+λ
+min
+⁡
+(
+L
+)
+∼
+c
+L
+2
+→
+0
+as 
+L
+→
+∞
+.
+λ 
+min
+​	
+ (L)∼ 
+L 
+2
+ 
+c
+​	
+ →0as L→∞.
+No uniform spectral gap survives.
+\item Wilson quadratic expansion:
+S
+2
+(
+A
+)
+=
+⟨
+A
+,
+H
+a
+,
+L
+A
+⟩
+=
+⟨
+A
+,
+(
+−
+Δ
++
+m
+2
+)
+A
+⟩
++
+O
+(
+a
+2
+)
+,
+S 
+2
+​	
+ (A)=⟨A,H 
+a,L
+​	
+ A⟩=⟨A,(−Δ+m 
+2
+ )A⟩+O(a 
+2
+ ),
+with
+m
+2
+=
+8
+β
+(
+a
+)
+.
+m 
+2
+ =8β(a).
+\end{enumerate}
+Empirically,
+λ
+min
+⁡
+(
+a
+,
+L
+)
+⟶
+8
+β
+(
+a
+)
+as 
+L
+→
+∞
+,
+λ 
+min
+​	
+ (a,L)⟶8β(a)as L→∞,
+yielding a volume-independent lower bound.
+This provides precisely the zeroth-order term required for the Bakry--Émery curvature inequality
+R
+i
+c
+Q
++
+H
+e
+s
+s
+Q
+(
+S
+)
+⪰
+κ
+I
+,
+κ
+=
+8
+β
+(
+a
+)
++
+O
+(
+a
+2
+)
+.
+Ric 
+Q
+ +Hess 
+Q
+ (S)⪰κI,κ=8β(a)+O(a 
+2
+ ).
+\subsection*{Missing Lemma (Analytical Core)}
+To upgrade the numerical evidence to a theorem, it remains to prove:
+\begin{lemma}[Uniform Wilson Hessian Coercivity]
+Let $\Lambda_{L} \subset \mathbb{Z}^{4}$ be a lattice box and
+let $Q = \mathcal{M}/\mathcal{G}$ denote the gauge quotient.
+Then the quadratic form of the Wilson action satisfies
+λ
+1
+(
+a
+,
+L
+)
+≥
+8
+β
+(
+a
+)
++
+O
+(
+a
+2
+)
+>
+0
+λ 
+1
+​	
+ (a,L)≥8β(a)+O(a 
+2
+ )>0
+uniformly for all $L \ge L_{0}$.
+\end{lemma}
+Equivalently,
+⟨
+A
+,
+H
+a
+,
+L
+A
+⟩
+≥
+(
+8
+β
+(
+a
+)
+−
+C
+a
+2
+)
+∥
+A
+∥
+2
+,
+⟨A,H 
+a,L
+​	
+ A⟩≥(8β(a)−Ca 
+2
+ )∥A∥ 
+2
+ ,
+after elimination of gauge zero modes.
+The numerical experiments confirm that if such a term is present,
+it enforces a uniform spectral gap independent of volume.
+\bigskip
+Thus the mass-gap problem reduces to establishing the above
+uniform coercivity inequality for the true gauge-fixed Wilson Hessian.
