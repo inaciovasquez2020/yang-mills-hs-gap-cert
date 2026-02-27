@@ -45,3 +45,7 @@ certs/heat_kernel/ym_heat_kernel_cert_0001.json
 /.lake
 experiments/ym-gap-test/*.png
 conditional_area_law.*
+*.png
+*.txt
+__pycache__/
+*.pyc
