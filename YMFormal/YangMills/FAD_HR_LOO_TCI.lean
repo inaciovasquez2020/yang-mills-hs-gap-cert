@@ -5,6 +5,7 @@ import Mathlib.Topology.ContinuousFunction.ZeroAtInfty
 import Mathlib.Analysis.NormedSpace.Spectrum
 import YMFormal.YangMills.SpectrumShift
 import YMFormal.YangMills.BoundedBelowInvertible
+import YMFormal.YangMills.LOOProof
 import Mathlib.Analysis.NormedSpace.BoundedLinearMaps
 
 namespace YangMillsGap
@@ -58,7 +59,7 @@ lemma hr_fdk_gap_of_L2norm_one (f : X → ℝ)
   simpa [hL2] using this
 
 /-============================================================
-  LOO: localization obstruction operator (axiom remains)
+  LOO: localization obstruction operator (proved in LOOProof)
 ============================================================-/
 
 variable {n : ℕ}
@@ -66,10 +67,6 @@ variable {n : ℕ}
 def LOO (R : ℝ) (φ : C₀(ℝⁿ, ℝ)) : ℝ :=
   ⨆ x : ℝⁿ, |φ x| * Real.exp (R * ‖x‖)
 
-axiom loo_excludes_ir_exp
-  (R : ℝ) (hR : 0 < R) (φ : C₀(ℝⁿ, ℝ))
-  (hlocal : tsupport φ ⊆ Metric.ball (0:ℝⁿ) (R⁻¹)) :
-  LOO (n := n) R φ ≤ Real.exp 1 * ‖φ‖∞
 
 /-============================================================
   TCIu: uniform-in-λ lower bound ⇒ spectral gap (no axiom)
@@ -114,8 +111,13 @@ lemma tciu_excludes_interval
     -- use `spectrum_sub_scalar` / `spectrum_add_scalar` lemma available in Mathlib
     -- If lemma name differs, adjust accordingly.
     have : (0:𝕜) ∈ spectrum 𝕜 (H - (λ:𝕜) • 1) := by
-      -- minimal missing lemma: `λ ∈ spectrum H → 0 ∈ spectrum (H - λI)`
-      admit
+      classical
+      have hs : spectrum 𝕜 (H - (λ:𝕜) • 1) = (fun z => z - (λ:𝕜))  spectrum 𝕜 H := by
+        simpa using spectrum_sub_scalar (𝕜 := 𝕜) (T := H) (a := (λ:𝕜))
+      have : (0:𝕜) ∈ (fun z => z - (λ:𝕜))  spectrum 𝕜 H := by
+        refine ⟨(λ:𝕜), hλspec, ?_⟩
+        simp
+      simpa [hs] using this
     exact hz this
   · intro hfalse
     cases hfalse
