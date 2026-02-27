@@ -1,5 +1,5 @@
 import numpy as np
-from ym.frx import lazy_uniform_kernel, dobrushin_tv_contraction
+from ym.frx import lazy_uniform_kernel, dobrushin_tv_contraction, transfer_matrix_contraction_rate
 
 
 def test_frx_dobrushin_rate_matches_lazy_uniform():
@@ -20,3 +20,11 @@ def test_frx_kernel_mixing_time():
     P = lazy_uniform_kernel(m, alpha)
     rho = dobrushin_tv_contraction(P)
     assert 0.0 <= rho <= 1.0 + 1e-12
+
+def test_frx_contraction_matches_dobrushin():
+    for m in [4, 8]:
+        for alpha in [0.1, 0.3]:
+            P = lazy_uniform_kernel(m, alpha)
+            rho = dobrushin_tv_contraction(P)
+            rate = transfer_matrix_contraction_rate(P)
+            assert abs(rho - rate) < 1e-12
