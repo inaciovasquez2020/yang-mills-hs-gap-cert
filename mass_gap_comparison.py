@@ -1,37 +1,30 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
-def laplacian_min(L):
-    """Minimum positive eigenvalue of 1D Laplacian"""
-    k = 2 * np.pi / L
-    return 2 * (1 - np.cos(k))
+def laplacian_matrix(L):
+    Δ = np.zeros((L, L))
+    for i in range(L):
+        Δ[i, i] = 2
+        Δ[i, (i - 1) % L] = -1
+        Δ[i, (i + 1) % L] = -1
+    return Δ
 
-def hessian_min(L, mass):
-    """Minimum eigenvalue of Hessian with mass term"""
-    return mass + laplacian_min(L)
+def hessian_with_mass(L, m2):
+    return laplacian_matrix(L) + m2 * np.eye(L)
 
-L_values = [4, 6, 8, 10, 16, 32, 64, 128, 256]
-mass = 8.0
+def compare():
+    print("Comparison: Laplacian vs Hessian with mass")
+    print("=" * 60)
+    print(f"{'L':>4} {'Laplacian λ_min':>18} {'× L²':>10} {'Hessian λ_min':>18}")
+    print("-" * 60)
 
-print("Comparison: Laplacian vs Hessian with mass")
-print("="*60)
-print(f"{'L':>4} {'Laplacian λ_min':>16} {'× L²':>10} {'Hessian λ_min':>16} {'Asymptotic':>12}")
-print("-"*60)
+    m2 = 8.0
 
-for L in L_values:
-    lap = laplacian_min(L)
-    hess = hessian_min(L, mass)
-    print(f"{L:4d} {lap:16.8f} {lap*L*L:10.4f} {hess:16.8f} {hess:12.4f}")
+    for L in [4, 6, 8, 10, 16, 32, 64, 128, 256]:
+        Δ = laplacian_matrix(L)
+        λ_lap = np.min(np.linalg.eigvalsh(Δ))
+        H = hessian_with_mass(L, m2)
+        λ_hess = np.min(np.linalg.eigvalsh(H))
+        print(f"{L:4d} {λ_lap:18.8f} {λ_lap * L * L:10.4f} {λ_hess:18.8f}")
 
-# Show that with mass, λ_min → mass as L→∞
-print("\n" + "="*60)
-print("CRITICAL OBSERVATION:")
-print("="*60)
-print("""
-Without mass term: λ_min ∝ 1/L² → 0 as L → ∞
-With mass term m²: λ_min → m² as L → ∞
-
-The Wilson action generates a mass term m² = 8β(a) from the constant term
-in its quadratic expansion. This provides the uniform lower bound needed
-for the Bakry-Émery curvature condition.
-""")
+if __name__ == "__main__":
+    compare()
