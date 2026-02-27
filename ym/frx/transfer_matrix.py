@@ -1,5 +1,14 @@
 import numpy as np
 
+def row_stochasticize(W):
+    """
+    Convert a matrix to row-stochastic form by normalizing rows
+    """
+    row_sums = W.sum(axis=1)
+    # Avoid division by zero
+    row_sums = np.where(row_sums == 0, 1.0, row_sums)
+    return W / row_sums[:, np.newaxis]
+
 def lazy_uniform_kernel(m, alpha):
     """
     Lazy uniform kernel on m states:
@@ -30,9 +39,7 @@ def transfer_matrix_contraction_rate(W):
     """
     For a transfer matrix W, compute contraction rate
     """
-    # Normalize rows to get stochastic matrix
-    row_sums = W.sum(axis=1)
-    P = W / row_sums[:, np.newaxis]
+    P = row_stochasticize(W)
     return dobrushin_tv_contraction(P)
 
 def toy_confining_kernel(m, g=0.5):
@@ -49,7 +56,7 @@ def weyl_sequence_obstruction(W, tol=1e-10):
     """
     Check for Weyl sequence obstruction (spectral gap vanishing)
     """
-    P = W / W.sum(axis=1)[:, np.newaxis]
+    P = row_stochasticize(W)
     # Compute second eigenvalue
     evals = np.linalg.eigvals(P)
     # Sort in descending order by real part

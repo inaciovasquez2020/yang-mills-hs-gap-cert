@@ -1,8 +1,17 @@
 from .transfer_matrix import (
     row_stochasticize,
+    lazy_uniform_kernel,
     dobrushin_tv_contraction,
-    tv_distance,
-    apply_kernel,
-    apply_kernel_power,
+    transfer_matrix_contraction_rate,
+    toy_confining_kernel,
+    weyl_sequence_obstruction
 )
-from .toy_confining import lazy_uniform_kernel
+
+__all__ = [
+    'row_stochasticize',
+    'lazy_uniform_kernel',
+    'dobrushin_tv_contraction',
+    'transfer_matrix_contraction_rate',
+    'toy_confining_kernel',
+    'weyl_sequence_obstruction'
+]
