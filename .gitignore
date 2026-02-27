@@ -43,3 +43,4 @@ ym-final-wall-zenodo.sha256
 certs/heat_kernel/trace_per_volume.sha256
 certs/heat_kernel/ym_heat_kernel_cert_0001.json
 /.lake
+experiments/ym-gap-test/*.png
