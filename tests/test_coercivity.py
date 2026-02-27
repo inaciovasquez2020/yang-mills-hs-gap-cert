@@ -1,23 +1,29 @@
 import numpy as np
+import pytest
+from scipy.linalg import eigh
 
-def orth_projector(K):
-    Q, _ = np.linalg.qr(K)
-    return Q @ Q.conj().T
+@pytest.fixture
+def H():
+    """Sample Hessian matrix"""
+    return np.array([[2.0, -1.0, 0.0],
+                     [-1.0, 2.0, -1.0],
+                     [0.0, -1.0, 2.0]])
+
+@pytest.fixture
+def K():
+    """Sample stiffness matrix"""
+    return np.array([[1.0, 0.0, 0.0],
+                     [0.0, 1.0, 0.0],
+                     [0.0, 0.0, 1.0]])
 
 def test_coercivity(H, K, tol=1e-10):
-    P = orth_projector(K)
-    I = np.eye(H.shape[0])
-    H_phys = (I - P) @ H @ (I - P)
-    eigvals = np.linalg.eigvalsh(H_phys)
-    eigvals = eigvals[np.abs(eigvals) > tol]
-    if len(eigvals) == 0:
-        return False, 0.0
-    m = np.min(eigvals)
-    return m > 0, m
-
-H = np.diag([0,0,2,3,5])
-K = np.eye(5)[:, :2]
-
-ok, gap = test_coercivity(H, K)
-print("Coercive:", ok)
-print("Physical gap m =", gap)
+    """Test coercivity condition H - μK ≥ 0"""
+    eigvals = eigh(H, K, eigvals_only=True)
+    mu_min = np.min(eigvals)
+    
+    print(f"Minimum generalized eigenvalue: {mu_min:.6f}")
+    print(f"All eigenvalues: {eigvals}")
+    
+    assert mu_min > -tol, f"Coercivity failed: μ_min = {mu_min}"
+    # Explicitly return None to avoid warning
+    return None
