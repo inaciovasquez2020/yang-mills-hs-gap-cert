@@ -3,6 +3,8 @@ import Mathlib.Analysis.InnerProductSpace.HilbertSchmidt
 import Mathlib.MeasureTheory.Integral.Bochner
 import Mathlib.Topology.ContinuousFunction.ZeroAtInfty
 import Mathlib.Analysis.NormedSpace.Spectrum
+import YMFormal.YangMills.SpectrumShift
+import YMFormal.YangMills.BoundedBelowInvertible
 import Mathlib.Analysis.NormedSpace.BoundedLinearMaps
 
 namespace YangMillsGap
@@ -81,16 +83,13 @@ def TCIu (H : (L²(ℝⁿ) →L[𝕜] L²(ℝⁿ))) (m : ℝ) : Prop :=
 
 /-- Helper: bounded-below ⇒ 0 not in spectrum. -/
 lemma not_mem_spectrum_zero_of_isBoundedBelow
-  {E : Type} [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+  {E : Type} [NormedAddCommGroup E] [InnerProductSpace 𝕜 E] [CompleteSpace E]
   (T : E →L[𝕜] E)
+  (hSA : IsSelfAdjoint T)
   (h : IsBoundedBelow T) :
   (0:𝕜) ∉ spectrum 𝕜 T := by
-  -- standard: bounded below ⇒ injective with closed range; for bounded operators on Banach spaces,
-  -- this implies 0 is not an approximate point spectrum; in Mathlib, use invertibility criterion
-  -- via `IsUnit` of `T` in the Banach algebra of bounded operators.
-  -- If your Mathlib version lacks a direct lemma, keep this as the single remaining axiom.
-  classical
-  admit
+  simpa using (selfAdjoint_not_mem_spectrum_zero_of_isBoundedBelow (𝕜 := 𝕜) (T := T) hSA h)
+
 
 lemma tciu_excludes_interval
   (m : ℝ)
