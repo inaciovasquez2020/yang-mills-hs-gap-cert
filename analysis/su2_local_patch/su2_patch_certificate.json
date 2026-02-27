@@ -1,12 +1,26 @@
 {
-  "model": "SU2_single_variable_patch",
-  "operator": "weighted_normalized_knn",
-  "k_values_tested": [8,12,16,24],
-  "n_max_tested": 1200,
-  "seed_range": [0,19],
-  "C2_star_local_n400_seed0": 2.157,
-  "C2_frozen": 2.2,
+  "C1_frozen": 2.15,
   "C1_worst_k8_n700_seed0": 1.7380297788819252,
-  "C1_frozen": 1.75,
-  "inequality": "for all x ⟂ sqrt(d): ||x||^2 <= C1 * x^T (D^{1/2} L_norm D^{1/2}) x + C2 * x^T (D^{1/2} V D^{1/2}) x"
+  "C1_worst_observed": 2.1445229830794674,
+  "C1_worst_tuple": {
+    "k": 8,
+    "n": 1200,
+    "seed": 15
+  },
+  "C2_frozen": 2.2,
+  "C2_star_local_n400_seed0": 2.157,
+  "inequality": "for all x \u27c2 sqrt(d): ||x||^2 <= C1 * x^T (D^{1/2} L_norm D^{1/2}) x + C2 * x^T (D^{1/2} V D^{1/2}) x",
+  "k_values_tested": [
+    8,
+    12,
+    16,
+    24
+  ],
+  "model": "SU2_single_variable_patch",
+  "n_max_tested": 1200,
+  "operator": "weighted_normalized_knn",
+  "seed_range": [
+    0,
+    19
+  ]
 }
