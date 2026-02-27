@@ -58,3 +58,11 @@ def test_uniform_is_min_contraction_against_confining_family():
         W = toy_confining_kernel(m, g)
         rate = transfer_matrix_contraction_rate(W)
         assert rate_unif <= rate
+
+def test_contraction_implies_no_weyl_obstruction():
+    for m in [8]:
+        for g in [0.2, 0.5, 1.0]:
+            W = toy_confining_kernel(m, g)
+            rate = transfer_matrix_contraction_rate(W)
+            if rate < 1.0:
+                assert not weyl_sequence_obstruction(W, tol=1e-6)
