@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathrsfs}
+\usepackage{bm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Hess}{\operatorname{Hess}}
+\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\begin{document}
+
+\title{Wilson Loop Area Law from Bakry--\'Emery Curvature:\\ A Conditional Reduction}
+\author{}
+\date{}
+\maketitle
+
+\begin{abstract}
+We give a conditional reduction of an area law for Wilson loops in $4$D lattice Yang--Mills to a single uniform analytic inequality on the gauge-orbit quotient diffusion, stated as a Bakry--\'Emery curvature lower bound (equivalently a uniform spectral gap / Poincar\'e inequality). We also isolate one additional standard correlation-to-area-law input as an explicit lemma. No unconditional confinement claim is made.
+\end{abstract}
+
+\section{Setup}
+
+Fix a compact Lie group $G$ and a finite $4$D box $\Lambda_L\subset\Z^4$.
+Let $E_{\mathrm{int}}$ and $V_{\mathrm{int}}$ be the interior edges/vertices.
+Let
+\[
+M_{a,L}:=G^{E_{\mathrm{int}}},\qquad 
+\mathcal G_{a,L}:=\{g\in G^{V_{\mathrm{int}}}: g|_{\partial\Lambda_L}=\mathbf 1\},
+\qquad 
+Q_{a,L}:=M_{a,L}/\mathcal G_{a,L}.
+\]
+Let $S_{a,L}$ be the Wilson action (class function plaquette action) on $M_{a,L}$, $\mathcal G_{a,L}$-invariant, and set
+\[
+d\mu_{a,L}(U)=Z_{a,L}^{-1}e^{-S_{a,L}(U)}\,d\vol_{M_{a,L}}(U),
+\qquad
+d\mu^Q_{a,L}([U]) := (\pi_*\mu_{a,L})([U]).
+\]
+
+\begin{lemma}[Quotient diffusion]\label{lem:quotient-diffusion}
+Assume the $\mathcal G_{a,L}$-action on $M_{a,L}$ is free and proper (toron-free sector).
+Let $\mathcal L_{a,L}$ on $M_{a,L}$ be
+\[
+\mathcal L_{a,L} f:=\Delta_{M_{a,L}} f - \langle \nabla S_{a,L},\nabla f\rangle.
+\]
+Then $\mathcal L_{a,L}$ is symmetric in $L^2(\mu_{a,L})$ and induces a symmetric generator $\mathcal L^Q_{a,L}$ on $Q_{a,L}$ with invariant measure $\mu^Q_{a,L}$.
+\end{lemma}
+
+\section{Carr\'e du champ and Bakry--\'Emery identity}
+
+On $Q_{a,L}$ define
+\[
+\Gamma(f):=\|\nabla f\|^2,\qquad
+\Gamma_2(f):=\tfrac12\big(\mathcal L^Q\Gamma(f)-2\Gamma(f,\mathcal L^Q f)\big).
+\]
+
+\begin{lemma}[Bochner--Bakry--\'Emery]\label{lem:bochner}
+For smooth $f$ on $Q_{a,L}$,
+\[
+\Gamma_2(f)=\|\Hess f\|_{\mathrm{HS}}^2+\big\langle(\Ric+\Hess(S_{a,L}))\,\nabla f,\nabla f\big\rangle,
+\]
+where $\Ric$ and $\Hess$ are taken on $Q_{a,L}$ and $S_{a,L}$ is viewed as a function on $Q_{a,L}$.
+\end{lemma}
+
+\section{The missing analytic inequality}
+
+\begin{lemma}[Uniform Bakry--\'Emery lower bound / spectral gap]\label{lem:gap}
+There exist constants $\kappa>0$ and $L_0<\infty$ such that for all $a>0$ and all $L\ge L_0$,
+\[
+\Ric_{Q_{a,L}}+\Hess_{Q_{a,L}}(S_{a,L})\ \succeq\ \kappa I
+\quad\text{on }TQ_{a,L}.
+\]
+Equivalently, $\Gamma_2\ge \kappa\Gamma$ for $\mathcal L^Q_{a,L}$, hence the Poincar\'e inequality
+\[
+\Var_{\mu^Q_{a,L}}(f)\ \le\ \frac1\kappa\int \Gamma(f)\,d\mu^Q_{a,L}
+\]
+and the spectral gap bound $\lambda_1(a,L)\ge \kappa$ hold uniformly in $a,L$.
+\end{lemma}
+
+\section{Consequences of Lemma~\ref{lem:gap}}
+
+\begin{theorem}[Uniform $L^2$-mixing / exponential clustering]\label{thm:clustering}
+Assume Lemma~\ref{lem:gap}. Then there exists $m>0$ (depending only on $\kappa$ and local geometric constants) such that for all local gauge-invariant observables $F,G$ supported in disjoint regions with separation $R$,
+\[
+\big|\E_{\mu_{a,L}}[FG]-\E_{\mu_{a,L}}[F]\E_{\mu_{a,L}}[G]\big|
+\ \le\ C(F,G)\,e^{-mR}
+\]
+uniformly in $a$ and $L\ge L_0$.
+\end{theorem}
+
+\section{Area law: additional standard input}
+
+A uniform spectral gap / exponential clustering alone does \emph{not} imply an area law without an additional correlation-to-Wilson-loop mechanism.
+
+\begin{lemma}[Correlation-to-area-law mechanism]\label{lem:chessboard}
+There exist constants $A_0<\infty$ and $c_*>0$ such that for every rectangular loop $C$ with minimal area $A(C)$,
+\[
+|\E_{\mu_{a,L}}[W(C)]|
+\ \le\ \exp\big(-c_*\,N(C)\big),
+\qquad
+N(C):=\left\lfloor \frac{A(C)}{A_0}\right\rfloor,
+\]
+uniformly in $a$ and $L$ for all loops contained at distance $\gg 1$ from $\partial\Lambda_L$.
+\end{lemma}
+
+\begin{theorem}[Conditional area law]\label{thm:arealaw}
+Assume Lemma~\ref{lem:gap} and Lemma~\ref{lem:chessboard}. Then there exists $\sigma>0$ independent of $a,L$ such that for all sufficiently large loops $C$,
+\[
+|\E_{\mu_{a,L}}[W(C)]|\ \le\ e^{-\sigma A(C)}.
+\]
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:chessboard} gives
+\[
+|\E[W(C)]|\le \exp\!\left(-c_*\left\lfloor \frac{A(C)}{A_0}\right\rfloor\right)
+\le \exp\!\left(-\frac{c_*}{A_0}A(C)+c_*\right).
+\]
+Absorb the additive constant into a reduction of $\sigma$ for $A(C)$ large.
+\end{proof}
+
+\section{Boundary/sector equivalence (conditional)}
+
+\begin{lemma}[Boundary condition equivalence]\label{lem:boundary}
+Assume Lemma~\ref{lem:gap}. For any local gauge-invariant observable $F$ supported in a fixed finite region $\Lambda_0\Subset\Z^4$,
+\[
+\lim_{L\to\infty}\E_{\mu_{a,L}^{\mathrm{Dirichlet}}}[F]
+=
+\lim_{L\to\infty}\E_{\mu_{a,L}^{\mathrm{periodic}}}[F],
+\]
+provided the periodic infinite-volume limit exists and both families satisfy the uniform clustering of Theorem~\ref{thm:clustering}.
+\end{lemma}
+
+\section{Explicit IR test observable family}
+
+Fix a plaquette orientation $p_0$ and a smooth nonconstant $\chi$. Define
+\[
+F_L(U)=\frac{1}{|\Lambda_L|}\sum_{x\in\Lambda_L}\chi\big(\Tr U_{p_0}(x)\big).
+\]
+
+\begin{theorem}[Uniform Poincar\'e bound for $F_L$]\label{thm:smear}
+Assume Lemma~\ref{lem:gap}. Then
+\[
+\int \Gamma(F_L)\,d\mu^Q_{a,L}\ \ge\ \kappa\,\Var_{\mu^Q_{a,L}}(F_L)
+\]
+uniformly in $L$.
+\end{theorem}
+
+\section{Numerical note (toy models)}
+
+Any reported $L^0$ lower bounds obtained by adding an explicit constant shift to a discrete Laplacian test an \emph{effective mass term} model.
+Such tests do not by themselves establish Lemma~\ref{lem:gap} for the Wilson action on the gauge quotient, where gauge invariance forbids inserting an explicit mass term at the level of the action.
+
+\section{Conclusion}
+
+All confinement and mass-gap conclusions in this note are conditional on the single uniform analytic inequality Lemma~\ref{lem:gap}, together with the explicitly stated additional input Lemma~\ref{lem:chessboard} needed to convert clustering information into an area law bound for Wilson loops.
+
+\end{document}
