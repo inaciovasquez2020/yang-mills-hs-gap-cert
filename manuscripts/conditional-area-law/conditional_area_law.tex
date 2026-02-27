@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,bm}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Conditional Area Law from a Uniform Bakry--Émery Gap}
+\author{}
+\date{}
+\maketitle
+
+\section{Setting}
+
+Let $\mu^Q_{a,L}$ denote the finite-volume Wilson lattice Yang--Mills measure
+on the gauge quotient $Q$. Let $\Gamma$ denote the carré-du-champ of the
+associated reversible generator $\mathcal L^Q_{a,L}$.
+
+\section{Uniform Gap Assumption}
+
+\begin{lemma}[Uniform Bakry--Émery Gap]\label{lem:gap}
+There exists $\kappa>0$ such that for all lattice spacings $a$, volumes $L$,
+and all $F$ in the domain of $\Gamma$,
+\[
+\int \Gamma(F)\, d\mu^Q_{a,L}
+\;\ge\;
+\kappa\,\mathrm{Var}_{\mu^Q_{a,L}}(F).
+\]
+Equivalently,
+\[
+\inf_{a,L}
+\lambda_{\min}\!\Big(-\mathcal L^Q_{a,L}\upharpoonright (\mathbf 1)^\perp\Big)
+\ge \kappa > 0.
+\]
+\end{lemma}
+
+\section{Clustering Consequence}
+
+\begin{theorem}[Clustering from Uniform Gap]\label{thm:clustering}
+Assume Lemma~\ref{lem:gap}. Then correlations of bounded local
+gauge-invariant observables decay exponentially with separation,
+uniformly in $L$.
+\end{theorem}
+
+\section{Chessboard Input}
+
+\begin{lemma}[Chessboard Estimate]\label{lem:chessboard}
+Assume a reflection-positivity / chessboard inequality sufficient to
+convert exponential clustering of plaquette observables into an area
+law bound for Wilson loops.
+\end{lemma}
+
+\section{Conditional Area Law}
+
+\begin{theorem}
+Assume Lemma~\ref{lem:gap} and Lemma~\ref{lem:chessboard}.
+Then Wilson loop expectations satisfy an area law bound uniformly in $L$.
+\end{theorem}
+
+\section{Numerical Note}
+
+Discrete Laplacian tests showing $L^{-2}$ scaling establish that
+derivative contributions alone cannot produce a uniform spectral gap.
+Any observed $L^0$ lower bound arises from an explicit constant shift
+(mass term). The existence of a true mass mechanism therefore reduces
+to Lemma~\ref{lem:gap}.
+
+\end{document}
+
+\section{Concrete Curvature Inequality in Axial Gauge}
+
+Fix axial gauge $U_{x,4}=\mathbf{1}$ and parameterize links by
+$U_{x,\mu}=\exp(iA_{x,\mu})$.
+The Wilson action satisfies formally
+\[
+\nabla^2 S_{a,L}(A)
+=
+\beta(-\Delta_L + \mathcal N(A)).
+\]
+A uniform mass gap is equivalent to the analytic inequality
+\[
+-\Delta_L + \mathcal N(A) \ge \rho \mathrm{Id}
+\quad \text{uniformly in } L.
+\]
+This replaces Lemma~\ref{lem:gap}.
+
+\section{Explicit Infrared Witness Sequence}
+
+Define
+\[
+\phi_L(x)=\sin(2\pi x_1/L),
+\qquad
+F_L
+=
+\frac{\sum_x \phi_L(x)\mathcal O(x)}
+{\sqrt{\mathrm{Var}(\sum_x \phi_L(x)\mathcal O(x))}}.
+\]
+Then formally
+\[
+\int \Gamma(F_L)d\mu
+\sim
+\frac{\langle \phi_L,-\Delta_L\phi_L\rangle}
+{\|\phi_L\|_2^2}
+\sim
+L^{-2}.
+\]
+Hence a uniform gap fails unless the nonlinear term
+$\mathcal N(A)$ supplies a strictly positive zero-momentum shift.
