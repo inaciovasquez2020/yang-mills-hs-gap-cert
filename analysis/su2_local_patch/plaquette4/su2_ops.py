@@ -10,12 +10,28 @@ def random_su2(n, seed=0):
     v /= np.linalg.norm(v,axis=1)[:,None]
     return v
 
-def trace_real(U):
-    return 2.0*U[:,0]
+def su2_mul(A,B):
+    a0,a1,a2,a3 = A.T
+    b0,b1,b2,b3 = B.T
+    c0 = a0*b0 - a1*b1 - a2*b2 - a3*b3
+    c1 = a0*b1 + a1*b0 + a2*b3 - a3*b2
+    c2 = a0*b2 - a1*b3 + a2*b0 + a3*b1
+    c3 = a0*b3 + a1*b2 - a2*b1 + a3*b0
+    C = np.vstack([c0,c1,c2,c3]).T
+    C /= np.linalg.norm(C,axis=1)[:,None]
+    return C
 
-def knn_weights(U, k=12, sigma=None):
-    n = U.shape[0]
-    D2 = np.sum((U[:,None,:]-U[None,:,:])**2, axis=2)
+def su2_inv(A):
+    B = A.copy()
+    B[:,1:] *= -1.0
+    return B
+
+def trace_real(A):
+    return 2.0*A[:,0]
+
+def knn_weights(X, k=12, sigma=None):
+    n = X.shape[0]
+    D2 = np.sum((X[:,None,:]-X[None,:,:])**2, axis=2)
     np.fill_diagonal(D2, np.inf)
     nn_idx = np.argpartition(D2, kth=k-1, axis=1)[:, :k]
     nn_d2 = np.take_along_axis(D2, nn_idx, axis=1)
@@ -31,10 +47,6 @@ def knn_weights(U, k=12, sigma=None):
     W = np.maximum(W, W.T)
     return W
 
-def laplacian_unnormalized(W):
-    deg = np.sum(W, axis=1)
-    return np.diag(deg) - W
-
 def laplacian_normalized(W, tol=1e-12):
     deg = np.sum(W, axis=1)
     invsqrt = 1.0/np.sqrt(np.maximum(deg, tol))
@@ -42,24 +54,7 @@ def laplacian_normalized(W, tol=1e-12):
     I = np.eye(W.shape[0])
     return I - Dm @ W @ Dm
 
-def potential_matrix(U):
-    V = 2.0 - trace_real(U)
-    return np.diag(V)
-
 def gap_of(H, tol=1e-10):
     w = np.sort(eigvalsh(0.5*(H+H.T)))
     w = w[w > tol]
     return float(w[0]) if w.size else 0.0
-
-def estimate_constants(n=200, k=12, seed=0, normalized=True):
-    U = np.vstack([su2_identity(), random_su2(n-1, seed=seed)])
-    W = knn_weights(U, k=k)
-    L = laplacian_normalized(W) if normalized else laplacian_unnormalized(W)
-    V = potential_matrix(U)
-    return gap_of(L+V), gap_of(L), float(np.min(np.diag(V)))
-
-if __name__ == "__main__":
-    gapH, gapL, minV = estimate_constants(n=400, k=12, seed=0, normalized=True)
-    print("gap(L+V):", gapH)
-    print("gap(L):", gapL)
-    print("minV:", minV)
