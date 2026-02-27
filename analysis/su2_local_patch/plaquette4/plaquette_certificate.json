@@ -1,0 +1,24 @@
+{
+  "single_plaquette": {
+    "C1_frozen": 0.2,
+    "C2_frozen": 3.0,
+    "k_regime": "k >= 24"
+  },
+  "two_plaquette_overlap": {
+    "C1_frozen": 25.0,
+    "C1_worst_observed": 22.802117,
+    "C2_frozen": 0.0,
+    "k_regime": "k >= 24",
+    "n_tested": [
+      320,
+      400,
+      520,
+      700
+    ],
+    "seed_range": [
+      0,
+      4
+    ],
+    "status": "bounded and stable under overlap"
+  }
+}
