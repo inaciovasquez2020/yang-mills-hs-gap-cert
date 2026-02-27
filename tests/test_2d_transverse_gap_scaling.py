@@ -39,42 +39,37 @@ def orth_proj(A, tol=1e-12):
     Q, R = np.linalg.qr(A)
     diag = np.abs(np.diag(R))
     r = int(np.sum(diag > tol))
-    if r == 0:
-        return np.zeros((A.shape[0], A.shape[0]))
     Qr = Q[:, :r]
     return Qr @ Qr.T
 
-def test_2d_transverse_gap_scaling():
+def min_pos_eig(M, eps=1e-8):
+    eig = np.linalg.eigvalsh(M)
+    pos = eig[eig > eps]
+    return None if len(pos) == 0 else float(np.min(pos))
+
+def test_2d_coexact_gap_scales_like_L_inv2():
     sizes = [4, 6, 8, 10, 12]
     scaled = []
-    print("Testing transverse gauge sector gap scaling")
-    print("="*50)
     for L in sizes:
         G = build_G(L)
         C = build_C(L)
-        L1 = (G @ G.T) + (C.T @ C)
+
         PG = orth_proj(G)
         KC = orth_proj(C.T)
-        P_trans = np.eye(PG.shape[0]) - PG - KC
-        Lt = P_trans @ L1 @ P_trans
-        eig = np.linalg.eigvalsh(Lt)
-        pos = eig[eig > 1e-8]
-        if len(pos) > 0:
-            lam = np.min(pos)
-            scaled_val = lam * (L**2)
-            scaled.append(scaled_val)
-            print(f"L={L:3d}: λ_min = {lam:.8f}, λ_min × L² = {scaled_val:.4f}")
-        else:
-            print(f"L={L:3d}: No positive eigenvalues found")
-    
-    if len(scaled) > 1:
-        ratios = np.array(scaled)
-        ratio_max_min = np.max(ratios) / np.min(ratios)
-        print(f"\nRatio max/min = {ratio_max_min:.4f}")
-        assert ratio_max_min < 2.5, f"Scaling violation: {ratio_max_min} >= 2.5"
-        print("✓ Scaling consistent with 1/L²")
-    else:
-        print("⚠ Insufficient data for scaling analysis")
 
-if __name__ == "__main__":
-    test_2d_transverse_gap_scaling()
+        I = np.eye(PG.shape[0])
+
+        P_exact = PG
+        P_coexact = KC @ (I - PG)
+        P_coexact = 0.5 * (P_coexact + P_coexact.T)
+
+        L1 = (G @ G.T) + (C.T @ C)
+
+        Lc = P_coexact @ L1 @ P_coexact
+        lam = min_pos_eig(Lc)
+        assert lam is not None, f"L={L}: no positive eigenvalues in coexact sector"
+
+        scaled.append(lam * (L**2))
+
+    ratios = np.array(scaled)
+    assert np.max(ratios) / np.min(ratios) < 2.5
