@@ -1,3 +1,4 @@
+import argparse
 import numpy as np
 from analysis.su2_local_patch.blocking_4d import block_weighted_covariant_4d
 from analysis.su2_local_patch.metropolis_su2_4d import idx, random_su2, thermalize_metropolis
@@ -49,19 +50,36 @@ def laplacian_gap(W):
     L = normalized_laplacian(W)
     vals = np.linalg.eigvalsh(L)
     vals = np.sort(vals)
-    # smallest eigenvalue ~0; return second smallest
     return float(vals[1])
 
-def main():
-    L = 8
-    b = 2
-    beta = 2.3
-    sweeps = 10
-    eps = 0.25
-    kappa = 1.0
+def parse_args():
+    p = argparse.ArgumentParser()
+    p.add_argument("--lattice", type=int, default=8)
+    p.add_argument("--blocking", type=int, default=2)
+    p.add_argument("--beta", type=float, default=2.3)
+    p.add_argument("--sweeps", type=int, default=10)
+    p.add_argument("--eps", type=float, default=0.25)
+    p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--therm-seed", type=int, default=1)
+    p.add_argument("--kappa", type=float, default=1.0)
+    p.add_argument("--scale-correct", action="store_true")
+    return p.parse_args()
 
-    U = make_random_U(L, 0)
-    U, acc = thermalize_metropolis(U, L, beta, sweeps=sweeps, eps=eps, seed=1)
+def main():
+    args = parse_args()
+
+    L = args.lattice
+    b = args.blocking
+    beta = args.beta
+    sweeps = args.sweeps
+    eps = args.eps
+    kappa = args.kappa
+
+    if L % b != 0:
+        raise SystemExit("L must be divisible by b")
+
+    U = make_random_U(L, args.seed)
+    U, acc = thermalize_metropolis(U, L, beta, sweeps=sweeps, eps=eps, seed=args.therm_seed)
 
     Wf = build_W_from_links(U, L, kappa=kappa)
     gap_f = laplacian_gap(Wf)
@@ -73,7 +91,10 @@ def main():
     print("accept", acc)
     print("fine_gap", gap_f)
     print("coarse_gap", gap_c)
-    print("ratio", gap_c/gap_f if gap_f != 0 else np.nan)
+    print("ratio", gap_c/gap_f if gap_f!=0 else np.nan)
+
+    if args.scale_correct:
+        print("scale_corrected", gap_c / (b**2 * gap_f))
 
 if __name__ == "__main__":
     main()
