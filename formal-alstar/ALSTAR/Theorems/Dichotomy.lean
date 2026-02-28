@@ -1,16 +1,17 @@
 import ALSTAR.Specs.PulseBridgeSpec
+import ALSTAR.Theorems.TwoBubbleLowerBound
+
+universe u
 
 namespace ALSTAR
 
-open Nat
-
-theorem dichotomy_applies_two_bubble
+theorem pulse_implies_not_logBound
   {α : Type u}
   (A : Schema α)
-  (H : PulseBridgeHyp A)
-  (hBounded : ∀ n : Nat, A.R n ≤ log₂ n) :
-  False :=
-by
-  exact H.twoBubble hBounded
+  (hPulse : Pulse A)
+  (hTB : Pulse A → TwoBubbleLowerBound A) :
+  ¬ logBound A := by
+  have h2 : TwoBubbleLowerBound A := hTB hPulse
+  exact twoBubble_excludes_logBound (A := A) h2
 
 end ALSTAR
