@@ -27,10 +27,7 @@ def TwoBubbleLocalityIncompatible {α : Type u} (A : Schema α) : Prop :=
 
 structure PulseBridgeHyp {α : Type u} (A : Schema α) : Prop where
   twoBubble :
-    TwoBubbleLocalityIncompatible A
-  pulse_to_lambdaMin_zero :
-    Pulse A → lambdaMin A = 0
-  pulse_to_noncoercive :
+    TwoBubbleLocalityIncompatible Apulse_to_noncoercive :
     Pulse A → NonCoercive A
 
 theorem growth_dichotomy
