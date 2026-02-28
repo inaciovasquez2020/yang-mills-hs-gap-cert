@@ -1,7 +1,7 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["41c644028268ecfe.olean"],
+ {"o": ["1480d98c1ab199ef.olean"],
   "i": "73e2a49220875134.ilean",
   "c": "607b5dbf778be7c0.c"},
  "log":
@@ -15,8 +15,8 @@
        [["@«formal-alstar»:extraDep", "00000000000006bb"]]],
       ["imports",
        [["ALSTAR.Theorems.Dichotomy transitive imports (legacy)",
-         "955f431a1c261ce0"],
-        ["ALSTAR.Theorems.Dichotomy:importAllArts", "116891fb03fcb191"]]]]],
+         "bb0d0f75112c58bf"],
+        ["ALSTAR.Theorems.Dichotomy:importAllArts", "58106a7290c1b5be"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -28,4 +28,4 @@
    "0322b67a7101454a"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "3a687724e690291d"}
+ "depHash": "4bb12b56d9a489fc"}
