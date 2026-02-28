@@ -1,10 +1,12 @@
 import numpy as np
+import scipy.sparse as sp
 from scipy.sparse import coo_matrix
 from scipy.sparse.linalg import eigsh
+from scipy.sparse.linalg._eigen.arpack.arpack import ArpackNoConvergence
 
 
 # ============================================================
-# Random SU(2) configuration
+# SU(2) random configuration
 # ============================================================
 
 def random_su2():
@@ -31,7 +33,7 @@ def make_random_U(L, seed=None):
 
 
 # ============================================================
-# Blocking (simple averaging placeholder)
+# Blocking (simple covariant averaging + reunitarization)
 # ============================================================
 
 def block_weighted_covariant_4d(U, L, b, beta, alpha_override=0.0):
@@ -52,7 +54,6 @@ def block_weighted_covariant_4d(U, L, b, beta, alpha_override=0.0):
                                             U[b*x+dx, b*y+dy, b*z+dz, b*t+dt, mu]
                                         )
                         avg = sum(block) / len(block)
-                        # reunitarize
                         u, s, vh = np.linalg.svd(avg)
                         Uc[x, y, z, t, mu] = u @ vh
 
@@ -60,7 +61,7 @@ def block_weighted_covariant_4d(U, L, b, beta, alpha_override=0.0):
 
 
 # ============================================================
-# Sparse Laplacian construction
+# Sparse Laplacian
 # ============================================================
 
 def build_W_from_links(U, L, kappa=1.0):
@@ -97,43 +98,85 @@ def build_W_from_links(U, L, kappa=1.0):
                         Ulink = U[x, y, z, t, mu]
                         w = kappa * np.real(np.trace(Ulink)) / 2.0
 
-                        # off-diagonal
                         rows.append(i); cols.append(j); data.append(-w)
                         rows.append(j); cols.append(i); data.append(-w)
 
-                        # diagonal
                         rows.append(i); cols.append(i); data.append(w)
                         rows.append(j); cols.append(j); data.append(w)
 
-    return coo_matrix((data, (rows, cols)), shape=(N, N)).tocsr()
+    W = coo_matrix((data, (rows, cols)), shape=(N, N)).tocsr()
+
+    # enforce symmetry explicitly
+    W = (W + W.T) * 0.5
+
+    if np.iscomplexobj(W.data):
+        W.data = np.real(W.data)
+
+    return W
 
 
 # ============================================================
-# Sparse Laplacian gap
+# Robust smallest nonzero eigenvalue
 # ============================================================
 
-def laplacian_gap(W, tol=1e-10, maxiter=2000):
+def laplacian_gap(W, tol=1e-8, maxiter=20000):
 
+    # Attempt 1: direct smallest magnitude
+    try:
+        vals = eigsh(
+            W,
+            k=3,
+            which="SM",
+            tol=tol,
+            maxiter=maxiter,
+            return_eigenvectors=False
+        )
+        vals = np.sort(np.real(vals))
+        for v in vals:
+            if v > 1e-12:
+                return float(v)
+        return float(vals[-1])
+    except ArpackNoConvergence:
+        pass
+
+    # Attempt 2: shift-invert near zero
+    for sigma in (0.0, 1e-6, 1e-5, 1e-4):
+        try:
+            vals = eigsh(
+                W,
+                k=3,
+                sigma=sigma,
+                which="LM",
+                tol=tol,
+                maxiter=maxiter,
+                return_eigenvectors=False
+            )
+            vals = np.sort(np.real(vals))
+            for v in vals:
+                if v > 1e-12:
+                    return float(v)
+            return float(vals[-1])
+        except Exception:
+            continue
+
+    # Attempt 3: increase k
     vals = eigsh(
         W,
-        k=3,
+        k=8,
         which="SM",
         tol=tol,
         maxiter=maxiter,
         return_eigenvectors=False
     )
-
     vals = np.sort(np.real(vals))
-
     for v in vals:
         if v > 1e-12:
             return float(v)
-
     return float(vals[-1])
 
 
 # ============================================================
-# CLI entry
+# CLI
 # ============================================================
 
 if __name__ == "__main__":
