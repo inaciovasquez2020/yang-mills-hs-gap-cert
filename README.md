@@ -173,3 +173,6 @@ https://github.com/inaciovasquez2020/Chronos-EntropyDepth/releases/tag/chronos-f
 - The obstruction is terminal for HS-based locality arguments.
 - Any valid mass-gap proof must exit this regime.
 
+
+Core invariant defined at:
+https://github.com/inaciovasquez2020/transcript-capacity-core
