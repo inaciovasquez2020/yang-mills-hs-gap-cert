@@ -1,8 +1,13 @@
 import Mathlib.Data.Real.Basic
-import Mathlib.Order.Filter.AtTopBot
-import Mathlib.Tactic
-import ALSTAR.Specs.PulseBridgeSpec
+import Mathlib.Order.Filter.Basic
+import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import ALSTAR.Axioms.Coercivity
+universe u
 namespace ALSTAR
+structure Schema (α : Type u) where
+R : ℕ → ℝ
+def logBound {α : Type u} (A : Schema α) : Prop :=
+∃ C : ℝ, ∀ n : ℕ, A.R n ≤ C * Real.log (n : ℝ)
 def TwoBubbleLowerBound {α : Type u} (A : Schema α) : Prop :=
 ∃ (c : ℝ), 0 < c ∧ ∃ᶠ n in Filter.atTop, c * (n : ℝ) ≤ A.R n
 theorem twoBubble_excludes_logBound
@@ -13,7 +18,7 @@ classical
 intro hlog
 rcases h with ⟨c, hcpos, hfreq⟩
 rcases hlog with ⟨C, hC⟩
-have : ∃ᶠ n in Filter.atTop, c * (n : ℝ) ≤ C * Real.log (n : ℝ) := by
+have hfreq' : ∃ᶠ n in Filter.atTop, c * (n : ℝ) ≤ C * Real.log (n : ℝ) := by
 refine hfreq.filter_mono ?_
 intro n hn
 exact le_trans hn (hC n)
@@ -36,11 +41,11 @@ Filter.Tendsto
 Filter.tendsto_const_nhds.mul Filter.tendsto_id
 simpa [mul_div_assoc] using h2.comp h1
 have hpos :
-∀ᶠ n in Filter.atTop,
-(c : ℝ) ≤ (C * Real.log (n : ℝ)) / (n : ℝ) := by
-refine this.mono ?_
+∀ᶠ n in Filter.atTop, c ≤ (C * Real.log (n : ℝ)) / (n : ℝ) := by
+refine hfreq'.mono ?_
 intro n hn
-have hnpos : 0 < (n : ℝ) := by exact_mod_cast Nat.cast_pos.mpr (Nat.pos_of_gt (Nat.succ_le_of_lt (Nat.lt_of_le_of_lt (Nat.zero_le _) (Nat.succ_pos _))))
+have hnpos : 0 < (n : ℝ) := by
+exact_mod_cast Nat.cast_pos.mpr (Nat.succ_pos _)
 have := (le_div_iff₀ hnpos).mpr hn
 simpa [mul_div_assoc] using this
 have : c ≤ 0 := by
