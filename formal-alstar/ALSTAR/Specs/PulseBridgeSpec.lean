@@ -1,47 +1,14 @@
-import Mathlib.Data.Nat.Log
-import Mathlib.Data.Real.Basic
-import ALSTAR.Axioms.Basic
 import ALSTAR.Axioms.Coercivity
-
+universe u
 namespace ALSTAR
-
-open Nat
-
-def Rfun {α : Type u} (A : Schema α) : Nat → Nat :=
-  A.R
-
+structure Schema (α : Type u) where
+R : ℕ → ℝ
 def logBound {α : Type u} (A : Schema α) : Prop :=
-  ∀ n : Nat, Rfun A n ≤ log₂ n
-
+∃ C : ℝ, ∀ n : ℕ, A.R n ≤ C * Real.log (n : ℝ)
 def NonCoercive {α : Type u} (A : Schema α) : Prop :=
-  ¬ Coercive A
-
+¬ Coercive A
 def Pulse {α : Type u} (A : Schema α) : Prop :=
-  logBound A
-
-def lambdaMin {α : Type u} (A : Schema α) : ℝ :=
-  0
-
-def TwoBubbleLocalityIncompatible {α : Type u} (A : Schema α) : Prop :=
-  logBound A → False
-
-structure PulseBridgeHyp {α : Type u} (A : Schema α) : Prop where
-  twoBubble :
-    TwoBubbleLocalityIncompatible Apulse_to_noncoercive :
-    Pulse A → NonCoercive A
-
-theorem growth_dichotomy
-  {α : Type u}
-  (A : Schema α) :
-  (∃ n : Nat, Rfun A n > log₂ n) ∨ logBound A :=
-by
-  by_cases h : ∃ n, Rfun A n > log₂ n
-  · exact Or.inl h
-  · refine Or.inr ?_
-    intro n
-    have : ¬ Rfun A n > log₂ n := by
-      intro hgt
-      exact h ⟨n, hgt⟩
-    exact le_of_not_gt this
-
+logBound A
+structure PulseBridgeHyp {α : Type u} (A : Schema α) : Prop :=
+(pulse_to_twoBubble : Pulse A → TwoBubbleLowerBound A)
 end ALSTAR
