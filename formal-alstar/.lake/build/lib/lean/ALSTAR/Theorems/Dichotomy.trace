@@ -1,9 +1,9 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["012bb8f6b17c1715.olean"],
-  "i": "ab05bb0b227488ac.ilean",
-  "c": "d37e8f61c36743fd.c"},
+ {"o": ["0687f378f6e19410.olean"],
+  "i": "511f34a6560f6cdc.ilean",
+  "c": "d10273912c50686f.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/Cli/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/batteries/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/Qq/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/aesop/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/importGraph/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/plausible/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/packages/mathlib/.lake/build/lib/lean:/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/build/lib/lean /Users/inaciof.vasquez/.elan/toolchains/leanprover--lean4---v4.27.0/bin/lean /Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/ALSTAR/Theorems/Dichotomy.lean -o /Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/build/lib/lean/ALSTAR/Theorems/Dichotomy.olean -i /Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/build/lib/lean/ALSTAR/Theorems/Dichotomy.ilean -c /Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/build/ir/ALSTAR/Theorems/Dichotomy.c --setup /Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/.lake/build/ir/ALSTAR/Theorems/Dichotomy.setup.json --json",
@@ -15,8 +15,12 @@
        [["@«formal-alstar»:extraDep", "00000000000006bb"]]],
       ["imports",
        [["ALSTAR.Specs.PulseBridgeSpec transitive imports (legacy)",
-         "1e40b1c01825fe81"],
-        ["ALSTAR.Specs.PulseBridgeSpec:importAllArts", "2e9d516ef293480a"]]]]],
+         "df9280bd5bf18027"],
+        ["ALSTAR.Specs.PulseBridgeSpec:importAllArts", "f7b1396cbf7de3fa"],
+        ["ALSTAR.Theorems.TwoBubbleLowerBound transitive imports (legacy)",
+         "a1d461352d3bf622"],
+        ["ALSTAR.Theorems.TwoBubbleLowerBound:importAllArts",
+         "3f0f548b683c51b0"]]]]],
     ["libs",
      [["import dynlibs", "00000000000006bb"],
       ["package external libraries", "00000000000006bb"],
@@ -25,7 +29,7 @@
   ["Lean 4.27.0, commit db93fe1608548721853390a10cd40580fe7d22ae",
    "9a2be90fd35343e5"],
   ["/Users/inaciof.vasquez/github-audit/yang-mills-hs-gap-cert/formal-alstar/ALSTAR/Theorems/Dichotomy.lean",
-   "350f782533deb61a"],
+   "b7fbdaf20e700cb3"],
   ["options", "00000000000006bb"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "3f2eae7012a5773b"}
+ "depHash": "4e6aca1a9e73a915"}

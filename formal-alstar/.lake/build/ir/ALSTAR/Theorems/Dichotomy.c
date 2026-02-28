@@ -1,6 +1,6 @@
 // Lean compiler output
 // Module: ALSTAR.Theorems.Dichotomy
-// Imports: public import Init public import ALSTAR.Specs.PulseBridgeSpec
+// Imports: public import Init public import ALSTAR.Specs.PulseBridgeSpec public import ALSTAR.Theorems.TwoBubbleLowerBound
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"
@@ -15,6 +15,7 @@ extern "C" {
 #endif
 lean_object* initialize_Init(uint8_t builtin);
 lean_object* initialize_formal_x2dalstar_ALSTAR_Specs_PulseBridgeSpec(uint8_t builtin);
+lean_object* initialize_formal_x2dalstar_ALSTAR_Theorems_TwoBubbleLowerBound(uint8_t builtin);
 static bool _G_initialized = false;
 LEAN_EXPORT lean_object* initialize_formal_x2dalstar_ALSTAR_Theorems_Dichotomy(uint8_t builtin) {
 lean_object * res;
@@ -24,6 +25,9 @@ res = initialize_Init(builtin);
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 res = initialize_formal_x2dalstar_ALSTAR_Specs_PulseBridgeSpec(builtin);
+if (lean_io_result_is_error(res)) return res;
+lean_dec_ref(res);
+res = initialize_formal_x2dalstar_ALSTAR_Theorems_TwoBubbleLowerBound(builtin);
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
 return lean_io_result_mk_ok(lean_box(0));
