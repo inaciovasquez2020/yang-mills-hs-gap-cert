@@ -19,7 +19,7 @@ def su2_proj(M):
     return U2
 
 
-def block_weighted_covariant_4d(U, L, b, beta):
+def block_weighted_covariant_4d(U, L, b, beta, alpha_override=None):
     if L % b != 0:
         raise ValueError("L must be divisible by b")
     if b <= 0:
@@ -28,7 +28,10 @@ def block_weighted_covariant_4d(U, L, b, beta):
     Lc = L // b
     Uc = np.zeros((Lc**4, 4, 2, 2), dtype=np.complex128)
 
-    alpha = 0.65 * beta - 0.15 * np.log(b)
+    if alpha_override is None:
+        alpha = 0.65 * beta - 0.15 * np.log(b)
+    else:
+        alpha = alpha_override
     alpha = max(float(alpha), 0.0)
 
     for sc in range(Lc**4):
@@ -39,7 +42,10 @@ def block_weighted_covariant_4d(U, L, b, beta):
         zc = rc // Lc
         tc = rc - zc * Lc
 
-        x0, y0, z0, t0 = xc * b, yc * b, zc * b, tc * b
+        x0 = xc*b + b//2
+        y0 = yc*b + b//2
+        z0 = zc*b + b//2
+        t0 = tc*b + b//2
 
         for mu in range(4):
             M = np.zeros((2, 2), dtype=np.complex128)
@@ -66,20 +72,29 @@ def block_weighted_covariant_4d(U, L, b, beta):
                 M += w * (Pto @ Uf @ Pbk)
                 total_w += w
 
-            Uc[sc, mu] = su2_proj(M / total_w)
+            Uc[sc, mu] = M / total_w
 
     return Uc
 
 
 def path_to_4d(U, L, start, end):
-    P = np.eye(2, dtype=np.complex128)
-    curr = [int(start[0]), int(start[1]), int(start[2]), int(start[3])]
-    end = (int(end[0]), int(end[1]), int(end[2]), int(end[3]))
+    P1 = np.eye(2, dtype=np.complex128)
+    P2 = np.eye(2, dtype=np.complex128)
 
+    # forward order
+    curr = list(start)
     for mu in range(4):
         steps = (end[mu] - curr[mu]) % L
         for _ in range(steps):
-            P = P @ U[idx(curr[0], curr[1], curr[2], curr[3], L), mu]
+            P1 = P1 @ U[idx(curr[0], curr[1], curr[2], curr[3], L), mu]
             curr[mu] = (curr[mu] + 1) % L
 
-    return P
+    # reverse order
+    curr = list(start)
+    for mu in reversed(range(4)):
+        steps = (end[mu] - curr[mu]) % L
+        for _ in range(steps):
+            P2 = P2 @ U[idx(curr[0], curr[1], curr[2], curr[3], L), mu]
+            curr[mu] = (curr[mu] + 1) % L
+
+    return 0.5 * (P1 + P2)

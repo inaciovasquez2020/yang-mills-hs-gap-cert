@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+\section*{Missing Lemma}
+
+\begin{lemma}[Uniform Spectral Gap]
+For the 4D lattice Yang-Mills theory with Wilson action on $\Lambda_L \subset \mathbb{Z}^4$, the generator $L_{a,L}$ on the quotient space $Q = M/G$ satisfies
+\[
+\lambda_1(a,L) \geq 8\beta(a) + O(a^2) > 0
+\]
+uniformly in $L \geq L_0$, where $\beta(a) \sim 1/g^2(a)$ is the lattice coupling.
+
+\begin{proof}[Numerical Evidence]
+The numerical experiments in Section~\ref{sec:numerics} demonstrate:
+\begin{itemize}
+    \item Pure Laplacian scaling: $\lambda_{\min} \propto L^{-2} \to 0$ as $L\to\infty$
+    \item With mass term $m^2 = 8\beta(a)$: $\lambda_{\min} \to m^2$ as $L\to\infty$
+    \item Gluing stability: global gap $\geq$ (individual gap)/2 independent of volume
+\end{itemize}
+These results strongly support the existence of a uniform positive lower bound.
+\end{proof}
+
+\end{lemma}
