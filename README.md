@@ -176,3 +176,8 @@ https://github.com/inaciovasquez2020/Chronos-EntropyDepth/releases/tag/chronos-f
 
 Core invariant defined at:
 https://github.com/inaciovasquez2020/transcript-capacity-core
+
+## Conceptual Layer
+
+This project instantiates the Transcript Capacity Invariant defined at:
+https://github.com/inaciovasquez2020/transcript-capacity-core
