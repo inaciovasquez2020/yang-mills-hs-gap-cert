@@ -124,7 +124,7 @@ def timeslice_plaquette_operator(U, L):
         for mu in range(4):
             for nu in range(mu+1, 4):
                 s += float(np.real(plaquette(U, x, mu, nu, L)))
-        O[t] += s
+        O[t] += s / (L**3)
     return O
 
 def connected_timeslice_corr(O):
