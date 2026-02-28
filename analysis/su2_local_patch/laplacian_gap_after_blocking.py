@@ -6,6 +6,14 @@ from scipy.sparse.linalg._eigen.arpack.arpack import ArpackNoConvergence
 
 
 # ============================================================
+# Indexing
+# ============================================================
+
+def idx(x, y, z, t, L):
+    return ((t * L + z) * L + y) * L + x
+
+
+# ============================================================
 # SU(2) random configuration
 # ============================================================
 
@@ -20,95 +28,89 @@ def random_su2():
 
 
 def make_random_U(L, seed=None):
+    """
+    Return flattened link field compatible with blocking_4d.py:
+        U.shape == (L^4, 4, 2, 2)
+    """
     if seed is not None:
         np.random.seed(seed)
-    U = np.empty((L, L, L, L, 4, 2, 2), dtype=np.complex128)
+
+    N = L ** 4
+    U = np.empty((N, 4, 2, 2), dtype=np.complex128)
     for x in range(L):
         for y in range(L):
             for z in range(L):
                 for t in range(L):
+                    s = idx(x, y, z, t, L)
                     for mu in range(4):
-                        U[x, y, z, t, mu] = random_su2()
+                        U[s, mu] = random_su2()
     return U
-
-
-# ============================================================
-# Blocking (simple covariant averaging + reunitarization)
-# ============================================================
-
-def block_weighted_covariant_4d(U, L, b, beta, alpha_override=0.0):
-    Lc = L // b
-    Uc = np.empty((Lc, Lc, Lc, Lc, 4, 2, 2), dtype=np.complex128)
-
-    for x in range(Lc):
-        for y in range(Lc):
-            for z in range(Lc):
-                for t in range(Lc):
-                    for mu in range(4):
-                        block = []
-                        for dx in range(b):
-                            for dy in range(b):
-                                for dz in range(b):
-                                    for dt in range(b):
-                                        block.append(
-                                            U[b*x+dx, b*y+dy, b*z+dz, b*t+dt, mu]
-                                        )
-                        avg = sum(block) / len(block)
-                        u, s, vh = np.linalg.svd(avg)
-                        Uc[x, y, z, t, mu] = u @ vh
-
-    return Uc
 
 
 # ============================================================
 # Sparse Laplacian
 # ============================================================
 
-def build_W_from_links(U, L, kappa=1.0):
-    N = L ** 4
+def _get_link(U, x, y, z, t, mu, L):
+    """
+    Supports either:
+      - flattened U: (L^4,4,2,2)
+      - unflattened U: (L,L,L,L,4,2,2)
+    """
+    if U.ndim == 4:
+        return U[idx(x, y, z, t, L), mu]
+    if U.ndim == 7:
+        return U[x, y, z, t, mu]
+    raise ValueError(f"Unsupported U shape {U.shape}")
 
+
+def build_W_from_links(U, L, kappa=1.0):
+    """
+    Build sparse weighted Laplacian W on sites, weight
+        w = kappa * Re Tr(U_mu(x)) / 2
+    using periodic boundary conditions.
+    Accepts U in flattened or unflattened representation.
+    """
+
+    N = L ** 4
     rows = []
     cols = []
     data = []
-
-    def idx(x, y, z, t):
-        return ((t * L + z) * L + y) * L + x
 
     for x in range(L):
         for y in range(L):
             for z in range(L):
                 for t in range(L):
-
-                    i = idx(x, y, z, t)
+                    i = idx(x, y, z, t, L)
 
                     for mu, (dx, dy, dz, dt) in enumerate([
-                        (1,0,0,0),
-                        (0,1,0,0),
-                        (0,0,1,0),
-                        (0,0,0,1),
+                        (1, 0, 0, 0),
+                        (0, 1, 0, 0),
+                        (0, 0, 1, 0),
+                        (0, 0, 0, 1),
                     ]):
-
                         xn = (x + dx) % L
                         yn = (y + dy) % L
                         zn = (z + dz) % L
                         tn = (t + dt) % L
 
-                        j = idx(xn, yn, zn, tn)
+                        j = idx(xn, yn, zn, tn, L)
 
-                        Ulink = U[x, y, z, t, mu]
+                        Ulink = _get_link(U, x, y, z, t, mu, L)
                         w = kappa * np.real(np.trace(Ulink)) / 2.0
 
+                        # off-diagonal symmetric
                         rows.append(i); cols.append(j); data.append(-w)
                         rows.append(j); cols.append(i); data.append(-w)
 
+                        # diagonal contributions
                         rows.append(i); cols.append(i); data.append(w)
                         rows.append(j); cols.append(j); data.append(w)
 
     W = coo_matrix((data, (rows, cols)), shape=(N, N)).tocsr()
 
-    # enforce symmetry explicitly
+    # enforce symmetry explicitly for ARPACK stability
     W = (W + W.T) * 0.5
-
     if np.iscomplexobj(W.data):
         W.data = np.real(W.data)
 
@@ -120,7 +122,6 @@ def build_W_from_links(U, L, kappa=1.0):
 # ============================================================
 
 def laplacian_gap(W, tol=1e-8, maxiter=20000):
-
     # Attempt 1: direct smallest magnitude
     try:
         vals = eigsh(
@@ -176,17 +177,17 @@ def laplacian_gap(W, tol=1e-8, maxiter=20000):
 
 
 # ============================================================
-# CLI
+# CLI (kept for direct local sanity)
 # ============================================================
 
 if __name__ == "__main__":
     import argparse
+    from analysis.su2_local_patch.blocking_4d import block_weighted_covariant_4d
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--lattice", type=int, default=8)
     parser.add_argument("--blocking", type=int, default=2)
     parser.add_argument("--beta", type=float, default=2.3)
-    parser.add_argument("--sweeps", type=int, default=0)
     parser.add_argument("--kappa", type=float, default=1.0)
     parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
@@ -199,8 +200,8 @@ if __name__ == "__main__":
     Wf = build_W_from_links(U, L, kappa=args.kappa)
     gap_f = laplacian_gap(Wf)
 
-    Uc = block_weighted_covariant_4d(U, L, b, args.beta)
-    Wc = build_W_from_links(Uc, L//b, kappa=args.kappa)
+    Uc = block_weighted_covariant_4d(U, L, b, args.beta, alpha_override=0.0)
+    Wc = build_W_from_links(Uc, L // b, kappa=args.kappa)
     gap_c = laplacian_gap(Wc)
 
     print("fine_gap", gap_f)
