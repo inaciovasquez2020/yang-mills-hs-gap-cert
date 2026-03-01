@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\begin{document}
+
+\section*{Exponential Cluster Decay from Uniform Spectral Gap}
+
+Let $H$ be a self-adjoint Hamiltonian on $\mathcal H$ with
+\[
+H \ge \gamma (I - P_0),
+\quad \gamma > 0,
+\]
+where $P_0$ is the vacuum projection.
+
+\begin{theorem}[Exponential Decay of Connected Correlations]
+Let $A,B$ be bounded local observables with spatial separation $r$.
+Then
+\[
+|\langle \Omega, A B \Omega\rangle
+- \langle \Omega, A \Omega\rangle
+  \langle \Omega, B \Omega\rangle|
+\;\le\;
+C\,\|A\|\,\|B\|\, e^{-\gamma r},
+\]
+where $C$ depends only on locality constants.
+\end{theorem}
+
+\textbf{Sketch of Proof.}
+Using spectral calculus,
+\[
+e^{-tH}(I-P_0)
+\le e^{-\gamma t}(I-P_0).
+\]
+For spacelike-separated operators one writes
+\[
+\langle \Omega, A B \Omega\rangle
+-
+\langle \Omega, A \Omega\rangle
+\langle \Omega, B \Omega\rangle
+=
+\langle \Omega, A e^{-rH} (I-P_0) B \Omega\rangle.
+\]
+Applying the spectral bound yields exponential decay in $r$.
+\hfill $\square$
+
+\end{document}
