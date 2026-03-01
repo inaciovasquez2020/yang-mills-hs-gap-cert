@@ -2,6 +2,7 @@ import Mathlib.Data.Real.Basic
 import ALSTAR.Specs.PulseBridgeSpec
 import ALSTAR.Theorems.TwoBubbleLowerBound
 import ALSTAR.Theorems.BubbleEnergy
+import ALSTAR.Theorems.LocalizedGap
 
 universe u
 
@@ -21,36 +22,24 @@ axiom packing_linear
     ∀ n ≥ N,
       (packing_count (A := A) n : ℝ) ≥ a * (n : ℝ)
 
-/-
-  NOTE:
-  per_bubble_energy_lb is legacy scaffolding.
-  It will be replaced structurally by LocalizedGap.
-  We retain the signature to preserve build integrity.
--/
-axiom per_bubble_energy_lb
-  {α : Type u} (A : Schema α) :
-  ∃ γ : ℝ, 0 < γ
-
-/-- Packed energy lower bound -/
+/-- Packed energy lower bound using LocalizedGap constant -/
 axiom R_lower_bounds_packed_energy
   {α : Type u} (A : Schema α) :
   ∀ n : ℕ,
     (packing_count (A := A) n : ℝ)
-      * (Classical.choose (per_bubble_energy_lb (A := A)) : ℝ)
+      * (LocalizedGap.gap A)
       ≤ A.R n
 
-/--
-  Linear energy lower bound derived from packing + per-bubble lower bound.
-
-  This will eventually be rewritten to use LocalizedGap directly.
--/
+/-- Linear energy lower bound derived from packing + LocalizedGap -/
 theorem BubblePackingLinear
   {α : Type u} (A : Schema α) :
   TwoBubbleLowerBound A := by
   classical
 
   rcases packing_linear (A := A) with ⟨a, ha, N, hpack⟩
-  rcases per_bubble_energy_lb (A := A) with ⟨γ, hγ⟩
+
+  let γ := LocalizedGap.gap A
+  have hγ : 0 < γ := LocalizedGap.gap_pos A
 
   refine ⟨a * γ, mul_pos ha hγ, N, ?_⟩
   intro n hn
@@ -62,13 +51,8 @@ theorem BubblePackingLinear
 
   have hR :
       (packing_count (A := A) n : ℝ) * γ
-        ≤ A.R n := by
-    have :
-        (packing_count (A := A) n : ℝ)
-          * (Classical.choose (per_bubble_energy_lb (A := A)) : ℝ)
-          ≤ A.R n :=
-      R_lower_bounds_packed_energy (A := A) n
-    simpa [Classical.choose_spec (per_bubble_energy_lb (A := A))] using this
+        ≤ A.R n :=
+    R_lower_bounds_packed_energy (A := A) n
 
   have :
       (a * γ) * (n : ℝ)
