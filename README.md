@@ -181,3 +181,4 @@ https://github.com/inaciovasquez2020/transcript-capacity-core
 
 This project instantiates the Transcript Capacity Invariant defined at:
 https://github.com/inaciovasquez2020/transcript-capacity-core
+Compiled PDFs are generated locally and not tracked. Build with latexmk.
