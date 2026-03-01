@@ -33,6 +33,11 @@ yang-mills-hs-gap-cert/
 *.blg
 .venv/
 __pycache__/
+*.fls
+*.fdb_latexmk
+*.aux
+*.log
+*.out
 
 # Local / frozen workspace artifacts
 scripts/heat_kernel/ENV.sh
