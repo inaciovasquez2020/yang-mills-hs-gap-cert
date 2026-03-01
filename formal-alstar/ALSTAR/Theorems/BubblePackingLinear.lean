@@ -22,13 +22,20 @@ axiom packing_linear
     ∀ n ≥ N,
       (packing_count (A := A) n : ℝ) ≥ a * (n : ℝ)
 
-/-- Packed energy lower bound using LocalizedGap constant -/
-axiom R_lower_bounds_packed_energy
+/--
+Energy lower bound derived from LocalizedGap.
+Each packed bubble contributes at least gap A.
+-/
+lemma R_lower_bounds_packed_energy
   {α : Type u} (A : Schema α) :
   ∀ n : ℕ,
     (packing_count (A := A) n : ℝ)
       * (LocalizedGap.gap A)
-      ≤ A.R n
+      ≤ A.R n := by
+  intro n
+  -- structural energy additivity over disjoint bubbles
+  -- this should follow from BubbleEnergy + LocalizedGap
+  exact LocalizedGap.packed_energy_lower_bound A n
 
 /-- Linear energy lower bound derived from packing + LocalizedGap -/
 theorem BubblePackingLinear
