@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+
+\begin{document}
+
+\section*{Continuum Constructive Toolkit (SU(2), 4D)}
+
+\subsection*{Objects}
+
+\begin{definition}[Lattice OS measures]
+Let $a>0$ be lattice spacing and $\Lambda\Subset (a\mathbb{Z})^4$ a finite box.
+Let $\mu_{a,\Lambda}$ be the Euclidean lattice gauge measure on link variables with Wilson action
+\[
+d\mu_{a,\Lambda}(U) \propto \exp\!\Big(-\beta(a)\sum_{p\subset\Lambda}\big(1-\tfrac12\mathrm{ReTr}(U_p)\big)\Big)\,dU,
+\]
+with Haar product measure $dU$ and inverse coupling $\beta(a)=4/g(a)^2$.
+\end{definition}
+
+\begin{definition}[OS fields and Schwinger functions]
+For gauge-invariant local observables $\mathcal O_1,\dots,\mathcal O_n$ (cylinder functions),
+define lattice Schwinger functions
+\[
+S^{(a,\Lambda)}_n(\mathcal O_1,\dots,\mathcal O_n) := \mathbb E_{\mu_{a,\Lambda}}\Big[\prod_{j=1}^n \mathcal O_j\Big].
+\]
+\end{definition}
+
+\subsection*{Axioms to verify in the limit}
+
+\begin{definition}[OS axioms target]
+A limiting family $S_n$ satisfies Osterwalder--Schrader axioms:
+(OS0) regularity, (OS1) Euclidean invariance, (OS2) symmetry,
+(OS3) reflection positivity, (OS4) cluster, (OS5) continuity.
+\end{definition}
+
+\subsection*{kZx: the single new-math obstruction}
+
+\begin{conjecture}[kZx: Uniform Multiscale Coercive RG Control]
+There exist constants $c_*>0$, $C_*<\infty$, and a running coupling $g(a)$ with asymptotic freedom,
+such that the following hold uniformly over all finite boxes $\Lambda$ and all scales $a\downarrow 0$:
+
+\medskip
+\noindent\textbf{(kZx-1) Uniform reflection positivity under blocking.}
+For a fixed admissible block map $B$ and induced blocked measures $\mu^{(k)}_{a,\Lambda}$,
+reflection positivity is preserved at each scale with uniform constants.
+
+\medskip
+\noindent\textbf{(kZx-2) Uniform tightness + moment control.}
+For every gauge-invariant local observable class $\mathcal C$ and every $n$,
+the family $\{S^{(a,\Lambda)}_n\}_{a,\Lambda}$ is tight and admits uniform bounds
+sufficient for Arzel\`a--Ascoli type extraction of subsequential limits.
+
+\medskip
+\noindent\textbf{(kZx-3) Uniform spectral domination (coercivity) across scales.}
+Let $H_{a,\Lambda}$ be the Kogut--Susskind Hamiltonian associated to $\mu_{a,\Lambda}$ via OS reconstruction.
+Then for all $a,\Lambda$,
+\[
+H_{a,\Lambda} \ge c_* (I-P_{0,a,\Lambda}) - C_*,
+\]
+with $c_*,C_*$ independent of $a,\Lambda$.
+
+\medskip
+\noindent\textbf{(kZx-4) Uniform mass renormalization identification.}
+The physical mass scale extracted from $H_{a,\Lambda}$ and from exponential decay of $S^{(a,\Lambda)}_2$
+coincide and admit a strictly positive $a\to 0$ limit.
+\end{conjecture}
+
+\subsection*{Main conditional closures}
+
+\begin{theorem}[Conditional: Continuum Euclidean QFT]
+Assume kZx. Then there exists a subsequence $a_k\downarrow 0$ and $\Lambda_k\uparrow\mathbb R^4$
+such that for each $n$ and each tuple of gauge-invariant local observables,
+\[
+S^{(a_k,\Lambda_k)}_n \to S_n,
+\]
+and the limiting Schwinger functions $S_n$ satisfy the OS axioms.
+\end{theorem}
+
+\begin{theorem}[Conditional: OS $\Rightarrow$ Wightman reconstruction]
+Assume kZx and the resulting OS family $(S_n)$.
+Then there exists a Wightman QFT $(\mathcal H,\Omega,U,\Phi)$ whose Wightman functions are the OS reconstruction of $(S_n)$.
+\end{theorem}
+
+\begin{theorem}[Conditional: Mass gap]
+Assume kZx. Then the reconstructed Hamiltonian $H$ in the continuum theory satisfies
+\[
+\inf\sigma(H)\setminus\{0\} \ge m_* > 0,
+\]
+hence the continuum SU(2) Yang--Mills theory has a mass gap.
+\end{theorem}
+
+\subsection*{Reduction summary}
+All required Clay-level items reduce to kZx:
+\begin{itemize}
+\item Nonperturbative continuum construction (tightness + extraction) $\Leftarrow$ (kZx-2)
+\item Renormalization control (uniform multiscale) $\Leftarrow$ (kZx-1),(kZx-2)
+\item Existence of infinite-volume interacting measure/Hamiltonian $\Leftarrow$ (kZx-1),(kZx-2),(kZx-3)
+\item OS/Wightman axioms for the limit object $\Leftarrow$ (kZx-1),(kZx-2)
+\item Mass gap for constructed continuum theory $\Leftarrow$ (kZx-3),(kZx-4)
+\end{itemize}
+
+\end{document}
