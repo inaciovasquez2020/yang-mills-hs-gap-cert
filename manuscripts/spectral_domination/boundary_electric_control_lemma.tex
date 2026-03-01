@@ -1,0 +1,94 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\title{Boundary Electric Control Lemma (Structural Target)}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+
+We record a local-to-boundary control inequality intended to convert
+local gauge-invariant fluctuations into boundary electric energy.
+This is a structural rigidity ingredient toward uniform electric coercivity.
+
+\section*{Setup}
+
+Let $\Lambda_L = (\mathbb{Z}/L\mathbb{Z})^4$ be the periodic lattice.
+
+Let $\mathcal{H}_L = L^2(\mathcal{A}_L/\mathcal{G}_L)$ be the gauge-invariant Hilbert space.
+
+Let $E_\ell^a$ denote the electric field operator on link $\ell$,
+and define the electric energy
+
+\[
+H_L^{(E)} = \sum_{\ell} \sum_{a=1}^3 (E_\ell^a)^2.
+\]
+
+Let $B_R(x) \subset \Lambda_L$ be a cubic region of side length $R$
+centered at $x$.
+
+Let $\partial B_R(x)$ denote the set of spatial links crossing the boundary
+of $B_R(x)$.
+
+\section*{Local Fluctuation Functional}
+
+For $\psi \in \mathcal{H}_L$ define the local variance in $B_R(x)$ by
+
+\[
+\mathrm{Var}_{B_R(x)}(\psi)
+=
+\|\psi - \mathbb{E}_{B_R(x)} \psi\|^2,
+\]
+
+where $\mathbb{E}_{B_R(x)}$ denotes averaging over gauge orbits supported
+inside $B_R(x)$.
+
+\section*{Boundary Electric Control Target}
+
+\begin{lemma}[Boundary Electric Control Target]
+There exist constants $R \ge 1$ and $C > 0$ independent of $L$
+such that for all $L$ and all gauge-invariant $\psi$,
+
+\[
+\mathrm{Var}_{B_R(x)}(\psi)
+\;\le\;
+C
+\sum_{\ell \in \partial B_R(x)}
+\sum_{a=1}^3
+\|E_\ell^a \psi\|^2.
+\]
+\end{lemma}
+
+\section*{Interpretation}
+
+If true, this lemma states:
+
+Local gauge-invariant fluctuations inside a region must be detected
+by nonzero electric derivatives on the boundary of that region.
+
+Summing over $x$ yields:
+
+\[
+\mathcal{F}_L(\psi)
+\;\le\;
+C'
+\mathcal{E}_L(\psi),
+\]
+
+which implies uniform spectral coercivity of $H_L^{(E)}$.
+
+\section*{Status}
+
+This document records the inequality target only.
+No proof is claimed.
+
+\end{document}

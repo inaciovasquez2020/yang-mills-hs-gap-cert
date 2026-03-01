@@ -1,81 +1,71 @@
 \documentclass[11pt]{article}
-\usepackage{amsmath,amssymb,amsthm,geometry}
-\geometry{margin=1in}
 
-\title{Finite-Volume Spectral Domination Target}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+
+\title{Finite-Volume Spectral Domination Target (Structural)}
 \author{Inacio F. Vasquez}
 \date{\today}
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
-\newtheorem{proposition}{Proposition}
 
 \begin{document}
-
 \maketitle
 
-\section*{1. Finite-Volume Setup}
+\section*{Purpose}
+We record a single finite-volume coercivity/positivity inequality which, if proven uniformly in volume and along a continuum scaling window, closes the coercivity wall needed for a mass-gap route via transfer-matrix domination.
 
-Let $\Lambda_L \subset \mathbb{Z}^4$ be a finite periodic lattice of size $L^4$.
+\section*{Setup (Finite Lattice)}
+Let $\Lambda_L=(\mathbb{Z}/L\mathbb{Z})^4$ be the periodic $4$D lattice. Let $\mathcal{H}_L=L^2(\mathcal{A}_L/\mathcal{G}_L)$ be the gauge-invariant Hilbert space of wavefunctions on link variables modulo gauge transformations.
 
-Let $\mathcal{H}_L$ be the Hilbert space obtained from reflection positivity
-for the Wilson lattice gauge action at inverse coupling $\beta$.
-
-Let $T_L$ denote the transfer matrix constructed via reflection positivity,
-and define the Hamiltonian
-
+Let $H_L$ be the Kogut--Susskind Hamiltonian (Euclidean time transfer-matrix generator) written schematically as
 \[
-H_L := -\log T_L.
+H_L = H^{(E)}_L + H^{(B)}_L,
 \]
+where $H^{(E)}_L$ is the electric (Lie-algebra Laplacian) part and $H^{(B)}_L$ is the magnetic (plaquette potential) part.
 
-Let $\Omega_L$ denote the vacuum vector.
+Denote by $\Omega_L$ the (normalized) ground state vector and by $P_L=|\Omega_L\rangle\langle \Omega_L|$ the ground-state projection.
 
-Let $P_L^\perp$ denote the orthogonal projection onto
-$\Omega_L^\perp \subset \mathcal{H}_L$.
-
-\section*{2. Target Spectral Domination Inequality}
-
-We seek an operator $H_{\mathrm{ref},L}$ satisfying:
-
-\begin{itemize}
-\item[(i)] $H_{\mathrm{ref},L} \ge 0$
-\item[(ii)] $\mathrm{inf}\,\sigma(H_{\mathrm{ref},L}|_{\Omega_L^\perp}) \ge c > 0$
-      with $c$ independent of $L$
-\item[(iii)] Operator domination:
+\section*{Target Inequality (Finite-Volume Domination)}
+\begin{definition}[Finite-Volume Spectral Domination Constant]
+For each $L$, define $\lambda_L$ as the best constant such that
 \[
-H_L \ge H_{\mathrm{ref},L}
-\quad \text{on } \mathcal{H}_L
+\langle \psi, H_L \psi\rangle \;\ge\; \lambda_L \,\|\psi\|^2
+\quad\text{for all }\psi\in\mathrm{Ran}(1-P_L).
 \]
-\end{itemize}
-
-\section*{3. Consequence}
-
-If such $H_{\mathrm{ref},L}$ exists, then:
-
+Equivalently,
 \[
-\inf \sigma(H_L|_{\Omega_L^\perp}) \ge c,
+\lambda_L = \inf\big(\sigma(H_L)\setminus\{0\}\big).
 \]
+\end{definition}
 
-establishing a uniform finite-volume spectral gap.
-
-\section*{4. Reduction Principle}
-
-Finite-volume uniform coercivity reduces to constructing
-a reference operator satisfying:
-
+\begin{theorem}[Finite-Volume Uniform Domination Target]
+There exist constants $\lambda_\star>0$ and $L_0\in\mathbb{N}$ such that for all $L\ge L_0$,
 \[
-\langle \psi, H_L \psi \rangle
+\lambda_L \;\ge\; \lambda_\star.
+\]
+\end{theorem}
+
+\section*{Strengthened Localized Form (Preferred)}
+Fix a reference block scale $R\ge 1$ and define a local region $B_R\subset\Lambda_L$ (e.g.\ a cube of side $R$).
+Let $P_{B_R}$ be the projection onto functions constant along gauge orbits inside $B_R$ (a local gauge-orbit averaging projector), and set $Q_{B_R}=1-P_{B_R}$.
+
+\begin{theorem}[Localized Domination Target]
+There exist $R\ge 1$, $c_\star>0$, and $L_0$ such that for all $L\ge L_0$ and all $\psi\in\mathcal{H}_L$,
+\[
+\langle \psi, H_L \psi\rangle
 \;\ge\;
-\langle \psi, H_{\mathrm{ref},L} \psi \rangle
-\;\ge\;
-c \|\psi\|^2
-\quad \forall \psi \perp \Omega_L.
+c_\star \,\|Q_{B_R}\psi\|^2.
 \]
+\end{theorem}
 
-\bigskip
-
-\noindent
-\textbf{Status:} Structural reduction only.
-No existence claim yet.
+\section*{Bridge to Mass Gap (Structural)}
+If either target theorem holds uniformly along a scaling window and survives the continuum limit, then the induced continuum Hamiltonian has a strictly positive spectral gap:
+\[
+\inf\big(\sigma(H)\setminus\{0\}\big) \;>\; 0.
+\]
+This document records only the inequality target and does not claim a proof.
 
 \end{document}
