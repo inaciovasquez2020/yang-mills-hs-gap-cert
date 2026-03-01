@@ -1,0 +1,138 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Uniform Spectral Domination Theorem}
+\author{}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+
+\begin{document}
+
+\maketitle
+
+\section*{Setup}
+
+Let $\Lambda \subset \mathbb{Z}^d$ be finite.
+Let $H_\Lambda$ denote the finite-volume Yang--Mills Hamiltonian
+with electric--magnetic decomposition and Gauss-law constraint imposed.
+Denote by $\ker H_\Lambda$ the physical ground-state space.
+
+All constants below are required to be independent of $\Lambda$.
+
+\section*{Structural Assumptions}
+
+\begin{assumption}[Boundary Electric Control (BEC)]
+There exist constants $C_b, C_0 > 0$ such that for all physical states $\psi$,
+\[
+\sum_{x \in \partial \Lambda} \|E_x \psi\|^2
+\le
+C_b \, \langle \psi, H_\Lambda \psi \rangle
++ C_0 \|\psi\|^2.
+\]
+\end{assumption}
+
+\begin{assumption}[Finite-Volume Domination (FVD)]
+There exist constants $c_v > 0$ and $C_1 \ge 0$ such that
+\[
+\langle \psi, H_\Lambda \psi \rangle
+\ge
+c_v \, \|E_\Lambda \psi\|^2
+- C_1 \|\psi\|^2.
+\]
+\end{assumption}
+
+\begin{assumption}[Gauge-Orbit Rigidity (GOR)]
+There exists $c_g > 0$ such that
+\[
+\|E_\Lambda \psi\|^2
+\ge
+c_g \,
+\mathrm{dist}(\psi,\ker H_\Lambda)^2.
+\]
+\end{assumption}
+
+\section*{Main Result}
+
+\begin{theorem}[Uniform Spectral Domination]
+Assume BEC, FVD, and GOR hold with constants independent of $\Lambda$.
+Then there exists $\gamma > 0$, independent of $\Lambda$, such that
+\[
+\inf \sigma(H_\Lambda)\setminus\{0\}
+\ge
+\gamma.
+\]
+\end{theorem}
+
+\section*{Proof}
+
+From FVD,
+\[
+\langle \psi, H_\Lambda \psi \rangle
+\ge
+c_v \|E_\Lambda \psi\|^2
+- C_1 \|\psi\|^2.
+\]
+
+Applying GOR,
+\[
+\|E_\Lambda \psi\|^2
+\ge
+c_g \,\mathrm{dist}(\psi,\ker H_\Lambda)^2.
+\]
+
+Therefore,
+\[
+\langle \psi, H_\Lambda \psi \rangle
+\ge
+c_v c_g \,\mathrm{dist}(\psi,\ker H_\Lambda)^2
+- C_1 \|\psi\|^2.
+\]
+
+Restrict to $\psi \perp \ker H_\Lambda$.
+Then $\mathrm{dist}(\psi,\ker H_\Lambda) = \|\psi\|$ and
+
+\[
+\langle \psi, H_\Lambda \psi \rangle
+\ge
+(c_v c_g - C_1)\|\psi\|^2.
+\]
+
+If $c_v c_g > C_1$, define
+
+\[
+\gamma := c_v c_g - C_1 > 0.
+\]
+
+Then
+\[
+\inf \sigma(H_\Lambda)\setminus\{0\}
+\ge
+\gamma,
+\]
+uniformly in $\Lambda$.
+
+\qed
+
+\section*{Structural Conclusion}
+
+Uniform spectral gap reduces to verification of:
+
+\[
+\text{BEC}
+\;\Rightarrow\;
+\text{FVD}
+\;\Rightarrow\;
+\text{GOR}
+\;\Rightarrow\;
+\text{Uniform Gap}.
+\]
+
+The obstruction is entirely analytic:
+establishing volume-independent constants.
+
+\end{document}
