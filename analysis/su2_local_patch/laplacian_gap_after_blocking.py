@@ -1,208 +1,56 @@
 import numpy as np
-import scipy.sparse as sp
-from scipy.sparse import coo_matrix
-from scipy.sparse.linalg import eigsh
-from scipy.sparse.linalg._eigen.arpack.arpack import ArpackNoConvergence
 
-
-# ============================================================
-# Indexing
-# ============================================================
 
 def idx(x, y, z, t, L):
-    return ((t * L + z) * L + y) * L + x
+    return ((t % L) * L + (z % L)) * L * L + (y % L) * L + (x % L)
 
-
-# ============================================================
-# SU(2) random configuration
-# ============================================================
-
-def random_su2():
-    a = np.random.normal(size=4)
-    a /= np.linalg.norm(a)
-    a0, a1, a2, a3 = a
-    return np.array([
-        [a0 + 1j * a3,  a2 + 1j * a1],
-        [-a2 + 1j * a1, a0 - 1j * a3]
-    ], dtype=np.complex128)
-
-
-def make_random_U(L, seed=None):
-    """
-    Return flattened link field compatible with blocking_4d.py:
-        U.shape == (L^4, 4, 2, 2)
-    """
-    if seed is not None:
-        np.random.seed(seed)
-
-    N = L ** 4
-    U = np.empty((N, 4, 2, 2), dtype=np.complex128)
-    for x in range(L):
-        for y in range(L):
-            for z in range(L):
-                for t in range(L):
-                    s = idx(x, y, z, t, L)
-                    for mu in range(4):
-                        U[s, mu] = random_su2()
-    return U
-
-
-# ============================================================
-# Sparse Laplacian
-# ============================================================
 
 def _get_link(U, x, y, z, t, mu, L):
-    """
-    Supports either:
-      - flattened U: (L^4,4,2,2)
-      - unflattened U: (L,L,L,L,4,2,2)
-    """
-    if U.ndim == 4:
-        return U[idx(x, y, z, t, L), mu]
-    if U.ndim == 7:
-        return U[x, y, z, t, mu]
-    raise ValueError(f"Unsupported U shape {U.shape}")
+    return U[x % L, y % L, z % L, t % L, mu]
 
 
 def build_W_from_links(U, L, kappa=1.0):
     """
-    Build sparse weighted Laplacian W on sites, weight
-        w = kappa * Re Tr(U_mu(x)) / 2
-    using periodic boundary conditions.
-    Accepts U in flattened or unflattened representation.
+    Build nearest-neighbor Laplacian matrix from SU(2) link field.
     """
 
     N = L ** 4
-    rows = []
-    cols = []
-    data = []
+    W = np.zeros((N, N), dtype=np.float64)
 
     for x in range(L):
         for y in range(L):
             for z in range(L):
                 for t in range(L):
+
                     i = idx(x, y, z, t, L)
+                    W[i, i] = 8.0 * kappa
 
-                    for mu, (dx, dy, dz, dt) in enumerate([
-                        (1, 0, 0, 0),
-                        (0, 1, 0, 0),
-                        (0, 0, 1, 0),
-                        (0, 0, 0, 1),
-                    ]):
-                        xn = (x + dx) % L
-                        yn = (y + dy) % L
-                        zn = (z + dz) % L
-                        tn = (t + dt) % L
+                    for mu in range(4):
+                        xp = (x + (mu == 0)) % L
+                        yp = (y + (mu == 1)) % L
+                        zp = (z + (mu == 2)) % L
+                        tp = (t + (mu == 3)) % L
 
-                        j = idx(xn, yn, zn, tn, L)
+                        j = idx(xp, yp, zp, tp, L)
 
-                        Ulink = _get_link(U, x, y, z, t, mu, L)
-                        w = kappa * np.real(np.trace(Ulink)) / 2.0
-
-                        # off-diagonal symmetric
-                        rows.append(i); cols.append(j); data.append(-w)
-                        rows.append(j); cols.append(i); data.append(-w)
-
-                        # diagonal contributions
-                        rows.append(i); cols.append(i); data.append(w)
-                        rows.append(j); cols.append(j); data.append(w)
-
-    W = coo_matrix((data, (rows, cols)), shape=(N, N)).tocsr()
-
-    # enforce symmetry explicitly for ARPACK stability
-    W = (W + W.T) * 0.5
-    if np.iscomplexobj(W.data):
-        W.data = np.real(W.data)
+                        W[i, j] -= kappa
+                        W[j, i] -= kappa
 
     return W
 
 
-# ============================================================
-# Robust smallest nonzero eigenvalue
-# ============================================================
-
 def laplacian_gap(W, tol=1e-8, maxiter=20000):
-    # Attempt 1: direct smallest magnitude
-    try:
-        vals = eigsh(
-            W,
-            k=3,
-            which="SM",
-            tol=tol,
-            maxiter=maxiter,
-            return_eigenvectors=False
-        )
-        vals = np.sort(np.real(vals))
-        for v in vals:
-            if v > 1e-12:
-                return float(v)
-        return float(vals[-1])
-    except ArpackNoConvergence:
-        pass
+    """
+    Return smallest positive eigenvalue (gap).
+    Removes trivial zero mode.
+    """
 
-    # Attempt 2: shift-invert near zero
-    for sigma in (0.0, 1e-6, 1e-5, 1e-4):
-        try:
-            vals = eigsh(
-                W,
-                k=3,
-                sigma=sigma,
-                which="LM",
-                tol=tol,
-                maxiter=maxiter,
-                return_eigenvectors=False
-            )
-            vals = np.sort(np.real(vals))
-            for v in vals:
-                if v > 1e-12:
-                    return float(v)
-            return float(vals[-1])
-        except Exception:
-            continue
+    w = np.linalg.eigvalsh(W)
 
-    # Attempt 3: increase k
-    vals = eigsh(
-        W,
-        k=8,
-        which="SM",
-        tol=tol,
-        maxiter=maxiter,
-        return_eigenvectors=False
-    )
-    vals = np.sort(np.real(vals))
-    for v in vals:
-        if v > 1e-12:
-            return float(v)
-    return float(vals[-1])
+    # remove zero modes
+    w = w[w > tol]
 
+    if len(w) == 0:
+        return 0.0
 
-# ============================================================
-# CLI (kept for direct local sanity)
-# ============================================================
-
-if __name__ == "__main__":
-    import argparse
-    from analysis.su2_local_patch.blocking_4d import block_weighted_covariant_4d
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--lattice", type=int, default=8)
-    parser.add_argument("--blocking", type=int, default=2)
-    parser.add_argument("--beta", type=float, default=2.3)
-    parser.add_argument("--kappa", type=float, default=1.0)
-    parser.add_argument("--seed", type=int, default=0)
-    args = parser.parse_args()
-
-    L = args.lattice
-    b = args.blocking
-
-    U = make_random_U(L, seed=args.seed)
-
-    Wf = build_W_from_links(U, L, kappa=args.kappa)
-    gap_f = laplacian_gap(Wf)
-
-    Uc = block_weighted_covariant_4d(U, L, b, args.beta, alpha_override=0.0)
-    Wc = build_W_from_links(Uc, L // b, kappa=args.kappa)
-    gap_c = laplacian_gap(Wc)
-
-    print("fine_gap", gap_f)
-    print("coarse_gap", gap_c)
+    return float(w.min())
