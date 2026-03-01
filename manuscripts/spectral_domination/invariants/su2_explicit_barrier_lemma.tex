@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\begin{document}
+
+\section*{Explicit SU(2) Plaquette Barrier Lemma}
+
+\textbf{Lemma (Explicit SU(2) Barrier).}
+Let $U \in \mathrm{SU}(2)$ and define the Wilson plaquette observable
+\[
+W(U) := 1 - \frac{1}{2}\mathrm{ReTr}(U).
+\]
+If
+\[
+\|U - I\| \ge \delta,
+\]
+then
+\[
+W(U) \ge \frac{\delta^2}{2}.
+\]
+
+\textbf{Proof.}
+Every $U \in \mathrm{SU}(2)$ admits the parametrization
+\[
+U = \cos\theta\, I + i\sin\theta\, \vec{n}\cdot\vec{\sigma},
+\]
+where $\theta\in[0,\pi]$, $\vec{n}\in S^2$, and $\vec{\sigma}$ are the Pauli matrices.
+
+The trace satisfies
+\[
+\mathrm{Tr}(U) = 2\cos\theta.
+\]
+Thus
+\[
+W(U) = 1 - \cos\theta.
+\]
+
+Using the identity
+\[
+1 - \cos\theta = 2\sin^2(\theta/2),
+\]
+we obtain
+\[
+W(U) = 2\sin^2(\theta/2).
+\]
+
+The operator norm distance satisfies
+\[
+\|U - I\| = 2|\sin(\theta/2)|.
+\]
+
+Therefore,
+\[
+\|U - I\| \ge \delta
+\quad\Longrightarrow\quad
+2|\sin(\theta/2)| \ge \delta,
+\]
+which implies
+\[
+|\sin(\theta/2)| \ge \frac{\delta}{2}.
+\]
+
+Substituting,
+\[
+W(U)
+=
+2\sin^2(\theta/2)
+\ge
+2\left(\frac{\delta}{2}\right)^2
+=
+\frac{\delta^2}{2}.
+\]
+
+\hfill $\square$
+
+\end{document}
