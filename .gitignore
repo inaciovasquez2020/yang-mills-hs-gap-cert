@@ -38,6 +38,12 @@ __pycache__/
 *.aux
 *.log
 *.out
+*.pdf
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+formal-alstar/.lake/
 
 # Local / frozen workspace artifacts
 scripts/heat_kernel/ENV.sh
