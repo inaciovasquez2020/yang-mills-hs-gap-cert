@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+
+\title{Electric Field Reference Operator for Finite-Volume Domination}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1. Lattice Hamiltonian Structure}
+
+On a fixed time slice, the Kogut--Susskind Hamiltonian has the form
+
+\[
+H_L
+=
+\sum_{\ell} E_\ell^2
++
+\beta \sum_{p} (1 - \mathrm{Re\,Tr}(U_p)),
+\]
+
+where:
+
+\begin{itemize}
+\item $\ell$ ranges over spatial links
+\item $E_\ell$ is the electric field operator (Lie algebra generator)
+\item $U_p$ is the plaquette variable
+\end{itemize}
+
+\section*{2. Reference Operator}
+
+Define
+
+\[
+H_{\mathrm{ref},L}
+:=
+\sum_{\ell} E_\ell^2.
+\]
+
+This operator satisfies:
+
+\begin{itemize}
+\item $H_{\mathrm{ref},L} \ge 0$
+\item Gauge-invariant vacuum lies in its kernel
+\item Local and extensive structure
+\end{itemize}
+
+\section*{3. Uniform Gap Target}
+
+We seek:
+
+\[
+\exists c > 0 \text{ independent of } L
+\text{ such that}
+\]
+
+\[
+\langle \psi, H_{\mathrm{ref},L} \psi \rangle
+\ge
+c \|\psi\|^2
+\quad
+\forall \psi \perp \Omega_L.
+\]
+
+\section*{4. Domination Target}
+
+If
+
+\[
+H_L \ge H_{\mathrm{ref},L}
+\]
+
+as operators on $\mathcal{H}_L$, then
+
+\[
+\inf \sigma(H_L|_{\Omega_L^\perp}) \ge c.
+\]
+
+\bigskip
+
+\textbf{Status: structural target. No domination proof yet.}
+
+\end{document}
