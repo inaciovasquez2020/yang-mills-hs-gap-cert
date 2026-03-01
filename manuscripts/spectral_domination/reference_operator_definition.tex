@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+
+\title{Reference Operator Candidate for Finite-Volume Domination}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{1. Local Fluctuation Operators}
+
+Let $\Lambda_L \subset \mathbb{Z}^4$ be finite periodic lattice.
+
+For each site $x$, define a local gauge-invariant operator
+$\mathcal{O}_x$ supported in a fixed radius-$R$ neighborhood.
+
+Assume:
+\[
+\Omega_L \in \ker(\mathcal{O}_x)
+\quad \forall x.
+\]
+
+\section*{2. Reference Hamiltonian}
+
+Define
+
+\[
+H_{\mathrm{ref},L}
+:=
+\sum_{x \in \Lambda_L}
+\mathcal{O}_x^\dagger \mathcal{O}_x.
+\]
+
+Then $H_{\mathrm{ref},L} \ge 0$ and
+$\Omega_L$ lies in its kernel.
+
+\section*{3. Uniform Coercivity Target}
+
+We seek:
+
+\[
+\exists c > 0 \text{ independent of } L
+\text{ such that }
+\]
+
+\[
+\langle \psi, H_{\mathrm{ref},L} \psi \rangle
+\ge
+c \|\psi\|^2
+\quad
+\forall \psi \perp \Omega_L.
+\]
+
+\bigskip
+
+If additionally
+
+\[
+H_L \ge H_{\mathrm{ref},L},
+\]
+
+then $H_L$ has uniform spectral gap.
+
+\bigskip
+
+\textbf{Status: structural candidate only.}
+
+\end{document}
