@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Area Law and Transfer Hamiltonian: Structural Reduction}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Transfer Matrix Representation}
+
+Let $W(R,T)$ be a rectangular Wilson loop of spatial extent $R$
+and Euclidean time extent $T$.
+
+By reflection positivity and the transfer-matrix construction,
+
+\[
+\langle W(R,T) \rangle
+=
+\langle \Omega, \Pi_R e^{-T H} \Pi_R \Omega \rangle ,
+\]
+
+where:
+\begin{itemize}
+\item $H$ is the transfer Hamiltonian,
+\item $\Omega$ is the vacuum,
+\item $\Pi_R$ creates a static quark–antiquark pair at separation $R$.
+\end{itemize}
+
+\section{Spectral Decomposition}
+
+By the spectral theorem, define the spectral measure
+
+\[
+\mu_R(E)
+=
+\| \mathbf{1}_{[E,E+dE]}(H)\Pi_R \Omega \|^2 .
+\]
+
+Then
+
+\[
+\langle W(R,T) \rangle
+=
+\int_0^\infty e^{-E T}\, d\mu_R(E).
+\]
+
+Define
+
+\[
+E_0(R)
+=
+\inf \mathrm{supp}(\mu_R).
+\]
+
+\section{Exponential Time Decay Implies Gap}
+
+If for fixed $R$
+
+\[
+\langle W(R,T) \rangle
+\le
+C(R)\, e^{-mT}
+\quad \text{for all } T \ge 0,
+\]
+
+then necessarily
+
+\[
+E_0(R) \ge m.
+\]
+
+Thus exponential time decay forces a spectral lower bound.
+
+\section{Area Law}
+
+Assume spatial area law:
+
+\[
+\langle W(R,T) \rangle
+\le
+e^{-\sigma R T}.
+\]
+
+Then
+
+\[
+E_0(R) \ge \sigma R.
+\]
+
+Thus static quark–pair energy grows linearly:
+
+\[
+V(R) = E_0(R) \ge \sigma R.
+\]
+
+\section{Mass Gap Requirement}
+
+The physical mass gap requires
+
+\[
+m_{\text{gap}}
+=
+\inf \big( \sigma(H) \setminus \{0\} \big)
+>
+0.
+\]
+
+This concerns finite-energy excitations above the vacuum.
+
+\section{Exact Missing Step}
+
+Area law gives
+
+\[
+E_0(R) \to \infty \quad \text{as } R \to \infty.
+\]
+
+But the mass gap requires
+
+\[
+\inf_R E_0(R) > 0.
+\]
+
+Thus one must prove the identity
+
+\[
+\inf \big( \sigma(H) \setminus \{0\} \big)
+=
+\inf_R E_0(R).
+\]
+
+This sector-comparison identity is not established
+for 4D continuum Yang–Mills.
+
+\end{document}
