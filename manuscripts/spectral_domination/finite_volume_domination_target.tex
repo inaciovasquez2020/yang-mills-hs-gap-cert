@@ -1,0 +1,81 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+
+\title{Finite-Volume Spectral Domination Target}
+\author{Inacio F. Vasquez}
+\date{\today}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\maketitle
+
+\section*{1. Finite-Volume Setup}
+
+Let $\Lambda_L \subset \mathbb{Z}^4$ be a finite periodic lattice of size $L^4$.
+
+Let $\mathcal{H}_L$ be the Hilbert space obtained from reflection positivity
+for the Wilson lattice gauge action at inverse coupling $\beta$.
+
+Let $T_L$ denote the transfer matrix constructed via reflection positivity,
+and define the Hamiltonian
+
+\[
+H_L := -\log T_L.
+\]
+
+Let $\Omega_L$ denote the vacuum vector.
+
+Let $P_L^\perp$ denote the orthogonal projection onto
+$\Omega_L^\perp \subset \mathcal{H}_L$.
+
+\section*{2. Target Spectral Domination Inequality}
+
+We seek an operator $H_{\mathrm{ref},L}$ satisfying:
+
+\begin{itemize}
+\item[(i)] $H_{\mathrm{ref},L} \ge 0$
+\item[(ii)] $\mathrm{inf}\,\sigma(H_{\mathrm{ref},L}|_{\Omega_L^\perp}) \ge c > 0$
+      with $c$ independent of $L$
+\item[(iii)] Operator domination:
+\[
+H_L \ge H_{\mathrm{ref},L}
+\quad \text{on } \mathcal{H}_L
+\]
+\end{itemize}
+
+\section*{3. Consequence}
+
+If such $H_{\mathrm{ref},L}$ exists, then:
+
+\[
+\inf \sigma(H_L|_{\Omega_L^\perp}) \ge c,
+\]
+
+establishing a uniform finite-volume spectral gap.
+
+\section*{4. Reduction Principle}
+
+Finite-volume uniform coercivity reduces to constructing
+a reference operator satisfying:
+
+\[
+\langle \psi, H_L \psi \rangle
+\;\ge\;
+\langle \psi, H_{\mathrm{ref},L} \psi \rangle
+\;\ge\;
+c \|\psi\|^2
+\quad \forall \psi \perp \Omega_L.
+\]
+
+\bigskip
+
+\noindent
+\textbf{Status:} Structural reduction only.
+No existence claim yet.
+
+\end{document}
