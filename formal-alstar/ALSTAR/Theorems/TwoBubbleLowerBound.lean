@@ -5,30 +5,31 @@ universe u
 
 namespace ALSTAR
 
-def TwoBubbleLowerBound {α : Type u} (A : Schema α) : Prop :=
-  ∃ (c : ℝ), 0 < c ∧
-    ∃ (N : ℕ), ∀ n ≥ N, c * (n : ℝ) ≤ A.R n
+/--
+TwoBubbleLowerBound:
+States existence of a linear lower bound for R(n).
+-/
+structure TwoBubbleLowerBound {α : Type u} (A : Schema α) where
+  c : ℝ
+  c_pos : 0 < c
+  N : ℕ
+  linear_lb :
+    ∀ n ≥ N,
+      c * (n : ℝ) ≤ A.R n
 
-axiom log_vs_linear_contradiction :
-  ∀ {c C : ℝ},
-    0 < c →
-    (∃ N : ℕ, ∀ n ≥ N, c * (n : ℝ) ≤ C * Real.log (n : ℝ)) →
-    False
+/--
+Core structural lower bound object.
 
-theorem twoBubble_excludes_logBound
-  {α : Type u} {A : Schema α}
-  (h : TwoBubbleLowerBound A) :
-  ¬ logBound A := by
-  classical
-  intro hlog
-  rcases h with ⟨c, hcpos, N, hlin⟩
-  rcases hlog with ⟨C, hC⟩
-  have hlin' :
-    ∃ N : ℕ, ∀ n ≥ N, c * (n : ℝ) ≤ C * Real.log (n : ℝ) :=
-  by
-    refine ⟨N, ?_⟩
-    intro n hn
-    exact le_trans (hlin n hn) (hC n)
-  exact log_vs_linear_contradiction hcpos hlin'
+This replaces prior axiomatic assumptions and isolates
+the remaining proof obligation.
+-/
+noncomputable def two_bubble_lower_bound
+  {α : Type u} (A : Schema α) :
+  TwoBubbleLowerBound A := by
+  -- TODO:
+  -- 1. Establish disjoint bubble energy additivity
+  -- 2. Use LocalizedGap positivity
+  -- 3. Prove asymptotic packing linearity
+  sorry
 
 end ALSTAR
