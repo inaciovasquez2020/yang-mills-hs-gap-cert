@@ -2,22 +2,33 @@
 \usepackage{amsmath}
 \begin{document}
 
-\section*{Small-$R$ Limit}
+\section*{Small-$R$ Limit Analysis}
 
-Define:
+Define
+
+\[
+E_0(R)
+=
+\inf \mathrm{supp}(\mu_R).
+\]
+
+Let
+
 \[
 m_* = \liminf_{R\to 0} E_0(R).
 \]
 
-Goal:
+Question:
+
 \[
 m_{\text{gap}} = m_* ?
 \]
 
-Problem:
-$\Pi_R$ creates static sources.
-Glueball sector contains no external sources.
+Obstacle:
 
-Thus need source-decoupling argument.
+$\Pi_R$ introduces external static sources,
+while glueball states contain no sources.
+
+A source-decoupling theorem would be required.
 
 \end{document}
