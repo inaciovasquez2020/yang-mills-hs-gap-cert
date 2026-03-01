@@ -1,14 +1,7 @@
 cff-version: 1.2.0
-title: "Certified Divergence of Hilbert–Schmidt Coercivity for Yang–Mills"
+title: "Yang–Mills Mass Gap Route Certificate"
 authors:
   - family-names: Vasquez
-    given-names: Inacio F.
-date-released: 2026-02-14
-version: frozen-ym-hs-gap-divergence
-repository-code: https://github.com/inaciovasquez2020/yang-mills-hs-gap-cert
-abstract: >
-  Executable certificates demonstrating divergence of the naive Hilbert–Schmidt
-  coercivity bound for the Yang–Mills Hessian, ruling out a direct HS-gap proof
-  of the mass gap.
-
-doi: 10.5281/zenodo.18790231
+    given-names: Inacio
+date-released: 2026-02-28
+version: 1.0

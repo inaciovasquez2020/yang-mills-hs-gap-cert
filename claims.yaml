@@ -1,0 +1,21 @@
+entry_theorem: YM_MASS_GAP_ROUTE_CERTIFICATE_2026
+
+claims:
+  - id: YM_MASS_GAP_ROUTE_CERTIFICATE_2026
+    status: conditional
+    depends_on:
+      - REFLECTION_POSITIVITY_SURVIVES_BLOCKING
+      - SPECTRAL_CONTRACTION_RG
+      - LOO_TCI_OBSTRUCTION
+
+  - id: REFLECTION_POSITIVITY_SURVIVES_BLOCKING
+    status: conditional
+    depends_on: []
+
+  - id: SPECTRAL_CONTRACTION_RG
+    status: conditional
+    depends_on: []
+
+  - id: LOO_TCI_OBSTRUCTION
+    status: proved
+    depends_on: []
