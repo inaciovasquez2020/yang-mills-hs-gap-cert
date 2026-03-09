@@ -1,0 +1,134 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\title{Mass Gap Reduction via Rigidity and Entropy Operators}
+\author{Inacio F. Vasquez}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Abstract}
+
+This document isolates a structural reduction of the Yang--Mills mass gap problem to coercivity inequalities involving a gauge-invariant rigidity operator and entropy functional.
+
+\section{Hilbert Space Setup}
+
+Let $\mathcal{H}$ denote the physical Hilbert space of Yang--Mills theory.
+
+Let $H \ge 0$ be the Hamiltonian.
+
+Let $\Omega$ denote the vacuum state.
+
+Define the projection
+
+\[
+Q = I - |\Omega\rangle \langle\Omega|.
+\]
+
+Define
+
+\[
+\mathcal{H}_+ = Q\mathcal{H}.
+\]
+
+The Yang--Mills mass gap problem asks whether
+
+\[
+\inf \sigma(H|\mathcal{H}_+) > 0.
+\]
+
+\section{Rigidity Operator}
+
+Let $\mathcal{A}$ denote the space of gauge connections.
+
+Let $\mathcal{G}$ denote the gauge group.
+
+Define configuration space
+
+\[
+\mathcal{C} = \mathcal{A}/\mathcal{G}.
+\]
+
+Define curvature
+
+\[
+F_{ij}^a(x,A).
+\]
+
+Define distance
+
+\[
+D(A,A') = \int_{\mathbb{R}^3} |F_{ij}^a(x,A)-F_{ij}^a(x,A')|^2 dx.
+\]
+
+Define operator
+
+\[
+(R\psi)(A) = \int D(A,A')(\psi(A)-\psi(A'))dA'.
+\]
+
+Quadratic form
+
+\[
+\langle \psi,R\psi\rangle =
+\frac12 \int\int D(A,A')|\psi(A)-\psi(A')|^2 dA dA'.
+\]
+
+\section{Entropy Functional}
+
+For normalized $\psi$
+
+\[
+S(\psi)=\int |\psi(A)|^2\log|\psi(A)|^2 dA.
+\]
+
+Define entropy deviation
+
+\[
+\Phi(\psi)=S(\psi)-S(\Omega).
+\]
+
+\section{Rigidity Gap Lemma (Required)}
+
+There exists $c_R>0$ such that
+
+\[
+\langle\psi,R\psi\rangle \ge c_R \|\psi\|^2
+\]
+
+for all $\psi\in\mathcal{H}_+$.
+
+\section{Energy Domination Inequality (Required)}
+
+There exists $C_R>0$ such that
+
+\[
+\langle\psi,H\psi\rangle \ge C_R\langle\psi,R\psi\rangle
+\]
+
+for all $\psi\in\mathrm{Dom}(H^{1/2})\cap\mathcal{H}_+$.
+
+\section{Entropy Domination Inequality (Required)}
+
+There exists $C_\Phi>0$ such that
+
+\[
+\langle\psi,H\psi\rangle \ge C_\Phi\Phi(\psi).
+\]
+
+\section{Reduction Theorem}
+
+If the Rigidity Gap Lemma and Energy Domination Inequality hold then
+
+\[
+\inf\sigma(H|\mathcal{H}_+) \ge C_R c_R > 0.
+\]
+
+\section{Interpretation}
+
+The Yang--Mills mass gap reduces to establishing coercive control of Hamiltonian energy by structural rigidity or entropy operators on configuration space.
+
+\end{document}
