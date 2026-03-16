@@ -1,0 +1,3 @@
+Finite-volume gap scaling analysis
+a (infinite-volume estimate) = 21.74853498413163
+b coefficient = -52.66813868797647
