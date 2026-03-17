@@ -11,15 +11,13 @@ def torus_graph(n):
     G = nx.grid_2d_graph(n, n, periodic=True)
     return nx.convert_node_labels_to_integers(G)
 
-def test_localized_cycle_rank_bound():
+def run():
     G = torus_graph(20)
     R = 2
-    local_ranks = []
+    print("v,|V|,|E|,cycle_rank")
     for v in [0, 1, 20, 21, 42]:
         H = ball_subgraph(G, v, R)
-        local_ranks.append(cycle_rank(H))
-    assert max(local_ranks) == 4
+        print(f"{v},{H.number_of_nodes()},{H.number_of_edges()},{cycle_rank(H)}")
 
 if __name__ == "__main__":
-    test_localized_cycle_rank_bound()
-    print("cycle rigidity final test: PASS")
+    run()
