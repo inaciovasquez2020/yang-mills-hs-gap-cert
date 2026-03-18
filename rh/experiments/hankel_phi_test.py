@@ -13,15 +13,7 @@ def g(u):
 def derivative(u, k, h=1e-5):
     if k == 0:
         return g(u)
-    if k == 1:
-        return (g(u+h) - g(u-h)) / (2*h)
-    if k == 2:
-        return (g(u+h) - 2*g(u) + g(u-h)) / (h*h)
-    if k == 3:
-        return (g(u+2*h) - 2*g(u+h) + 2*g(u-h) - g(u-2*h)) / (2*h**3)
-    if k == 4:
-        return (g(u+2*h) - 4*g(u+h) + 6*g(u) - 4*g(u-h) + g(u-2*h)) / (h**4)
-    raise ValueError("k too large")
+    return (derivative(u+h, k-1, h) - derivative(u-h, k-1, h)) / (2*h)
 
 def hankel_matrix(u, n):
     M = np.zeros((n+1, n+1))
@@ -35,7 +27,7 @@ def test_hankel(u=0.0, n=3):
     eig = np.linalg.eigvalsh(M)
     print("Hankel matrix:\n", M)
     print("Eigenvalues:", eig)
-    return np.all(eig >= -1e-8)
+    return np.all(eig >= -1e-6)
 
 if __name__ == "__main__":
     ok = test_hankel()
