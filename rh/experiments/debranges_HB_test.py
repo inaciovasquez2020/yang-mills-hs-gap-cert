@@ -12,7 +12,7 @@ def E(z, U=6.0, M=2001):
     du = u[1] - u[0]
     x = np.exp(u)
     integrand = np.array([theta(xi) * (xi**(1j*z)) for xi in x])
-    return np.trapz(integrand, dx=du)
+    return np.trapezoid(integrand, dx=du)
 
 def test_HB():
     xs = np.linspace(-5, 5, 21)
