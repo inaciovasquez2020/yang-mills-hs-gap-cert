@@ -182,3 +182,29 @@ https://github.com/inaciovasquez2020/transcript-capacity-core
 This project instantiates the Transcript Capacity Invariant defined at:
 https://github.com/inaciovasquez2020/transcript-capacity-core
 Compiled PDFs are generated locally and not tracked. Build with latexmk.
+
+---
+
+## 🔒 Status (Authoritative)
+
+Status = Negative Result Certified + Conditional Reduction Framework + Open Core Lemma
+
+### Established
+- Certified obstruction to Hilbert–Schmidt coercivity route
+- Verified operator identities, scaling laws, and counterexamples
+- Reproducible CI-backed artifacts
+
+### Conditional
+- Reduction of Yang–Mills mass gap → block spectral gap
+- Operator coercivity → Poincaré → exponential decay chain
+
+### Open (Core Lemma)
+- sup_U ||∇²S_B(U) - βΔ_B|| ≤ C L^-2
+- Equivalent: γ_B ≥ c L^-2
+
+### Interpretation
+This repository does not solve the Yang–Mills mass gap unconditionally.
+It provides certified obstructions, conditional reductions, and verification artifacts.
+
+---
+
