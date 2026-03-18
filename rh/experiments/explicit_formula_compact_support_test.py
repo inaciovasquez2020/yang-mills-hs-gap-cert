@@ -1,5 +1,5 @@
 import numpy as np
-from math import log, pi, sqrt, cos
+from math import log, pi, sqrt
 
 def primes_upto(N):
     sieve = [True] * (N + 1)
@@ -39,13 +39,19 @@ def prime_power_sum(T, N=5000):
     return s
 
 def balance(T, N=5000):
-    rhs = prime_power_sum(T, N=N) - archimedean_term(T)
-    return 0.0, rhs
+    return -(prime_power_sum(T, N=N) - archimedean_term(T))
 
 def test():
-    for T in [0.5, 1.0, 2.0, 3.0, 4.0]:
-        lhs, rhs = balance(T)
-        print("T=", T, "LHS=", lhs, "RHS=", rhs, "LHS-RHS=", lhs - rhs)
+    Ts = np.arange(2.0, 3.0001, 0.1)
+    last_T = None
+    last_val = None
+    for T in Ts:
+        val = balance(float(T))
+        print("T=", float(T), "LHS-RHS=", val)
+        if last_val is not None and last_val > 0 and val < 0:
+            print("sign_change_interval", (last_T, float(T)))
+        last_T = float(T)
+        last_val = val
 
 if __name__ == "__main__":
     test()
