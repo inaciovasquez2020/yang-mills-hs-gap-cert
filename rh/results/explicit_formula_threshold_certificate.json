@@ -1,0 +1,40 @@
+{
+  "test_name": "compact_support_explicit_formula_threshold",
+  "fourier_profile": "triangular",
+  "balance_definition": "archimedean_term(T) - prime_power_sum(T)",
+  "root_estimate": 2.447830471992493,
+  "derivative_at_root": -2.7662498163438793,
+  "left_right_sign_verification": [
+    {
+      "epsilon": 0.001,
+      "balance_left": 0.00276738264342713,
+      "balance_right": -0.0027651178807492904,
+      "sign_change": true
+    },
+    {
+      "epsilon": 0.0005,
+      "balance_left": 0.001383409778135114,
+      "balance_right": -0.0013828401379125665,
+      "sign_change": true
+    },
+    {
+      "epsilon": 0.0001,
+      "balance_left": 0.00027663858065096747,
+      "balance_right": -0.00027661138019130505,
+      "sign_change": true
+    },
+    {
+      "epsilon": 0.00005,
+      "balance_left": 0.00013831761504512485,
+      "balance_right": -0.00013830736558384515,
+      "sign_change": true
+    },
+    {
+      "epsilon": 0.00001,
+      "balance_left": 0.000027664910667635212,
+      "balance_right": -0.000027660085659242384,
+      "sign_change": true
+    }
+  ],
+  "conclusion": "simple_transverse_root_detected"
+}
