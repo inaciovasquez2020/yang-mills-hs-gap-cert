@@ -1,25 +1,39 @@
 import numpy as np
 from math import exp, pi
 
-def phi(x, N=200):
-    s = 0.0
+def phi_terms(u, N=200):
+    x = np.exp(u)
+    terms = []
     for n in range(1, N+1):
-        s += (2*pi**2*n**4*x**2 - 3*pi*n**2*x) * exp(-pi*n**2*x)
-    return s
+        a = n*n
+        w = exp(-pi*a*x)
+        terms.append((a, x, w))
+    return terms
 
 def g(u):
-    return phi(np.exp(u))
+    s = 0.0
+    for a, x, w in phi_terms(u):
+        s += (2*pi**2*a*a*x*x - 3*pi*a*x) * w
+    return s
 
-def derivative(u, k, h=1e-5):
-    if k == 0:
-        return g(u)
-    return (derivative(u+h, k-1, h) - derivative(u-h, k-1, h)) / (2*h)
+def g_derivative(u, k, N=200):
+    x = np.exp(u)
+    s = 0.0
+    for n in range(1, N+1):
+        a = n*n
+        w = exp(-pi*a*x)
+        base = (2*pi**2*a*a*x*x - 3*pi*a*x)
+        val = base
+        for _ in range(k):
+            val = x * ( (4*pi**2*a*a*x - 3*pi*a) - pi*a*val )
+        s += val * w
+    return s
 
 def hankel_matrix(u, n):
     M = np.zeros((n+1, n+1))
     for i in range(n+1):
         for j in range(n+1):
-            M[i, j] = derivative(u, i+j)
+            M[i, j] = g_derivative(u, i+j)
     return M
 
 def test_hankel(u=0.0, n=3):
