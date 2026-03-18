@@ -45,5 +45,6 @@ if __name__ == "__main__":
     T_star = 2.447830471992493
     epsilons = [1e-3, 5e-4, 1e-4, 5e-5, 1e-5]
     for eps in epsilons:
-        val = balance(T_star + eps)
-        print("eps=", eps, "balance(T*+eps)=", val)
+        left = balance(T_star - eps)
+        right = balance(T_star + eps)
+        print("eps=", eps, "balance(T*-eps)=", left, "balance(T*+eps)=", right, "sign_change=", left > 0 and right < 0)
