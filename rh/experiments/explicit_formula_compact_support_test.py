@@ -42,7 +42,7 @@ def balance(T, N=5000):
     return -(prime_power_sum(T, N=N) - archimedean_term(T))
 
 def test():
-    Ts = np.arange(2.0, 3.0001, 0.1)
+    Ts = np.arange(2.40, 2.5001, 0.01)
     last_T = None
     last_val = None
     for T in Ts:
