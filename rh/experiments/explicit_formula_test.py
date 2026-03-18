@@ -1,6 +1,6 @@
 import numpy as np
-from math import exp, log, pi, sqrt
-from mpmath import digamma, quad, inf
+from math import log, pi, sqrt
+from mpmath import digamma, quad, inf, exp, sqrt as msqrt
 
 def primes_upto(N):
     sieve = [True] * (N + 1)
@@ -11,8 +11,11 @@ def primes_upto(N):
                 sieve[j] = False
     return [i for i in range(2, N + 1) if sieve[i]]
 
-def f_hat(t, a):
+def f_hat_np(t, a):
     return np.sqrt(np.pi / a) * np.exp(-(t * t) / (4 * a))
+
+def f_hat_mp(t, a):
+    return msqrt(pi / a) * exp(-(t * t) / (4 * a))
 
 def prime_power_sum(a, N=1000):
     primes = primes_upto(N)
@@ -21,13 +24,13 @@ def prime_power_sum(a, N=1000):
         k = 1
         while p**k <= N:
             n = p**k
-            s += (log(p) / sqrt(n)) * (f_hat(log(n), a) + f_hat(-log(n), a))
+            s += (log(p) / sqrt(n)) * (f_hat_np(log(n), a) + f_hat_np(-log(n), a))
             k += 1
     return s
 
 def archimedean_term(a):
-    f0 = f_hat(0.0, a)
-    integrand = lambda t: (f0 - f_hat(t, a)) / (2.0 * np.sinh(t / 2.0))
+    f0 = f_hat_mp(0.0, a)
+    integrand = lambda t: (f0 - f_hat_mp(t, a)) / (2.0 * (exp(t/2.0) - exp(-t/2.0)) / 2.0)
     val = quad(integrand, [0, inf])
     return float(val + f0 * (log(pi) + digamma(0.25) / 2.0))
 
