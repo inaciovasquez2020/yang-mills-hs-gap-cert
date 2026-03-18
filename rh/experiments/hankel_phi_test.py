@@ -10,12 +10,6 @@ def phi_terms(u, N=200):
         terms.append((a, x, w))
     return terms
 
-def g(u):
-    s = 0.0
-    for a, x, w in phi_terms(u):
-        s += (2*pi**2*a*a*x*x - 3*pi*a*x) * w
-    return s
-
 def g_derivative(u, k, N=200):
     x = np.exp(u)
     s = 0.0
@@ -25,7 +19,7 @@ def g_derivative(u, k, N=200):
         base = (2*pi**2*a*a*x*x - 3*pi*a*x)
         val = base
         for _ in range(k):
-            val = x * ( (4*pi**2*a*a*x - 3*pi*a) - pi*a*val )
+            val = x * ((4*pi**2*a*a*x - 3*pi*a) - pi*a*val)
         s += val * w
     return s
 
@@ -36,13 +30,20 @@ def hankel_matrix(u, n):
             M[i, j] = g_derivative(u, i+j)
     return M
 
-def test_hankel(u=0.0, n=3):
+def normalize(M):
+    D = np.sqrt(np.diag(M))
+    return M / (D[:,None]*D[None,:])
+
+def run_test(u, n):
     M = hankel_matrix(u, n)
     eig = np.linalg.eigvalsh(M)
-    print("Hankel matrix:\n", M)
-    print("Eigenvalues:", eig)
-    return np.all(eig >= -1e-6)
+    Mnorm = normalize(M)
+    eign = np.linalg.eigvalsh(Mnorm)
+    print(f"u={u}, n={n}")
+    print("min eig:", eig.min(), "normalized min eig:", eign.min())
+    return eig.min(), eign.min()
 
 if __name__ == "__main__":
-    ok = test_hankel()
-    print("Hankel PSD:", ok)
+    for u in [-2,-1,0,1,2]:
+        for n in [3,5,7]:
+            run_test(u, n)
