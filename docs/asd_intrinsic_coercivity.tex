@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Intrinsic Coercivity in the ASD Regime}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{theorem}[ASD intrinsic spectral gap]
+Let $(M^4,g)$ be a compact oriented Riemannian $4$-manifold and let $A$ be an anti-self-dual
+Yang--Mills connection on a principal $\mathrm{SU}(2)$-bundle over $M$.
+Assume
+\[
+F_A^+=0
+\qquad\text{and}\qquad
+W_g^+=0.
+\]
+If the scalar curvature satisfies
+\[
+s_g\ge s_{\min}>0,
+\]
+then the deformation operator $\Lambda_A$ on the Coulomb slice satisfies
+\[
+\lambda_1(\Lambda_A)\ge \frac{s_{\min}}{4}.
+\]
+\end{theorem}
+
+\begin{proof}
+In the anti-self-dual deformation complex, the Weitzenb\"ock formula on the Coulomb slice has the form
+\[
+\Lambda_A\alpha=\nabla_A^*\nabla_A\alpha+\frac{s_g}{4}\alpha+W_g^+\!\cdot\alpha+F_A^+\!\cdot\alpha.
+\]
+Under the hypotheses $F_A^+=0$ and $W_g^+=0$, this reduces to
+\[
+\Lambda_A\alpha=\nabla_A^*\nabla_A\alpha+\frac{s_g}{4}\alpha.
+\]
+Taking the $L^2$ inner product with $\alpha$ yields
+\[
+\langle \Lambda_A\alpha,\alpha\rangle
+=
+\|\nabla_A\alpha\|_{L^2}^2+\int_M \frac{s_g}{4}|\alpha|^2\,d\mathrm{vol}
+\ge
+\|\nabla_A\alpha\|_{L^2}^2+\frac{s_{\min}}{4}\|\alpha\|_{L^2}^2.
+\]
+Hence
+\[
+\langle \Lambda_A\alpha,\alpha\rangle\ge \frac{s_{\min}}{4}\|\alpha\|_{L^2}^2,
+\]
+so the Rayleigh quotient gives
+\[
+\lambda_1(\Lambda_A)\ge \frac{s_{\min}}{4}.
+\]
+\end{proof}
+
+\begin{corollary}[Round four-sphere]
+For the round $S^4$ of radius $1$, one has $s_g=12$ and $W_g^+=0$.
+Therefore every ASD connection satisfies
+\[
+\lambda_1(\Lambda_A)\ge 3.
+\]
+\end{corollary}
+
+\begin{proof}
+Apply the theorem with $s_{\min}=12$.
+\end{proof}
+
+\begin{remark}
+The statement is intrinsic in the ASD conformally-flat regime.
+Without the hypotheses $F_A^+=0$ and $W_g^+=0$, additional curvature terms remain and positivity
+requires a separate estimate.
+\end{remark}
+
+\end{document}
