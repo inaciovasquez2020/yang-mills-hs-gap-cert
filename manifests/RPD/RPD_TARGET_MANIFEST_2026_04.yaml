@@ -1,18 +1,24 @@
 non_claim: true
 status: theorem_targets_only
 targets:
-  - name: RPD-4
-    file: proofs/RPD/theorems/RPD_4_KERNEL_PRESERVATION.md
-    proved: false
-  - name: RPD-5a
-    file: proofs/RPD/theorems/RPD_5A_PULSE_TO_LAMBDAMIN_ZERO.md
-    proved: false
-  - name: RPD-5b
-    file: proofs/RPD/theorems/RPD_5B_ZERO_MODE_TO_NONCOERCIVE.md
-    proved: false
-  - name: RPD-6
-    file: proofs/RPD/theorems/RPD_6_TWO_BUBBLE_INCOMPATIBILITY.md
-    proved: false
-  - name: RPD-Error-Gain-Lemma
-    file: proofs/RPD/theorems/RPD_ERROR_GAIN_LEMMA.md
-    proved: false
+- name: RPD-4
+  file: proofs/RPD/theorems/RPD_4_KERNEL_PRESERVATION.md
+  proved: false
+- name: RPD-5a
+  file: proofs/RPD/theorems/RPD_5A_PULSE_TO_LAMBDAMIN_ZERO.md
+  proved: false
+- name: RPD-5b
+  file: proofs/RPD/theorems/RPD_5B_ZERO_MODE_TO_NONCOERCIVE.md
+  proved: false
+- name: RPD-6
+  file: proofs/RPD/theorems/RPD_6_TWO_BUBBLE_INCOMPATIBILITY.md
+  proved: false
+- name: RPD-Error-Gain-Lemma
+  file: proofs/RPD/theorems/RPD_ERROR_GAIN_LEMMA.md
+  proved: false
+theorems:
+- name: RPD_4_KERNEL_PRESERVATION
+- name: RPD_5A_PULSE_TO_LAMBDAMIN_ZERO
+- name: RPD_5B_ZERO_MODE_TO_NONCOERCIVE
+- name: RPD_6_TWO_BUBBLE_INCOMPATIBILITY
+- name: RPD_ERROR_GAIN_LEMMA
