@@ -4,29 +4,45 @@ targets:
   RPD-4:
     proved: false
     missing:
-      - blocking_map_normalization
-      - gauge_null_quotient_normalization
-      - kernel_image_both_inclusions
+    - blocking_map_normalization
+    - gauge_null_quotient_normalization
+    - kernel_image_both_inclusions
   RPD-5a:
     proved: false
     missing:
-      - pulse_functional_definition
-      - rayleigh_witness_extraction
-      - limiting_step
+    - pulse_functional_definition
+    - rayleigh_witness_extraction
+    - limiting_step
   RPD-5b:
     proved: false
     missing:
-      - coercivity_target_statement
-      - zero_bottom_mode_contradiction
+    - coercivity_target_statement
+    - zero_bottom_mode_contradiction
   RPD-6:
     proved: false
     missing:
-      - separation_hypothesis
-      - interaction_estimate
-      - coercivity_contradiction
+    - separation_hypothesis
+    - interaction_estimate
+    - coercivity_contradiction
   RPD-Error-Gain-Lemma:
     proved: false
     missing:
-      - block_gradient_norm_definition
-      - L_minus_1_gain_mechanism
-      - orthogonality_normalization
+    - block_gradient_norm_definition
+    - L_minus_1_gain_mechanism
+    - orthogonality_normalization
+theorems:
+- name: RPD_4_KERNEL_PRESERVATION
+  status: open
+  artifact: proofs/RPD/theorems/RPD_4_KERNEL_PRESERVATION.md
+- name: RPD_5A_PULSE_TO_LAMBDAMIN_ZERO
+  status: open
+  artifact: proofs/RPD/theorems/RPD_5A_PULSE_TO_LAMBDAMIN_ZERO.md
+- name: RPD_5B_ZERO_MODE_TO_NONCOERCIVE
+  status: open
+  artifact: proofs/RPD/theorems/RPD_5B_ZERO_MODE_TO_NONCOERCIVE.md
+- name: RPD_6_TWO_BUBBLE_INCOMPATIBILITY
+  status: open
+  artifact: proofs/RPD/theorems/RPD_6_TWO_BUBBLE_INCOMPATIBILITY.md
+- name: RPD_ERROR_GAIN_LEMMA
+  status: blocked
+  artifact: proofs/RPD/theorems/RPD_ERROR_GAIN_LEMMA.md
