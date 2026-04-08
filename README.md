@@ -208,3 +208,8 @@ It provides certified obstructions, conditional reductions, and verification art
 
 ---
 
+
+
+## Notes
+
+- [Antiunitary Symmetry Layer](notes/ANTIUNITARY_SYMMETRY_LAYER.md) — admissible only in the complex-Hilbert/operator symmetry layer; excluded from discrete cycle/FO^k layers.

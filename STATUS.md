@@ -6,3 +6,6 @@
 | REFLECTION_POSITIVITY_SURVIVES_BLOCKING | CONDITIONAL | Kernel preservation proof incomplete |
 | SPECTRAL_CONTRACTION_RG | CONDITIONAL | Requires spectral inequality closure |
 | LOO_TCI_OBSTRUCTION | PROVED | Localization obstruction layer closed |
+
+
+- Antiunitary symmetry layer: documentation-only operator-layer note; no claim upgrade; not part of the discrete rigidity core.
