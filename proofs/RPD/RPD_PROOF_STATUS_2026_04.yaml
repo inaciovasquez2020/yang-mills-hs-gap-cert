@@ -46,7 +46,7 @@ theorems:
   blocking:
   - RPD_5A_PULSE_TO_LAMBDAMIN_ZERO
 - name: RPD_6_TWO_BUBBLE_INCOMPATIBILITY
-  status: partial
+  status: blocked
   artifact: proofs/RPD/theorems/RPD_6_TWO_BUBBLE_INCOMPATIBILITY.md
   blocking:
   - RPD_5B_ZERO_MODE_TO_NONCOERCIVE
