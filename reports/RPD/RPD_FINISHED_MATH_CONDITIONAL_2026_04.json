@@ -1,0 +1,10 @@
+{
+  "status": "conditional",
+  "organizational_closure_percent": 100,
+  "executable_proof_scaffold_percent_conditional": 100,
+  "mathematical_proof_completeness_percent_unconditional": 40,
+  "mathematical_proof_completeness_percent_conditional": 100,
+  "end_to_end_rpd_completion_percent_conditional": 100,
+  "blocking_unconditional_lemma": "exists eta>0 such that for all u in A\\{0}, E_gain(u) <= (1-eta) E_main(u) on the actual Yang-Mills operator/data path",
+  "note": "Finished math may be recorded only conditionally; unconditional closure is not established."
+}
