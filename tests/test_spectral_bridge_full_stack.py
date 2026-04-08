@@ -9,6 +9,7 @@ def test_spectral_bridge_full_stack():
     note = Path("proofs/RG/SPECTRAL_BRIDGE_MINIMAL_OPEN_LEMMA_2026_04.md").read_text()
     program = Path("proofs/RG/analytic/RELATIVE_FORM_BOUND_PROGRAM_2026_04.md").read_text()
     hessian = Path("proofs/RG/analytic/BLOCK_HESSIAN_DOMINATION_PROGRAM_2026_04.md").read_text()
+    transfer = Path("proofs/RG/analytic/TRANSFER_OPERATOR_CONTRACTION_PROGRAM_2026_04.md").read_text()
     report = json.loads(Path("reports/RPD/RPD_FINISHED_MATH_CONDITIONAL_2026_04.json").read_text())
 
     assert "import YMFormal.RG.SpectralBridgeHypothesis" in root
@@ -22,5 +23,7 @@ def test_spectral_bridge_full_stack():
     assert "L_{\\mathrm{coer}}" in program
     assert "\\nabla^2 S_B(U)-\\beta \\Delta_B" in hessian
     assert "I-T_L^*T_L \\ge \\kappa(-\\Delta_G)" in hessian
+    assert "I-T_L^*T_L \\ge \\kappa(-\\Delta_G)" in transfer
+    assert "\\|T_L f\\|\\le \\sqrt{1-\\kappa\\gamma}\\,\\|f\\|" in transfer
     assert report["mathematical_proof_completeness_percent_unconditional"] == 40
     assert report["mathematical_proof_completeness_percent_conditional"] == 100
