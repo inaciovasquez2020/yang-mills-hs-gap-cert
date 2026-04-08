@@ -10,7 +10,7 @@ REQUIRED = {
     "RPD_4_KERNEL_PRESERVATION": "proved",
     "RPD_5A_PULSE_TO_LAMBDAMIN_ZERO": "partial",
     "RPD_5B_ZERO_MODE_TO_NONCOERCIVE": "partial",
-    "RPD_6_TWO_BUBBLE_INCOMPATIBILITY": "partial",
+    "RPD_6_TWO_BUBBLE_INCOMPATIBILITY": "blocked",
     "RPD_ERROR_GAIN_LEMMA": "blocked",
 }
 
