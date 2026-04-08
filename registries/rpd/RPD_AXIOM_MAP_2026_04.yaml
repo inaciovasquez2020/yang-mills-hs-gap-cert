@@ -1,0 +1,8 @@
+non_claim: true
+status: theorem_targets_only
+mapping:
+  REFLECTION_POSITIVITY_SURVIVES_BLOCKING: RPD-4
+  pulse_logbound_implies_lambdaMin_zero: RPD-5a
+  pulse_logbound_implies_noncoercive_target: RPD-5b
+  two_bubble_log_locality_incompatible: RPD-6
+  rpd_error_gain: RPD-Error-Gain-Lemma
