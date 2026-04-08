@@ -1,0 +1,10 @@
+{
+  "mathematical_proof_completeness_percent": 40.0,
+  "status_counts": {
+    "blocked": 2,
+    "open": 0,
+    "partial": 2,
+    "proved": 1
+  },
+  "total_theorems": 5
+}
