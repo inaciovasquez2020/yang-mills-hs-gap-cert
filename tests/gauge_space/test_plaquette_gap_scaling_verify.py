@@ -8,7 +8,7 @@ p = subprocess.run(
 )
 
 if p.returncode != 0:
-    sys.exit(1)
+    raise RuntimeError('gauge-space verification must not execute at import time')
 
 ok = True
 
