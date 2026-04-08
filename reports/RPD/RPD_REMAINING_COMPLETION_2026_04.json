@@ -1,0 +1,7 @@
+{
+  "organizational_closure_percent": 100,
+  "executable_proof_scaffold_percent_conditional": 100,
+  "mathematical_proof_completeness_percent": 40,
+  "end_to_end_rpd_completion_percent_conditional": 82,
+  "sole_missing_ingredient": "Unconditional operator-level proof of RPD_ERROR_GAIN_LEMMA on the actual Yang-Mills operator/data path"
+}
