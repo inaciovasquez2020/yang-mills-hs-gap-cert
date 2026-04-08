@@ -213,3 +213,12 @@ It provides certified obstructions, conditional reductions, and verification art
 ## Notes
 
 - [Antiunitary Symmetry Layer](notes/ANTIUNITARY_SYMMETRY_LAYER.md) — admissible only in the complex-Hilbert/operator symmetry layer; excluded from discrete cycle/FO^k layers.
+
+## RPD Status
+
+- Manifest: `manifests/RPD/RPD_TARGET_MANIFEST_2026_04.yaml`
+- Proof status: `proofs/RPD/RPD_PROOF_STATUS_2026_04.yaml`
+- Dashboard: `reports/RPD/RPD_STATUS_DASHBOARD_2026_04.md`
+- Metrics: `reports/RPD/RPD_METRICS_2026_04.json`
+- Full stack check: `analysis/rpd_full_stack_check.py`
+
