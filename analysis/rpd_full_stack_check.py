@@ -14,6 +14,8 @@ CHECKS = [
     ["analysis/rpd_manifest_status_sync_check.py"],
     ["analysis/rpd_blocking_check.py"],
     ["analysis/rpd_status_progress_check.py"],
+    ["analysis/rpd_dependency_status_check.py"],
+    ["analysis/rpd_metrics_export.py"],
     ["proofs/RPD/executable/rpd_4_kernel_preservation_check.py"],
     ["proofs/RPD/executable/rpd_5a_pulse_to_lambdamin_zero_check.py"],
     ["proofs/RPD/executable/rpd_5b_zero_mode_to_noncoercive_check.py"],
