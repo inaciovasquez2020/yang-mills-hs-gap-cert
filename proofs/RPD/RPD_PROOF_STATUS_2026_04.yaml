@@ -32,21 +32,21 @@ targets:
     - orthogonality_normalization
 theorems:
 - name: RPD_4_KERNEL_PRESERVATION
-  status: open
+  status: proved
   artifact: proofs/RPD/theorems/RPD_4_KERNEL_PRESERVATION.md
   blocking: []
 - name: RPD_5A_PULSE_TO_LAMBDAMIN_ZERO
-  status: open
+  status: partial
   artifact: proofs/RPD/theorems/RPD_5A_PULSE_TO_LAMBDAMIN_ZERO.md
   blocking:
   - RPD_4_KERNEL_PRESERVATION
 - name: RPD_5B_ZERO_MODE_TO_NONCOERCIVE
-  status: open
+  status: partial
   artifact: proofs/RPD/theorems/RPD_5B_ZERO_MODE_TO_NONCOERCIVE.md
   blocking:
   - RPD_5A_PULSE_TO_LAMBDAMIN_ZERO
 - name: RPD_6_TWO_BUBBLE_INCOMPATIBILITY
-  status: open
+  status: partial
   artifact: proofs/RPD/theorems/RPD_6_TWO_BUBBLE_INCOMPATIBILITY.md
   blocking:
   - RPD_5B_ZERO_MODE_TO_NONCOERCIVE
