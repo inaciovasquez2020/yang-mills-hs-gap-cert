@@ -1,0 +1,32 @@
+non_claim: true
+status: proof_shells_only
+targets:
+  RPD-4:
+    proved: false
+    missing:
+      - blocking_map_normalization
+      - gauge_null_quotient_normalization
+      - kernel_image_both_inclusions
+  RPD-5a:
+    proved: false
+    missing:
+      - pulse_functional_definition
+      - rayleigh_witness_extraction
+      - limiting_step
+  RPD-5b:
+    proved: false
+    missing:
+      - coercivity_target_statement
+      - zero_bottom_mode_contradiction
+  RPD-6:
+    proved: false
+    missing:
+      - separation_hypothesis
+      - interaction_estimate
+      - coercivity_contradiction
+  RPD-Error-Gain-Lemma:
+    proved: false
+    missing:
+      - block_gradient_norm_definition
+      - L_minus_1_gain_mechanism
+      - orthogonality_normalization
