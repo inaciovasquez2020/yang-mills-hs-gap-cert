@@ -153,4 +153,11 @@ axiom GNSInner_well_defined :
     GNSInnerProduct μ φ ψ =
     GNSInner μ (GNSProj μ φ) (GNSProj μ ψ)
 
+
+/-- Micro-fix: quotient projection respects the GNS equivalence relation. -/
+axiom GNSProj_respects_GNSEquiv :
+  ∀ (μ : Measure (Connection P)) (φ ψ : TestFunction),
+    GNSEquiv μ φ ψ →
+    GNSProj μ φ = GNSProj μ ψ
+
 end YMFormal
