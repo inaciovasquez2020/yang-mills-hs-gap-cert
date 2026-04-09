@@ -1,0 +1,8 @@
+{
+  "frontier_status": "OPEN_FRONTIER",
+  "open_status": "ALL_PROOF_SHELLS_OPEN",
+  "proof_shell_count": 5,
+  "proof_shell_required": 5,
+  "registry_status": "PROOF_SHELL_REGISTRY_COMPLETE",
+  "status": "YM_MASTER_STATUS_CONSISTENT"
+}
