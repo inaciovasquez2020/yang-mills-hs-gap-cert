@@ -1,0 +1,35 @@
+{
+  "file": "YMFormal/AnchoredClosure.lean",
+  "status": "conditional",
+  "chains": [
+    {
+      "axiom": "valuation_additivity",
+      "steps": [
+        "carrier_union_law",
+        "valuation_on_disjoint_union",
+        "valuation_additivity"
+      ],
+      "proof_shell": "proofs/AnchoredClosure/VALUATION_ADDITIVITY_PROOF_SHELL_2026_04.md"
+    },
+    {
+      "axiom": "lambdaMin_monotone_of_psd_boundary",
+      "steps": [
+        "hessian_decomposition",
+        "dirichlet_psd",
+        "lambdaMin_def",
+        "lambdaMin_monotone_of_psd_boundary"
+      ],
+      "proof_shell": "proofs/AnchoredClosure/LAMBDAMIN_MONOTONE_PSD_BOUNDARY_PROOF_SHELL_2026_04.md"
+    },
+    {
+      "axiom": "spectral_contraction_from_anchored_closure",
+      "steps": [
+        "lambdaMin_monotone_of_psd_boundary",
+        "local_stability_from_coercivity",
+        "spectral_contraction_estimate",
+        "spectral_contraction_from_anchored_closure"
+      ],
+      "proof_shell": "proofs/AnchoredClosure/SPECTRAL_CONTRACTION_FROM_ANCHORED_CLOSURE_PROOF_SHELL_2026_04.md"
+    }
+  ]
+}
