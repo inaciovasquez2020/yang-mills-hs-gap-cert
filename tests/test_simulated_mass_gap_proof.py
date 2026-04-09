@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import math
 import pytest
 
 from scripts.run_simulated_mass_gap_proof import (
+    laplace_eigenvalue_2d_torus,
     build_certificate,
     exact_gap,
     hessian_eigenvalue,
@@ -1104,3 +1106,243 @@ def test_json_artifact_contains_required_top_level_fields(tmp_path) -> None:
         "limitations",
     }
     assert required.issubset(payload.keys())
+
+def test_laplace_zero_mode_case_01() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(5, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_02() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(6, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_03() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(7, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_04() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(8, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_05() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(9, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_06() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(10, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_07() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(11, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_08() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(12, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_09() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(13, 0, 0)) < 1e-12
+
+
+def test_laplace_zero_mode_case_10() -> None:
+    assert abs(laplace_eigenvalue_2d_torus(14, 0, 0)) < 1e-12
+
+
+def test_laplace_nonnegative_case_01() -> None:
+    assert laplace_eigenvalue_2d_torus(6, 1, 2) >= 0.0
+
+
+def test_laplace_nonnegative_case_02() -> None:
+    assert laplace_eigenvalue_2d_torus(7, 2, 4) >= 0.0
+
+
+def test_laplace_nonnegative_case_03() -> None:
+    assert laplace_eigenvalue_2d_torus(8, 3, 6) >= 0.0
+
+
+def test_laplace_nonnegative_case_04() -> None:
+    assert laplace_eigenvalue_2d_torus(9, 4, 8) >= 0.0
+
+
+def test_laplace_nonnegative_case_05() -> None:
+    assert laplace_eigenvalue_2d_torus(10, 5, 0) >= 0.0
+
+
+def test_laplace_nonnegative_case_06() -> None:
+    assert laplace_eigenvalue_2d_torus(11, 6, 1) >= 0.0
+
+
+def test_laplace_nonnegative_case_07() -> None:
+    assert laplace_eigenvalue_2d_torus(12, 7, 2) >= 0.0
+
+
+def test_laplace_nonnegative_case_08() -> None:
+    assert laplace_eigenvalue_2d_torus(13, 8, 3) >= 0.0
+
+
+def test_laplace_nonnegative_case_09() -> None:
+    assert laplace_eigenvalue_2d_torus(14, 9, 4) >= 0.0
+
+
+def test_laplace_nonnegative_case_10() -> None:
+    assert laplace_eigenvalue_2d_torus(15, 10, 5) >= 0.0
+
+
+def test_laplace_symmetry_swap_case_01() -> None:
+    a = laplace_eigenvalue_2d_torus(7, 1, 3)
+    b = laplace_eigenvalue_2d_torus(7, 3, 1)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_02() -> None:
+    a = laplace_eigenvalue_2d_torus(8, 2, 6)
+    b = laplace_eigenvalue_2d_torus(8, 6, 2)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_03() -> None:
+    a = laplace_eigenvalue_2d_torus(9, 3, 0)
+    b = laplace_eigenvalue_2d_torus(9, 0, 3)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_04() -> None:
+    a = laplace_eigenvalue_2d_torus(10, 4, 2)
+    b = laplace_eigenvalue_2d_torus(10, 2, 4)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_05() -> None:
+    a = laplace_eigenvalue_2d_torus(11, 5, 4)
+    b = laplace_eigenvalue_2d_torus(11, 4, 5)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_06() -> None:
+    a = laplace_eigenvalue_2d_torus(12, 6, 6)
+    b = laplace_eigenvalue_2d_torus(12, 6, 6)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_07() -> None:
+    a = laplace_eigenvalue_2d_torus(13, 7, 8)
+    b = laplace_eigenvalue_2d_torus(13, 8, 7)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_08() -> None:
+    a = laplace_eigenvalue_2d_torus(14, 8, 10)
+    b = laplace_eigenvalue_2d_torus(14, 10, 8)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_09() -> None:
+    a = laplace_eigenvalue_2d_torus(15, 9, 12)
+    b = laplace_eigenvalue_2d_torus(15, 12, 9)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_symmetry_swap_case_10() -> None:
+    a = laplace_eigenvalue_2d_torus(16, 10, 14)
+    b = laplace_eigenvalue_2d_torus(16, 14, 10)
+    assert abs(a - b) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_01() -> None:
+    lap = laplace_eigenvalue_2d_torus(8, 1, 4)
+    eig = hessian_eigenvalue(8, 0.13, 0.27, 1, 4)
+    assert abs(eig - (0.13 + 0.27 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_02() -> None:
+    lap = laplace_eigenvalue_2d_torus(9, 2, 8)
+    eig = hessian_eigenvalue(9, 0.16, 0.34, 2, 8)
+    assert abs(eig - (0.16 + 0.34 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_03() -> None:
+    lap = laplace_eigenvalue_2d_torus(10, 3, 2)
+    eig = hessian_eigenvalue(10, 0.19, 0.41, 3, 2)
+    assert abs(eig - (0.19 + 0.41 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_04() -> None:
+    lap = laplace_eigenvalue_2d_torus(11, 4, 5)
+    eig = hessian_eigenvalue(11, 0.22, 0.48, 4, 5)
+    assert abs(eig - (0.22 + 0.48 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_05() -> None:
+    lap = laplace_eigenvalue_2d_torus(12, 5, 8)
+    eig = hessian_eigenvalue(12, 0.25, 0.55, 5, 8)
+    assert abs(eig - (0.25 + 0.55 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_06() -> None:
+    lap = laplace_eigenvalue_2d_torus(13, 6, 11)
+    eig = hessian_eigenvalue(13, 0.28, 0.62, 6, 11)
+    assert abs(eig - (0.28 + 0.62 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_07() -> None:
+    lap = laplace_eigenvalue_2d_torus(14, 7, 0)
+    eig = hessian_eigenvalue(14, 0.31, 0.69, 7, 0)
+    assert abs(eig - (0.31 + 0.69 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_08() -> None:
+    lap = laplace_eigenvalue_2d_torus(15, 8, 2)
+    eig = hessian_eigenvalue(15, 0.34, 0.76, 8, 2)
+    assert abs(eig - (0.34 + 0.76 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_09() -> None:
+    lap = laplace_eigenvalue_2d_torus(16, 9, 4)
+    eig = hessian_eigenvalue(16, 0.37, 0.83, 9, 4)
+    assert abs(eig - (0.37 + 0.83 * lap)) < 1e-12
+
+
+def test_hessian_matches_mass_plus_coupling_times_laplace_case_10() -> None:
+    lap = laplace_eigenvalue_2d_torus(17, 10, 6)
+    eig = hessian_eigenvalue(17, 0.40, 0.90, 10, 6)
+    assert abs(eig - (0.40 + 0.90 * lap)) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_01() -> None:
+    assert abs(exact_gap(6, 0.22, 0.11) - 0.22) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_02() -> None:
+    assert abs(exact_gap(7, 0.26, 0.22) - 0.26) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_03() -> None:
+    assert abs(exact_gap(8, 0.30, 0.33) - 0.30) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_04() -> None:
+    assert abs(exact_gap(9, 0.34, 0.44) - 0.34) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_05() -> None:
+    assert abs(exact_gap(10, 0.38, 0.55) - 0.38) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_06() -> None:
+    assert abs(exact_gap(11, 0.42, 0.66) - 0.42) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_07() -> None:
+    assert abs(exact_gap(12, 0.46, 0.77) - 0.46) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_08() -> None:
+    assert abs(exact_gap(13, 0.50, 0.88) - 0.50) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_09() -> None:
+    assert abs(exact_gap(14, 0.54, 0.99) - 0.54) < 1e-12
+
+
+def test_exact_gap_function_equals_mass_case_10() -> None:
+    assert abs(exact_gap(15, 0.58, 1.10) - 0.58) < 1e-12
+
