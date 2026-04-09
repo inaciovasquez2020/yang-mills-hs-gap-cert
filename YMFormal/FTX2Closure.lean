@@ -1,6 +1,9 @@
 import Std
 noncomputable section
 
+set_option autoImplicit false
+
+
 namespace YMFormal
 
 /- 1. Scalar Abstraction -/
