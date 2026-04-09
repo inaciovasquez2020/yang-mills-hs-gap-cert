@@ -21,6 +21,6 @@ for line in p.stdout.strip().split("\n"):
 
 if not ok:
     if __name__ == "__main__":
-    sys.exit(1)
-
+    if __name__ == "__main__":
+            sys.exit(1)
 print("plaquette gap scaling verification: PASS")

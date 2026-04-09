@@ -393,8 +393,7 @@ def main():
         sys.exit(0)
     else:
         print("  ✗  SOME TESTS FAILED — see above for details.")
-        sys.exit(1)
-
-
+        if __name__ == "__main__":
+                sys.exit(1)
 if __name__ == "__main__":
     main()

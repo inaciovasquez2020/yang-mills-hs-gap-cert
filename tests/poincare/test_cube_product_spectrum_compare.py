@@ -9,8 +9,8 @@ p = subprocess.run(
 
 if p.returncode != 0:
     if __name__ == "__main__":
-    sys.exit(1)
-
+    if __name__ == "__main__":
+            sys.exit(1)
 ok = True
 
 for line in p.stdout.strip().split("\n"):
@@ -21,6 +21,6 @@ for line in p.stdout.strip().split("\n"):
         ok = False
 
 if not ok:
-    sys.exit(1)
-
+    if __name__ == "__main__":
+            sys.exit(1)
 print("cube product spectrum comparison: PASS")

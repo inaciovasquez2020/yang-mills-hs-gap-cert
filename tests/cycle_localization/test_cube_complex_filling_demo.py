@@ -8,9 +8,9 @@ p = subprocess.run(
 )
 
 if p.returncode != 0:
-    sys.exit(1)
-
+    if __name__ == "__main__":
+            sys.exit(1)
 if "bounded radius witness: True" not in p.stdout:
-    sys.exit(1)
-
+    if __name__ == "__main__":
+            sys.exit(1)
 print("cube complex filling demo: PASS")

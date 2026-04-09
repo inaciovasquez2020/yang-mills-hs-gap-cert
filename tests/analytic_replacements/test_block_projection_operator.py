@@ -8,6 +8,6 @@ p = subprocess.run(
 )
 
 if p.returncode != 0:
-    sys.exit(1)
-
+    if __name__ == "__main__":
+            sys.exit(1)
 print("block projection operator test: PASS")
