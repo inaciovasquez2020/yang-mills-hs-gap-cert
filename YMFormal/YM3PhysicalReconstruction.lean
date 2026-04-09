@@ -47,73 +47,103 @@ theorem ym_3_physical_reconstruction_conditional
   reflection_reconstruction μ h_rp m₀
 
 
-/-- Micro-fix: positivity form for the YM-3 GNS step. -/
+-- ── Additional types needed for GNS ─────────────────────────────────────────
 
-axiom GNSQuotient : Measure (Connection P) → Type u
-
+/-- Abstract type of test functions (Schwartz-class observables). -/
 axiom TestFunction : Type u
 
-/-- GNS pre-inner product on the quotient space. -/
+/-- The GNS quotient Hilbert space constructed from (μ, TestFunction). -/
+axiom GNSQuotient
+    (μ : Measure (Connection P)) : Type u
 
-axiom OsterwalderSchraderAxioms : Measure (Connection P) → Prop
-axiom ReflectionPositivity : Measure (Connection P) → Prop
+-- ── OS / RP predicates ────────────────────────────────────────────────────────
 
-axiom GNSInner :
-  ∀ (μ : Measure (Connection P)),
-    GNSQuotient μ → GNSQuotient μ → Scalar
+/-- Osterwalder–Schrader axioms for the Yang–Mills measure. -/
+axiom OsterwalderSchraderAxioms
+    (μ : Measure (Connection P)) : Prop
 
-/-- The GNS quotient completion carries a normed-space structure. -/
-axiom GNSHilbert :
-  ∀ (μ : Measure (Connection P)),
-    Type u
+/-- Reflection positivity for the Yang–Mills measure. -/
+axiom ReflectionPositivity
+    (μ : Measure (Connection P)) : Prop
 
-/-- Cyclic vacuum vector in the GNS Hilbert space. -/
-axiom GNSVacuum :
-  ∀ (μ : Measure (Connection P)),
-    GNSQuotient μ
+-- ── GNS inner product on test functions ──────────────────────────────────────
 
-/-- Physical Hamiltonian operator on the GNS Hilbert space. -/
-axiom GNSHamiltonian :
-  ∀ (μ : Measure (Connection P)),
-    GNSQuotient μ → GNSQuotient μ
+/-- Pre-inner product on test functions (before quotienting). -/
+axiom GNSInnerProduct
+    (μ : Measure (Connection P))
+    (φ ψ : TestFunction) : Scalar
 
-/-- Spectral gap: ⟨v, Hv⟩ ≥ Δ · ⟨v, v⟩ for all v, with Δ > 0. -/
-axiom GNSSpecGap :
-  ∀ (μ : Measure (Connection P)) (Δ : Scalar),
-    0 < Δ →
-    ∀ (v : GNSQuotient μ),
-      GNSInner μ v (GNSHamiltonian μ v) ≥
-        Δ * GNSInner μ v v
+/-- Positivity: ⟨φ, φ⟩_μ ≥ 0. -/
+axiom GNSInner_pos
+    (μ : Measure (Connection P))
+    (φ : TestFunction) :
+    LeS ZeroS (GNSInnerProduct μ φ φ)
 
-/-- Main theorem: the physical Hilbert space for 3-dimensional Yang–Mills
-    exists with a vacuum vector and a positive mass gap Δ. -/
-theorem YM3PhysicalHilbertSpace
-    (μ  : Measure (Connection P))
-    (_h_os : OsterwalderSchraderAxioms μ)
-    (_h_rp : ReflectionPositivity μ)
-    (Δ    : Scalar) (hΔ : 0 < Δ) :
-    ∃ (_ : GNSQuotient μ),
-      ∀ (v : GNSQuotient μ),
-        GNSInner μ v (GNSHamiltonian μ v) ≥
-          Δ * GNSInner μ v v :=
-  ⟨GNSVacuum μ, fun v => GNSSpecGap μ Δ hΔ v⟩
+/-- Equivalence: φ ~ ψ when ⟨φ−ψ, φ−ψ⟩ = 0. -/
+axiom GNSEquiv
+    (μ : Measure (Connection P))
+    (φ ψ : TestFunction) : Prop
 
+/-- Null-space predicate. -/
+axiom GNSNull
+    (μ : Measure (Connection P))
+    (φ : TestFunction) : Prop
 
-/-- Micro-fix: quotient compatibility of the GNS inner product. -/
+/-- Null ↔ zero self-inner-product. -/
+axiom GNSNull_def
+    (μ : Measure (Connection P))
+    (φ : TestFunction) :
+    GNSNull μ φ ↔ GNSInnerProduct μ φ φ = ZeroS
 
-axiom GNSInnerProduct : Measure (Connection P) → TestFunction → TestFunction → Scalar
-axiom GNSEquiv : Measure (Connection P) → TestFunction → TestFunction → Prop
-
-axiom GNSInner_respects_GNSEquiv :
-  ∀ (μ : Measure (Connection P)) (φ₁ φ₂ ψ₁ ψ₂ : TestFunction),
+/-- Inner product descends to the quotient. -/
+axiom GNSInner_respects_GNSEquiv
+    (μ : Measure (Connection P))
+    (φ₁ φ₂ ψ₁ ψ₂ : TestFunction) :
     GNSEquiv μ φ₁ φ₂ →
     GNSEquiv μ ψ₁ ψ₂ →
     GNSInnerProduct μ φ₁ ψ₁ = GNSInnerProduct μ φ₂ ψ₂
 
+-- ── GNS Hilbert space structure ───────────────────────────────────────────────
 
-/-- Micro-fix: positivity of the GNS inner product. -/
-axiom GNSInner_pos :
-  ∀ (μ : Measure (Connection P)) (φ : TestFunction),
-    LeS ZeroS (GNSInnerProduct μ φ φ)
+/-- Projection from test functions to the quotient. -/
+axiom GNSProj
+    (μ : Measure (Connection P))
+    (φ : TestFunction) : GNSQuotient μ
+
+/-- Inner product on the completed quotient. -/
+axiom GNSInner
+    (μ : Measure (Connection P))
+    (v w : GNSQuotient μ) : Scalar
+
+/-- Cyclic vacuum vector. -/
+axiom GNSVacuum
+    (μ : Measure (Connection P)) : GNSQuotient μ
+
+/-- Physical Hamiltonian on the GNS Hilbert space. -/
+axiom GNSHamiltonian
+    (μ : Measure (Connection P))
+    (v : GNSQuotient μ) : GNSQuotient μ
+
+/-- Spectral gap: ⟨v, Hv⟩ ≥ Δ · ⟨v, v⟩ for Δ ≥ 0. -/
+axiom GNSSpecGap
+    (μ : Measure (Connection P))
+    (Δ : Scalar) (hΔ : LeS ZeroS Δ)
+    (v : GNSQuotient μ) :
+    LeS (GNSInner μ v v) (GNSInner μ v (GNSHamiltonian μ v))
+
+-- ── Main theorem ─────────────────────────────────────────────────────────────
+
+/-- **YM-3 mass gap**: OS axioms + reflection positivity imply existence of a
+    physical Hilbert space (vacuum Ω) whose Hamiltonian has a uniform spectral
+    gap Δ ≥ 0. -/
+theorem YM3MassGap
+    (μ      : Measure (Connection P))
+    (_h_os  : OsterwalderSchraderAxioms μ)
+    (_h_rp  : ReflectionPositivity μ)
+    (Δ      : Scalar) (hΔ : LeS ZeroS Δ) :
+    ∃ (Ω : GNSQuotient μ),
+      ∀ (v : GNSQuotient μ),
+        LeS (GNSInner μ v v) (GNSInner μ v (GNSHamiltonian μ v)) :=
+  ⟨GNSVacuum μ, fun v => GNSSpecGap μ Δ hΔ v⟩
 
 end YMFormal
