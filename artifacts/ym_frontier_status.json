@@ -1,0 +1,19 @@
+{
+  "present": {
+    "YM-1": true,
+    "YM-2": true,
+    "YM-3": true,
+    "YM-4": true,
+    "YM-5": true
+  },
+  "required_ids": [
+    "YM-1",
+    "YM-2",
+    "YM-3",
+    "YM-4",
+    "YM-5"
+  ],
+  "source_status": "OPEN_FRONTIER",
+  "source_verdict": "DISPROVED_AS_A_YANG_MILLS_MASS_GAP_PROOF",
+  "status": "OPEN_FRONTIER"
+}
