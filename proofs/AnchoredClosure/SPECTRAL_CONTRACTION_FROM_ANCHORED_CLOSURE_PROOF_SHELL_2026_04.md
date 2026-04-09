@@ -1,22 +1,22 @@
-# spectral_contraction_from_anchored_closure
+# Spectral Contraction from Anchored Closure — Proof Shell
 
-Status: CONDITIONAL
+## Target
+Replace `axiom spectral_contraction_from_anchored_closure` in `YMFormal/AnchoredClosure.lean` by a theorem.
 
-Target statement:
-- Replace `axiom spectral_contraction_from_anchored_closure` in
-  `YMFormal/AnchoredClosure.lean` by a theorem deriving spectral contraction
-  from the anchored closure interface.
-
-Current weakest sufficient requirement:
-- Formalize a repository-stable bridge from anchored hereditary coercivity and
-  anchored valuation control to the quantitative contraction inequality.
-- Then instantiate that bridge for `HasSector.EGain` and `HasSector.EMain`.
-
-Required replacement object:
-- theorem spectral_contraction_from_anchored_closure
-
-Blocking object:
-- no repository-stable theorem yet derives the existence of
-  `η > 0` with
-  `HasSector.EGain u ≤ (1 - η) * HasSector.EMain u`
-  from the current anchored closure scaffold.
+## First missing lemma
+```lean
+lemma local_stability_from_coercivity
+    (P : AnchoredPatch)
+    (hcoer : 0 < lambdaMin (hessian P)) :
+    StableOnAnchor P
+Reduction chain
+lambdaMin_monotone_of_psd_boundary
+→ local_stability_from_coercivity
+→ spectral_contraction_estimate
+→ spectral_contraction_from_anchored_closure
+Obligations
+Define StableOnAnchor.
+Convert positive spectral floor into anchored coercive decay.
+Derive the one-step contraction estimate.
+Iterate contraction along anchored closure.
+Conclude spectral_contraction_from_anchored_closure.
