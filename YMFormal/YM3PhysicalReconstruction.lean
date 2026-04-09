@@ -64,4 +64,10 @@ axiom GNSEquiv :
 /-- Micro-fix: quotient carrier for the YM-3 GNS construction. -/
 axiom GNSQuotient : Measure (Connection P) → Type u
 
+
+/-- Micro-fix: projection to GNS quotient. -/
+axiom GNSProj :
+  ∀ (μ : Measure (Connection P)),
+    TestFunction → GNSQuotient μ
+
 end YMFormal
