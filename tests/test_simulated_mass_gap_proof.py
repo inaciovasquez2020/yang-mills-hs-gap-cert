@@ -120,3 +120,13 @@ def test_mode_certificates_are_sorted_by_hessian_eigenvalue() -> None:
     vals = [m.hessian_eigenvalue for m in cert.mode_certificates]
     assert vals == sorted(vals)
 
+def test_rg_certificate_length_matches_steps() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.75,
+        coupling=1.25,
+        rg_steps=7,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.rg_certificates) == 7
