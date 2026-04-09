@@ -110,4 +110,10 @@ axiom GNSInner_respects_GNSEquiv :
     GNSEquiv μ ψ₁ ψ₂ →
     GNSInnerProduct μ φ₁ ψ₁ = GNSInnerProduct μ φ₂ ψ₂
 
+
+/-- Micro-fix: positivity of the GNS inner product. -/
+axiom GNSInner_pos :
+  ∀ (μ : Measure (Connection P)) (φ : TestFunction),
+    LeS ZeroS (GNSInnerProduct μ φ φ)
+
 end YMFormal
