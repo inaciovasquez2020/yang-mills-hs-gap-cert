@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "## Blocking lemma": true,
+    "## Status": true,
+    "No non-gauge zero mode survives in the physical quotient.": true,
+    "OPEN": true
+  },
+  "source": "proofs/YM2/GAUGE_INVARIANT_COERCIVITY_PROOF_SHELL.md",
+  "status": "YM2_BLOCKING_LEMMA_OPEN",
+  "target": "No non-gauge zero mode survives in the physical quotient."
+}
