@@ -1,0 +1,451 @@
+{
+  "coupling_parameter": 1.25,
+  "exact_gap": 0.75,
+  "interpretation": "This is an executable finite-dimensional surrogate certificate. It demonstrates the coercivity-transfer pattern but is not a proof of the non-abelian Yang\u2013Mills mass gap.",
+  "lattice_size": 8,
+  "limitations": [
+    "Finite-dimensional toy surrogate only",
+    "Abelianized spectrum, not full non-abelian Wilson Hessian",
+    "RG rule is imposed, not derived",
+    "No continuum limit theorem",
+    "No Osterwalder\u2013Schrader reconstruction theorem is proved here"
+  ],
+  "mass_parameter": 0.75,
+  "mode_certificates": [
+    {
+      "hessian_eigenvalue": 0.75,
+      "k1": 0,
+      "k2": 0,
+      "laplace_eigenvalue": 0.0
+    },
+    {
+      "hessian_eigenvalue": 1.4822330470336311,
+      "k1": 0,
+      "k2": 1,
+      "laplace_eigenvalue": 0.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 1.4822330470336311,
+      "k1": 1,
+      "k2": 0,
+      "laplace_eigenvalue": 0.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 1.4822330470336316,
+      "k1": 0,
+      "k2": 7,
+      "laplace_eigenvalue": 0.5857864376269053
+    },
+    {
+      "hessian_eigenvalue": 1.4822330470336316,
+      "k1": 7,
+      "k2": 0,
+      "laplace_eigenvalue": 0.5857864376269053
+    },
+    {
+      "hessian_eigenvalue": 2.2144660940672622,
+      "k1": 1,
+      "k2": 1,
+      "laplace_eigenvalue": 1.17157287525381
+    },
+    {
+      "hessian_eigenvalue": 2.2144660940672627,
+      "k1": 1,
+      "k2": 7,
+      "laplace_eigenvalue": 1.1715728752538102
+    },
+    {
+      "hessian_eigenvalue": 2.2144660940672627,
+      "k1": 7,
+      "k2": 1,
+      "laplace_eigenvalue": 1.1715728752538102
+    },
+    {
+      "hessian_eigenvalue": 2.214466094067263,
+      "k1": 7,
+      "k2": 7,
+      "laplace_eigenvalue": 1.1715728752538106
+    },
+    {
+      "hessian_eigenvalue": 3.2499999999999996,
+      "k1": 0,
+      "k2": 2,
+      "laplace_eigenvalue": 1.9999999999999996
+    },
+    {
+      "hessian_eigenvalue": 3.2499999999999996,
+      "k1": 2,
+      "k2": 0,
+      "laplace_eigenvalue": 1.9999999999999996
+    },
+    {
+      "hessian_eigenvalue": 3.2500000000000004,
+      "k1": 0,
+      "k2": 6,
+      "laplace_eigenvalue": 2.0000000000000004
+    },
+    {
+      "hessian_eigenvalue": 3.2500000000000004,
+      "k1": 6,
+      "k2": 0,
+      "laplace_eigenvalue": 2.0000000000000004
+    },
+    {
+      "hessian_eigenvalue": 3.9822330470336307,
+      "k1": 1,
+      "k2": 2,
+      "laplace_eigenvalue": 2.5857864376269046
+    },
+    {
+      "hessian_eigenvalue": 3.9822330470336307,
+      "k1": 2,
+      "k2": 1,
+      "laplace_eigenvalue": 2.5857864376269046
+    },
+    {
+      "hessian_eigenvalue": 3.982233047033631,
+      "k1": 2,
+      "k2": 7,
+      "laplace_eigenvalue": 2.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 3.982233047033631,
+      "k1": 7,
+      "k2": 2,
+      "laplace_eigenvalue": 2.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 3.982233047033632,
+      "k1": 1,
+      "k2": 6,
+      "laplace_eigenvalue": 2.5857864376269055
+    },
+    {
+      "hessian_eigenvalue": 3.982233047033632,
+      "k1": 6,
+      "k2": 1,
+      "laplace_eigenvalue": 2.5857864376269055
+    },
+    {
+      "hessian_eigenvalue": 3.9822330470336325,
+      "k1": 6,
+      "k2": 7,
+      "laplace_eigenvalue": 2.585786437626906
+    },
+    {
+      "hessian_eigenvalue": 3.9822330470336325,
+      "k1": 7,
+      "k2": 6,
+      "laplace_eigenvalue": 2.585786437626906
+    },
+    {
+      "hessian_eigenvalue": 5.017766952966369,
+      "k1": 0,
+      "k2": 3,
+      "laplace_eigenvalue": 3.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 5.017766952966369,
+      "k1": 0,
+      "k2": 5,
+      "laplace_eigenvalue": 3.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 5.017766952966369,
+      "k1": 3,
+      "k2": 0,
+      "laplace_eigenvalue": 3.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 5.017766952966369,
+      "k1": 5,
+      "k2": 0,
+      "laplace_eigenvalue": 3.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 5.749999999999999,
+      "k1": 2,
+      "k2": 2,
+      "laplace_eigenvalue": 3.999999999999999
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 0,
+      "k2": 4,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 1,
+      "k2": 3,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 1,
+      "k2": 5,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 2,
+      "k2": 6,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 3,
+      "k2": 1,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 3,
+      "k2": 7,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 4,
+      "k2": 0,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 5,
+      "k2": 1,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 5,
+      "k2": 7,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 6,
+      "k2": 2,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 7,
+      "k2": 3,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.75,
+      "k1": 7,
+      "k2": 5,
+      "laplace_eigenvalue": 4.0
+    },
+    {
+      "hessian_eigenvalue": 5.750000000000001,
+      "k1": 6,
+      "k2": 6,
+      "laplace_eigenvalue": 4.000000000000001
+    },
+    {
+      "hessian_eigenvalue": 6.482233047033631,
+      "k1": 1,
+      "k2": 4,
+      "laplace_eigenvalue": 4.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 6.482233047033631,
+      "k1": 4,
+      "k2": 1,
+      "laplace_eigenvalue": 4.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 6.482233047033631,
+      "k1": 4,
+      "k2": 7,
+      "laplace_eigenvalue": 4.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 6.482233047033631,
+      "k1": 7,
+      "k2": 4,
+      "laplace_eigenvalue": 4.585786437626905
+    },
+    {
+      "hessian_eigenvalue": 7.517766952966367,
+      "k1": 2,
+      "k2": 3,
+      "laplace_eigenvalue": 5.414213562373094
+    },
+    {
+      "hessian_eigenvalue": 7.517766952966367,
+      "k1": 2,
+      "k2": 5,
+      "laplace_eigenvalue": 5.414213562373094
+    },
+    {
+      "hessian_eigenvalue": 7.517766952966367,
+      "k1": 3,
+      "k2": 2,
+      "laplace_eigenvalue": 5.414213562373094
+    },
+    {
+      "hessian_eigenvalue": 7.517766952966367,
+      "k1": 5,
+      "k2": 2,
+      "laplace_eigenvalue": 5.414213562373094
+    },
+    {
+      "hessian_eigenvalue": 7.51776695296637,
+      "k1": 3,
+      "k2": 6,
+      "laplace_eigenvalue": 5.414213562373096
+    },
+    {
+      "hessian_eigenvalue": 7.51776695296637,
+      "k1": 5,
+      "k2": 6,
+      "laplace_eigenvalue": 5.414213562373096
+    },
+    {
+      "hessian_eigenvalue": 7.51776695296637,
+      "k1": 6,
+      "k2": 3,
+      "laplace_eigenvalue": 5.414213562373096
+    },
+    {
+      "hessian_eigenvalue": 7.51776695296637,
+      "k1": 6,
+      "k2": 5,
+      "laplace_eigenvalue": 5.414213562373096
+    },
+    {
+      "hessian_eigenvalue": 8.25,
+      "k1": 2,
+      "k2": 4,
+      "laplace_eigenvalue": 6.0
+    },
+    {
+      "hessian_eigenvalue": 8.25,
+      "k1": 4,
+      "k2": 2,
+      "laplace_eigenvalue": 6.0
+    },
+    {
+      "hessian_eigenvalue": 8.25,
+      "k1": 4,
+      "k2": 6,
+      "laplace_eigenvalue": 6.0
+    },
+    {
+      "hessian_eigenvalue": 8.25,
+      "k1": 6,
+      "k2": 4,
+      "laplace_eigenvalue": 6.0
+    },
+    {
+      "hessian_eigenvalue": 9.285533905932738,
+      "k1": 3,
+      "k2": 3,
+      "laplace_eigenvalue": 6.82842712474619
+    },
+    {
+      "hessian_eigenvalue": 9.285533905932738,
+      "k1": 3,
+      "k2": 5,
+      "laplace_eigenvalue": 6.82842712474619
+    },
+    {
+      "hessian_eigenvalue": 9.285533905932738,
+      "k1": 5,
+      "k2": 3,
+      "laplace_eigenvalue": 6.82842712474619
+    },
+    {
+      "hessian_eigenvalue": 9.285533905932738,
+      "k1": 5,
+      "k2": 5,
+      "laplace_eigenvalue": 6.82842712474619
+    },
+    {
+      "hessian_eigenvalue": 10.017766952966369,
+      "k1": 3,
+      "k2": 4,
+      "laplace_eigenvalue": 7.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 10.017766952966369,
+      "k1": 4,
+      "k2": 3,
+      "laplace_eigenvalue": 7.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 10.017766952966369,
+      "k1": 4,
+      "k2": 5,
+      "laplace_eigenvalue": 7.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 10.017766952966369,
+      "k1": 5,
+      "k2": 4,
+      "laplace_eigenvalue": 7.414213562373095
+    },
+    {
+      "hessian_eigenvalue": 10.75,
+      "k1": 4,
+      "k2": 4,
+      "laplace_eigenvalue": 8.0
+    }
+  ],
+  "model": "Abelianized Wilson\u2013Hessian surrogate on a 2D discrete torus",
+  "rg_certificates": [
+    {
+      "additive_shift": 0.0018126924692201819,
+      "incoming_gap": 0.75,
+      "outgoing_gap_lower_bound": 0.698072844176186,
+      "scale_factor": 0.9283468689426211,
+      "step": 1
+    },
+    {
+      "additive_shift": 0.0032967995396436067,
+      "incoming_gap": 0.698072844176186,
+      "outgoing_gap_lower_bound": 0.665529388862647,
+      "scale_factor": 0.9486582880967408,
+      "step": 2
+    },
+    {
+      "additive_shift": 0.004511883639059736,
+      "incoming_gap": 0.665529388862647,
+      "outgoing_gap_lower_bound": 0.6455578145359105,
+      "scale_factor": 0.9632120558828557,
+      "step": 3
+    },
+    {
+      "additive_shift": 0.005506710358827784,
+      "incoming_gap": 0.6455578145359105,
+      "outgoing_gap_lower_bound": 0.6340478056547474,
+      "scale_factor": 0.9736402861884274,
+      "step": 4
+    },
+    {
+      "additive_shift": 0.006321205588285576,
+      "incoming_gap": 0.6340478056547474,
+      "outgoing_gap_lower_bound": 0.6283933950909456,
+      "scale_factor": 0.9811124397162438,
+      "step": 5
+    },
+    {
+      "additive_shift": 0.006988057880877978,
+      "incoming_gap": 0.6283933950909456,
+      "outgoing_gap_lower_bound": 0.6268770731609586,
+      "scale_factor": 0.9864664716763387,
+      "step": 6
+    }
+  ],
+  "rg_protected_gap_lower_bound": 0.6268770731609586,
+  "rg_scale_floor": 0.9,
+  "rg_shift_floor": 0.01,
+  "rg_steps": 6,
+  "status": "SIMULATED",
+  "theorem_statement": "For H_n = m I + beta \u0394_torus with m > 0 and beta >= 0, the exact spectral gap is lambda_min(H_n) = m. Under any RG update g -> a g + b with a >= a_min > 0 and b >= 0, positivity persists and the gap remains >= a_min^s m after s steps."
+}
