@@ -1346,3 +1346,612 @@ def test_exact_gap_function_equals_mass_case_09() -> None:
 def test_exact_gap_function_equals_mass_case_10() -> None:
     assert abs(exact_gap(15, 0.58, 1.10) - 0.58) < 1e-12
 
+def test_theorem_statement_mentions_exact_gap_case_01() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.23,
+        coupling=0.10,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_02() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.26,
+        coupling=0.20,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_03() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.29,
+        coupling=0.30,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_04() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.32,
+        coupling=0.40,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_05() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.35,
+        coupling=0.50,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_06() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.38,
+        coupling=0.60,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_07() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.41,
+        coupling=0.70,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_08() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.44,
+        coupling=0.80,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_09() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.47,
+        coupling=0.90,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_theorem_statement_mentions_exact_gap_case_10() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.00,
+    )
+    assert "exact spectral gap is lambda_min(H_n) = m" in cert.theorem_statement
+
+
+def test_interpretation_declares_surrogate_case_01() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.27,
+        coupling=0.15,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_02() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.29,
+        coupling=0.30,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_03() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.31,
+        coupling=0.45,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_04() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.33,
+        coupling=0.60,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_05() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.35,
+        coupling=0.75,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_06() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.37,
+        coupling=0.90,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_07() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.39,
+        coupling=1.05,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_08() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.41,
+        coupling=1.20,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_09() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.43,
+        coupling=1.35,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_interpretation_declares_surrogate_case_10() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.45,
+        coupling=1.50,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.01,
+    )
+    assert "finite-dimensional surrogate certificate" in cert.interpretation
+
+
+def test_limitations_have_expected_length_case_01() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.31,
+        coupling=0.25,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_02() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.32,
+        coupling=0.30,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_03() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.33,
+        coupling=0.35,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_04() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.34,
+        coupling=0.40,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_05() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.35,
+        coupling=0.45,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_06() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.36,
+        coupling=0.50,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_07() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.37,
+        coupling=0.55,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_08() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.38,
+        coupling=0.60,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_09() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.39,
+        coupling=0.65,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_limitations_have_expected_length_case_10() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.40,
+        coupling=0.70,
+        rg_steps=2,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.00,
+    )
+    assert len(cert.limitations) == 5
+
+
+def test_mode_certificate_count_case_01() -> None:
+    cert = build_certificate(
+        n=5,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 25
+
+
+def test_mode_certificate_count_case_02() -> None:
+    cert = build_certificate(
+        n=6,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 36
+
+
+def test_mode_certificate_count_case_03() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 49
+
+
+def test_mode_certificate_count_case_04() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 64
+
+
+def test_mode_certificate_count_case_05() -> None:
+    cert = build_certificate(
+        n=9,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 81
+
+
+def test_mode_certificate_count_case_06() -> None:
+    cert = build_certificate(
+        n=10,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 100
+
+
+def test_mode_certificate_count_case_07() -> None:
+    cert = build_certificate(
+        n=11,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 121
+
+
+def test_mode_certificate_count_case_08() -> None:
+    cert = build_certificate(
+        n=12,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 144
+
+
+def test_mode_certificate_count_case_09() -> None:
+    cert = build_certificate(
+        n=13,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 169
+
+
+def test_mode_certificate_count_case_10() -> None:
+    cert = build_certificate(
+        n=14,
+        mass=0.50,
+        coupling=1.00,
+        rg_steps=3,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 196
+
+
+def test_zero_step_chain_empty_case_01() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.22,
+        coupling=0.12,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_02() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.26,
+        coupling=0.24,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_03() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.30,
+        coupling=0.36,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_04() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.34,
+        coupling=0.48,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_05() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.38,
+        coupling=0.60,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_06() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.42,
+        coupling=0.72,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_07() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.46,
+        coupling=0.84,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_08() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.50,
+        coupling=0.96,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_09() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.54,
+        coupling=1.08,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
+
+def test_zero_step_chain_empty_case_10() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.58,
+        coupling=1.20,
+        rg_steps=0,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_certificates == []
+    assert cert.rg_protected_gap_lower_bound == cert.exact_gap
+
