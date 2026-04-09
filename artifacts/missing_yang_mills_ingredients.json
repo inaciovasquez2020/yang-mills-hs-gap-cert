@@ -1,0 +1,32 @@
+{
+  "source_verdict": "DISPROVED_AS_A_YANG_MILLS_MASS_GAP_PROOF",
+  "minimal_obstruction": "A proof of the Yang\u2013Mills mass gap requires a non-abelian Wilson/Hamiltonian/coercivity theorem with continuum transfer; the present script contains only a scalar torus surrogate.",
+  "missing_ingredients": [
+    {
+      "id": "YM-1",
+      "name": "Non-abelian operator",
+      "statement": "Replace the scalar torus surrogate by an explicit non-abelian Wilson/Hamiltonian/Hessian operator on admissible gauge configurations."
+    },
+    {
+      "id": "YM-2",
+      "name": "Gauge-invariant coercivity",
+      "statement": "Prove a uniform strictly positive lower bound on the physical quotient after removal of gauge zero modes."
+    },
+    {
+      "id": "YM-3",
+      "name": "Reflection positivity bridge",
+      "statement": "Derive the positivity/coercivity statement from a bona fide Yang-Mills reflection positivity or transfer-matrix argument."
+    },
+    {
+      "id": "YM-4",
+      "name": "Continuum transfer",
+      "statement": "Prove that the lattice lower bound survives the continuum and infinite-volume limit."
+    },
+    {
+      "id": "YM-5",
+      "name": "Mass-gap observable",
+      "statement": "Identify a gauge-invariant correlator/observable whose decay is forced by the coercive lower bound."
+    }
+  ],
+  "status": "OPEN_FRONTIER"
+}
