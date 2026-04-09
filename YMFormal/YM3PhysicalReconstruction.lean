@@ -51,4 +51,8 @@ theorem ym_3_physical_reconstruction_conditional
 axiom TestFunction : Type u
 axiom GNSInnerProduct : Measure (Connection P) → TestFunction → TestFunction → Scalar
 
+
+/-- Micro-fix: null space for the YM-3 GNS quotient step. -/
+axiom GNSNull : Measure (Connection P) → TestFunction → Prop
+
 end YMFormal
