@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pytest
+
 from scripts.run_simulated_mass_gap_proof import (
     build_certificate,
     exact_gap,
@@ -851,4 +853,53 @@ def test_coupling_invariance_case_10() -> None:
     )
     assert abs(cert1.exact_gap - cert2.exact_gap) < 1e-12
     assert abs(cert1.exact_gap - 0.75) < 1e-12
+
+def test_rejects_lattice_size_one() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=1, mass=0.5, coupling=1.0, rg_steps=3, rg_scale_floor=0.9, rg_shift_floor=0.0)
+
+
+def test_rejects_nonpositive_mass_zero() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=0.0, coupling=1.0, rg_steps=3, rg_scale_floor=0.9, rg_shift_floor=0.0)
+
+
+def test_rejects_nonpositive_mass_negative() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=-0.1, coupling=1.0, rg_steps=3, rg_scale_floor=0.9, rg_shift_floor=0.0)
+
+
+def test_rejects_negative_coupling() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=0.5, coupling=-0.1, rg_steps=3, rg_scale_floor=0.9, rg_shift_floor=0.0)
+
+
+def test_rejects_zero_scale_floor() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=0.5, coupling=1.0, rg_steps=3, rg_scale_floor=0.0, rg_shift_floor=0.0)
+
+
+def test_rejects_negative_scale_floor() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=0.5, coupling=1.0, rg_steps=3, rg_scale_floor=-0.1, rg_shift_floor=0.0)
+
+
+def test_rejects_scale_floor_above_one() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=0.5, coupling=1.0, rg_steps=3, rg_scale_floor=1.1, rg_shift_floor=0.0)
+
+
+def test_rejects_negative_shift_floor() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=0.5, coupling=1.0, rg_steps=3, rg_scale_floor=0.9, rg_shift_floor=-0.01)
+
+
+def test_rejects_negative_rg_steps() -> None:
+    with pytest.raises(ValueError):
+        build_certificate(n=8, mass=0.5, coupling=1.0, rg_steps=-1, rg_scale_floor=0.9, rg_shift_floor=0.0)
+
+
+def test_accepts_boundary_scale_floor_one() -> None:
+    cert = build_certificate(n=8, mass=0.5, coupling=1.0, rg_steps=3, rg_scale_floor=1.0, rg_shift_floor=0.0)
+    assert cert.rg_protected_gap_lower_bound >= cert.exact_gap
 
