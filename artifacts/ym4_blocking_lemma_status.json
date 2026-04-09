@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "## Blocking lemma": true,
+    "## Status": true,
+    "OPEN": true,
+    "Uniform coercivity is stable under the joint continuum and thermodynamic limit.": true
+  },
+  "source": "proofs/YM4/CONTINUUM_TRANSFER_PROOF_SHELL.md",
+  "status": "YM4_BLOCKING_LEMMA_OPEN",
+  "target": "Uniform coercivity is stable under the joint continuum and thermodynamic limit."
+}
