@@ -1,0 +1,19 @@
+{
+  "blocking_frontiers": [
+    "YM-1",
+    "YM-2",
+    "YM-3",
+    "YM-4",
+    "YM-5"
+  ],
+  "closed": 0,
+  "required_closures": 5,
+  "status": "YM_MATH_NOT_SOLVED",
+  "statuses": {
+    "YM-1": "YM1_BLOCKING_LEMMA_OPEN",
+    "YM-2": "YM2_BLOCKING_LEMMA_OPEN",
+    "YM-3": "YM3_BLOCKING_LEMMA_OPEN",
+    "YM-4": "YM4_BLOCKING_LEMMA_OPEN",
+    "YM-5": "YM5_BLOCKING_LEMMA_OPEN"
+  }
+}
