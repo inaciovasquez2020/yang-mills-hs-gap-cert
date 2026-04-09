@@ -1014,3 +1014,34 @@ def test_positive_shift_improves_over_pure_scaling_floor_bound() -> None:
     )
     assert cert.rg_protected_gap_lower_bound > (0.9 ** 6) * cert.exact_gap
 
+def test_cli_writes_both_output_artifacts(tmp_path) -> None:
+    import json
+    import subprocess
+    import sys
+
+    json_out = tmp_path / "cert.json"
+    md_out = tmp_path / "cert.md"
+
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_simulated_mass_gap_proof.py",
+            "--n", "8",
+            "--mass", "0.75",
+            "--coupling", "1.25",
+            "--rg-steps", "6",
+            "--rg-scale-floor", "0.90",
+            "--rg-shift-floor", "0.01",
+            "--json-out", str(json_out),
+            "--md-out", str(md_out),
+        ],
+        check=True,
+    )
+
+    assert json_out.exists()
+    assert md_out.exists()
+
+    payload = json.loads(json_out.read_text())
+    assert payload["status"] == "SIMULATED"
+    assert abs(payload["exact_gap"] - 0.75) < 1e-12
+    assert "Simulated Mass-Gap Proof Certificate" in md_out.read_text()
