@@ -1,0 +1,21 @@
+{
+  "file": "YMFormal/AnchoredClosure.lean",
+  "status": "conditional",
+  "blockers": [
+    {
+      "axiom": "valuation_additivity",
+      "second_missing_lemma": "valuation_on_disjoint_union",
+      "proof_shell": "proofs/AnchoredClosure/VALUATION_ADDITIVITY_PROOF_SHELL_2026_04.md"
+    },
+    {
+      "axiom": "lambdaMin_monotone_of_psd_boundary",
+      "second_missing_lemma": "dirichlet_psd",
+      "proof_shell": "proofs/AnchoredClosure/LAMBDAMIN_MONOTONE_PSD_BOUNDARY_PROOF_SHELL_2026_04.md"
+    },
+    {
+      "axiom": "spectral_contraction_from_anchored_closure",
+      "second_missing_lemma": "spectral_contraction_estimate",
+      "proof_shell": "proofs/AnchoredClosure/SPECTRAL_CONTRACTION_FROM_ANCHORED_CLOSURE_PROOF_SHELL_2026_04.md"
+    }
+  ]
+}
