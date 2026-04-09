@@ -183,4 +183,10 @@ theorem YM3MassGap
         LeS (GNSInner μ v v) (GNSInner μ v (GNSHamiltonian μ v)) :=
   ⟨GNSVacuum μ, fun v => GNSSpecGap μ Δ hΔ v⟩
 
+
+/-- Status marker: GNSSpecGap is the terminal theorem-level mass-gap obligation
+    after scaffold stabilization. -/
+theorem YM3_terminal_obligation_marker : True := by
+  trivial
+
 end YMFormal
