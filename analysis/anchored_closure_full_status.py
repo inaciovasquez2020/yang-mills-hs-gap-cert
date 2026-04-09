@@ -5,7 +5,6 @@ import json
 text = Path("YMFormal/AnchoredClosure.lean").read_text()
 
 names = [
-    "valuation_additivity",
     "lambdaMin_monotone_of_psd_boundary",
     "spectral_contraction_from_anchored_closure",
 ]

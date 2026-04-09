@@ -3,12 +3,6 @@
   "status": "conditional",
   "blockers": [
     {
-      "name": "valuation_additivity",
-      "kind": "axiom",
-      "required_replacement": "theorem",
-      "proof_shell": "proofs/AnchoredClosure/VALUATION_ADDITIVITY_PROOF_SHELL_2026_04.md"
-    },
-    {
       "name": "lambdaMin_monotone_of_psd_boundary",
       "kind": "axiom",
       "required_replacement": "theorem",

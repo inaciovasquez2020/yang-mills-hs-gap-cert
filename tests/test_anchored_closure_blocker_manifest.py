@@ -8,7 +8,7 @@ def test_anchored_closure_blocker_manifest_matches_lean():
 
     assert manifest["status"] == "conditional"
     assert manifest["file"] == "YMFormal/AnchoredClosure.lean"
-    assert len(manifest["blockers"]) == 3
+    assert len(manifest["blockers"]) == 2
 
     for item in manifest["blockers"]:
         name = item["name"]

@@ -13,9 +13,9 @@ def test_anchored_closure_blocker_count_matches_manifest_report_and_lean():
         if re.search(rf"\baxiom\s+{re.escape(name)}\b", lean_text)
     )
 
-    assert lean_count == 3
-    assert len(names) == 3
+    assert lean_count == 2
+    assert len(names) == 2
     assert manifest["status"] == "conditional"
     assert report["status"] == "conditional"
-    assert report["conditional_axioms_remaining"] == 3
+    assert report["conditional_axioms_remaining"] == 2
     assert lean_count == len(names) == report["conditional_axioms_remaining"]

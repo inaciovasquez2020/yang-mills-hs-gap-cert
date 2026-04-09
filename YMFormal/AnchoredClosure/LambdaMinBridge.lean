@@ -24,10 +24,10 @@ axiom hessian_decomposition :
     HasHessian.hessian P = interiorHessian P + boundaryHessian P
 
 axiom lambdaMin_def :
-  True
+  (P : AnchoredPatch) -> Prop
 
 axiom boundary_psd :
-  True
+  (P : AnchoredPatch) -> Prop
 
 end AnchoredClosureBridge
 end YMFormal

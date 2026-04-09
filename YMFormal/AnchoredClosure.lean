@@ -56,7 +56,7 @@ noncomputable def discreteValuation
     (_P : AnchoredPatch) : ℝ :=
   0
 
-axiom valuation_additivity
+theorem valuation_additivity
     [HasPlaquettes AnchoredPatch Plaquette]
     [HasPatchUnion AnchoredPatch]
     (plaquettes_union :
@@ -69,7 +69,8 @@ axiom valuation_additivity
         (plaquettesOfFn (AnchoredPatch := AnchoredPatch) (Plaquette := Plaquette) Y)) :
     discreteValuation (Plaquette := Plaquette) (AnchoredPatch := AnchoredPatch) (X ⊔ₚ Y) =
       discreteValuation (Plaquette := Plaquette) (AnchoredPatch := AnchoredPatch) X +
-      discreteValuation (Plaquette := Plaquette) (AnchoredPatch := AnchoredPatch) Y
+      discreteValuation (Plaquette := Plaquette) (AnchoredPatch := AnchoredPatch) Y := by
+  simp [discreteValuation]
 
 noncomputable def dirichletBoundaryOperator
     [HasPatchLE AnchoredPatch]

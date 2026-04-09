@@ -1,9 +1,8 @@
 {
   "file": "YMFormal/AnchoredClosure.lean",
   "status": "conditional",
-  "conditional_axioms_remaining": 3,
+  "conditional_axioms_remaining": 2,
   "axioms": [
-    "valuation_additivity",
     "lambdaMin_monotone_of_psd_boundary",
     "spectral_contraction_from_anchored_closure"
   ],

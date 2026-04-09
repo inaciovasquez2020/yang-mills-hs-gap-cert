@@ -14,4 +14,4 @@ def test_anchored_closure_status_consistency():
     )
     assert dashboard["file"] == report["file"] == "YMFormal/AnchoredClosure.lean"
     assert dashboard["status"] == report["status"] == "conditional"
-    assert dashboard["conditional_axioms_remaining"] == report["conditional_axioms_remaining"] == 3
+    assert dashboard["conditional_axioms_remaining"] == report["conditional_axioms_remaining"] == 2
