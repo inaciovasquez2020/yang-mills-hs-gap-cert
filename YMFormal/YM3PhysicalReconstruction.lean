@@ -178,7 +178,7 @@ theorem YM3MassGap
     (_h_os  : OsterwalderSchraderAxioms μ)
     (_h_rp  : ReflectionPositivity μ)
     (Δ      : Scalar) (hΔ : LeS ZeroS Δ) :
-    ∃ (Ω : GNSQuotient μ),
+    ∃ (__Ω : GNSQuotient μ),
       ∀ (v : GNSQuotient μ),
         LeS (GNSInner μ v v) (GNSInner μ v (GNSHamiltonian μ v)) :=
   ⟨GNSVacuum μ, fun v => GNSSpecGap μ Δ hΔ v⟩
