@@ -1,20 +1,21 @@
-# valuation_additivity
+# Valuation Additivity — Proof Shell
 
-Status: CONDITIONAL
+## Target
+Replace `axiom valuation_additivity` in `YMFormal/AnchoredClosure.lean` by a theorem.
 
-Target statement:
-- Replace `axiom valuation_additivity` in `YMFormal/AnchoredClosure.lean`
-  by a theorem proving additivity of `discreteValuation` under the chosen
-  patch-union semantics.
-
-Current weakest sufficient requirement:
-- Introduce an explicit union law for plaquette carriers compatible with the
-  repository's available `Finset` interface.
-- Then prove the theorem from that law.
-
-Required replacement object:
-- theorem valuation_additivity
-
-Blocking object:
-- no repository-stable explicit carrier law for
-  `plaquettesOfFn (X ⊔ₚ Y)` has been formalized yet.
+## First missing lemma
+```lean
+lemma carrier_union_law
+    (P Q : AnchoredPatch)
+    (hdisj : Disjoint (carrier P) (carrier Q)) :
+    carrier (merge P Q) = carrier P ∪ carrier Q
+Reduction chain
+carrier_union_law
+→ valuation_on_disjoint_union
+→ valuation_additivity
+Obligations
+Define merge : AnchoredPatch → AnchoredPatch → AnchoredPatch.
+Prove support compatibility of merge.
+Prove carrier disjoint-union formula.
+Push valuation through finite union normalization.
+Conclude valuation_additivity.
