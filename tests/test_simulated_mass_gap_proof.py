@@ -1066,3 +1066,41 @@ def test_markdown_artifact_contains_limitations_section(tmp_path) -> None:
     text = md_out.read_text()
     assert "## Limitations" in text
     assert "Finite-dimensional toy surrogate only" in text
+
+def test_json_artifact_contains_required_top_level_fields(tmp_path) -> None:
+    import json
+    import subprocess
+    import sys
+
+    json_out = tmp_path / "cert.json"
+    md_out = tmp_path / "cert.md"
+
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_simulated_mass_gap_proof.py",
+            "--json-out", str(json_out),
+            "--md-out", str(md_out),
+        ],
+        check=True,
+    )
+
+    payload = json.loads(json_out.read_text())
+    required = {
+        "status",
+        "model",
+        "lattice_size",
+        "mass_parameter",
+        "coupling_parameter",
+        "rg_steps",
+        "rg_scale_floor",
+        "rg_shift_floor",
+        "exact_gap",
+        "rg_protected_gap_lower_bound",
+        "mode_certificates",
+        "rg_certificates",
+        "theorem_statement",
+        "interpretation",
+        "limitations",
+    }
+    assert required.issubset(payload.keys())
