@@ -60,4 +60,8 @@ axiom GNSNull : Measure (Connection P) → TestFunction → Prop
 axiom GNSEquiv :
   Measure (Connection P) → TestFunction → TestFunction → Prop
 
+
+/-- Micro-fix: quotient carrier for the YM-3 GNS construction. -/
+axiom GNSQuotient : Measure (Connection P) → Type u
+
 end YMFormal
