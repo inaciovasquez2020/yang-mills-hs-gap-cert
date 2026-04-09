@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "YM-1": true,
+    "YM-2": true,
+    "YM-3": true,
+    "YM-4": true,
+    "YM-5": true
+  },
+  "count_open": 5,
+  "count_required": 5,
+  "status": "YM_BLOCKING_LEMMA_MASTER_OPEN",
+  "statuses": {
+    "YM-1": "YM1_BLOCKING_LEMMA_OPEN",
+    "YM-2": "YM2_BLOCKING_LEMMA_OPEN",
+    "YM-3": "YM3_BLOCKING_LEMMA_OPEN",
+    "YM-4": "YM4_BLOCKING_LEMMA_OPEN",
+    "YM-5": "YM5_BLOCKING_LEMMA_OPEN"
+  }
+}
