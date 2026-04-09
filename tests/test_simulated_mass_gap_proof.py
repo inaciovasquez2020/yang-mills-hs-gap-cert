@@ -902,4 +902,115 @@ def test_rejects_negative_rg_steps() -> None:
 def test_accepts_boundary_scale_floor_one() -> None:
     cert = build_certificate(n=8, mass=0.5, coupling=1.0, rg_steps=3, rg_scale_floor=1.0, rg_shift_floor=0.0)
     assert cert.rg_protected_gap_lower_bound >= cert.exact_gap
+def test_rg_steps_are_indexed_consecutively() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=6,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.01,
+    )
+    assert [step.step for step in cert.rg_certificates] == [1, 2, 3, 4, 5, 6]
+
+def test_scale_factors_stay_within_unit_interval() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=6,
+        rg_scale_floor=0.87,
+        rg_shift_floor=0.01,
+    )
+    assert all(cert.rg_scale_floor <= step.scale_factor <= 1.0 for step in cert.rg_certificates)
+
+def test_additive_shifts_are_nonnegative() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=6,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.02,
+    )
+    assert all(step.additive_shift >= 0.0 for step in cert.rg_certificates)
+
+def test_zero_shift_produces_zero_additive_terms() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=6,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.0,
+    )
+    assert all(abs(step.additive_shift) < 1e-12 for step in cert.rg_certificates)
+
+def test_incoming_gap_chain_matches_previous_outgoing_gap() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=6,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.01,
+    )
+    assert abs(cert.rg_certificates[0].incoming_gap - cert.exact_gap) < 1e-12
+    for prev, curr in zip(cert.rg_certificates, cert.rg_certificates[1:]):
+        assert abs(curr.incoming_gap - prev.outgoing_gap_lower_bound) < 1e-12
+
+def test_mode_certificate_count_matches_lattice_square() -> None:
+    cert = build_certificate(
+        n=9,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=4,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.01,
+    )
+    assert len(cert.mode_certificates) == 81
+
+def test_first_mode_has_zero_laplacian_eigenvalue() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=4,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.01,
+    )
+    assert abs(cert.mode_certificates[0].laplace_eigenvalue) < 1e-12
+
+def test_all_hessian_eigenvalues_dominate_mass() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.55,
+        coupling=1.3,
+        rg_steps=4,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.01,
+    )
+    assert all(mode.hessian_eigenvalue >= cert.mass_parameter for mode in cert.mode_certificates)
+
+def test_exact_gap_matches_minimum_mode_value() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.55,
+        coupling=1.3,
+        rg_steps=4,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.01,
+    )
+    assert abs(cert.exact_gap - min(mode.hessian_eigenvalue for mode in cert.mode_certificates)) < 1e-12
+
+def test_positive_shift_improves_over_pure_scaling_floor_bound() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.75,
+        coupling=1.25,
+        rg_steps=6,
+        rg_scale_floor=0.9,
+        rg_shift_floor=0.01,
+    )
+    assert cert.rg_protected_gap_lower_bound > (0.9 ** 6) * cert.exact_gap
 
