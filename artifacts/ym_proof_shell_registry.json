@@ -1,0 +1,12 @@
+{
+  "count_present": 5,
+  "count_required": 5,
+  "present": {
+    "YM-1": true,
+    "YM-2": true,
+    "YM-3": true,
+    "YM-4": true,
+    "YM-5": true
+  },
+  "status": "PROOF_SHELL_REGISTRY_COMPLETE"
+}
