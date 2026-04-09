@@ -1045,3 +1045,24 @@ def test_cli_writes_both_output_artifacts(tmp_path) -> None:
     assert payload["status"] == "SIMULATED"
     assert abs(payload["exact_gap"] - 0.75) < 1e-12
     assert "Simulated Mass-Gap Proof Certificate" in md_out.read_text()
+
+def test_markdown_artifact_contains_limitations_section(tmp_path) -> None:
+    import subprocess
+    import sys
+
+    json_out = tmp_path / "cert.json"
+    md_out = tmp_path / "cert.md"
+
+    subprocess.run(
+        [
+            sys.executable,
+            "scripts/run_simulated_mass_gap_proof.py",
+            "--json-out", str(json_out),
+            "--md-out", str(md_out),
+        ],
+        check=True,
+    )
+
+    text = md_out.read_text()
+    assert "## Limitations" in text
+    assert "Finite-dimensional toy surrogate only" in text
