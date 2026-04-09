@@ -2,15 +2,9 @@ import json
 from pathlib import Path
 
 def test_anchored_closure_missing_lemma_manifests_are_aligned():
-    first = json.loads(
-        Path("manifests/anchored_closure_first_missing_lemmas.json").read_text()
-    )
-    second = json.loads(
-        Path("manifests/anchored_closure_second_missing_lemmas.json").read_text()
-    )
-    third = json.loads(
-        Path("manifests/anchored_closure_third_missing_lemmas.json").read_text()
-    )
+    first = json.loads(Path("manifests/anchored_closure_first_missing_lemmas.json").read_text())
+    second = json.loads(Path("manifests/anchored_closure_second_missing_lemmas.json").read_text())
+    third = json.loads(Path("manifests/anchored_closure_third_missing_lemmas.json").read_text())
 
     assert first["file"] == second["file"] == third["file"] == "YMFormal/AnchoredClosure.lean"
     assert first["status"] == second["status"] == third["status"] == "conditional"
