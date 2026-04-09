@@ -146,4 +146,11 @@ theorem YM3MassGap
         LeS (GNSInner μ v v) (GNSInner μ v (GNSHamiltonian μ v)) :=
   ⟨GNSVacuum μ, fun v => GNSSpecGap μ Δ hΔ v⟩
 
+
+/-- Micro-fix: GNS inner product descends to quotient. -/
+axiom GNSInner_well_defined :
+  ∀ (μ : Measure (Connection P)) (φ ψ : TestFunction),
+    GNSInnerProduct μ φ ψ =
+    GNSInner μ (GNSProj μ φ) (GNSProj μ ψ)
+
 end YMFormal
