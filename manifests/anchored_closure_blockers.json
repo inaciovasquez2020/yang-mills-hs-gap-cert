@@ -1,0 +1,24 @@
+{
+  "file": "YMFormal/AnchoredClosure.lean",
+  "status": "conditional",
+  "blockers": [
+    {
+      "name": "valuation_additivity",
+      "kind": "axiom",
+      "required_replacement": "theorem",
+      "proof_shell": "proofs/AnchoredClosure/VALUATION_ADDITIVITY_PROOF_SHELL_2026_04.md"
+    },
+    {
+      "name": "lambdaMin_monotone_of_psd_boundary",
+      "kind": "axiom",
+      "required_replacement": "theorem",
+      "proof_shell": "proofs/AnchoredClosure/LAMBDAMIN_MONOTONE_PSD_BOUNDARY_PROOF_SHELL_2026_04.md"
+    },
+    {
+      "name": "spectral_contraction_from_anchored_closure",
+      "kind": "axiom",
+      "required_replacement": "theorem",
+      "proof_shell": "proofs/AnchoredClosure/SPECTRAL_CONTRACTION_FROM_ANCHORED_CLOSURE_PROOF_SHELL_2026_04.md"
+    }
+  ]
+}
