@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "alignment": true,
+    "disproof": true,
+    "frontier": true,
+    "master": true,
+    "missing": true,
+    "open_status": true,
+    "registry": true
+  },
+  "minimal_remaining_obstruction": "Explicit closure of YM-1 through YM-5.",
+  "open_math_frontiers": 5,
+  "proof_shell_count": 5,
+  "remaining_infrastructure_steps": 0,
+  "remaining_math_steps": 5,
+  "status": "YM_INFRASTRUCTURE_CLOSED_MATH_OPEN"
+}
