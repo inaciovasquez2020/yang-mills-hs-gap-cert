@@ -55,4 +55,9 @@ axiom GNSInnerProduct : Measure (Connection P) → TestFunction → TestFunction
 /-- Micro-fix: null space for the YM-3 GNS quotient step. -/
 axiom GNSNull : Measure (Connection P) → TestFunction → Prop
 
+
+/-- Micro-fix: equivalence relation for GNS quotient. -/
+axiom GNSEquiv :
+  Measure (Connection P) → TestFunction → TestFunction → Prop
+
 end YMFormal
