@@ -22,4 +22,5 @@ Replace the scalar torus surrogate by an explicit non-abelian Wilson/Hamiltonian
 - State coercive lower-bound target on the quotient.
 
 ## Blocking lemma
+Conditional: Existence of an explicit non-abelian Hessian/Wilson operator \(\Lambda_U\) with well-defined domain, symmetric bilinear form, and gauge-covariant kernel decomposition on \(\mathcal A\).
 Explicit formula and well-posedness of the non-abelian Hessian/Wilson operator on the admissible configuration space.
