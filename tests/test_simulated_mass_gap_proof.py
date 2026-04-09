@@ -108,3 +108,15 @@ def test_smallest_mode_certificate_matches_exact_gap() -> None:
     assert abs(cert.mode_certificates[0].hessian_eigenvalue - cert.exact_gap) < 1e-12
     assert (cert.mode_certificates[0].k1, cert.mode_certificates[0].k2) == (0, 0)
 
+def test_mode_certificates_are_sorted_by_hessian_eigenvalue() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.75,
+        coupling=1.25,
+        rg_steps=6,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    vals = [m.hessian_eigenvalue for m in cert.mode_certificates]
+    assert vals == sorted(vals)
+
