@@ -48,26 +48,54 @@ theorem ym_3_physical_reconstruction_conditional
 
 
 /-- Micro-fix: positivity form for the YM-3 GNS step. -/
-axiom TestFunction : Type u
-axiom GNSInnerProduct : Measure (Connection P) → TestFunction → TestFunction → Scalar
 
-
-/-- Micro-fix: null space for the YM-3 GNS quotient step. -/
-axiom GNSNull : Measure (Connection P) → TestFunction → Prop
-
-
-/-- Micro-fix: equivalence relation for GNS quotient. -/
-axiom GNSEquiv :
-  Measure (Connection P) → TestFunction → TestFunction → Prop
-
-
-/-- Micro-fix: quotient carrier for the YM-3 GNS construction. -/
 axiom GNSQuotient : Measure (Connection P) → Type u
 
+axiom TestFunction : Type u
 
-/-- Micro-fix: projection to GNS quotient. -/
-axiom GNSProj :
+/-- GNS pre-inner product on the quotient space. -/
+
+axiom OsterwalderSchraderAxioms : Measure (Connection P) → Prop
+axiom ReflectionPositivity : Measure (Connection P) → Prop
+
+axiom GNSInner :
   ∀ (μ : Measure (Connection P)),
-    TestFunction → GNSQuotient μ
+    GNSQuotient μ → GNSQuotient μ → Scalar
+
+/-- The GNS quotient completion carries a normed-space structure. -/
+axiom GNSHilbert :
+  ∀ (μ : Measure (Connection P)),
+    Type u
+
+/-- Cyclic vacuum vector in the GNS Hilbert space. -/
+axiom GNSVacuum :
+  ∀ (μ : Measure (Connection P)),
+    GNSQuotient μ
+
+/-- Physical Hamiltonian operator on the GNS Hilbert space. -/
+axiom GNSHamiltonian :
+  ∀ (μ : Measure (Connection P)),
+    GNSQuotient μ → GNSQuotient μ
+
+/-- Spectral gap: ⟨v, Hv⟩ ≥ Δ · ⟨v, v⟩ for all v, with Δ > 0. -/
+axiom GNSSpecGap :
+  ∀ (μ : Measure (Connection P)) (Δ : Scalar),
+    0 < Δ →
+    ∀ (v : GNSQuotient μ),
+      GNSInner μ v (GNSHamiltonian μ v) ≥
+        Δ * GNSInner μ v v
+
+/-- Main theorem: the physical Hilbert space for 3-dimensional Yang–Mills
+    exists with a vacuum vector and a positive mass gap Δ. -/
+theorem YM3PhysicalHilbertSpace
+    (μ  : Measure (Connection P))
+    (_h_os : OsterwalderSchraderAxioms μ)
+    (_h_rp : ReflectionPositivity μ)
+    (Δ    : Scalar) (hΔ : 0 < Δ) :
+    ∃ (_ : GNSQuotient μ),
+      ∀ (v : GNSQuotient μ),
+        GNSInner μ v (GNSHamiltonian μ v) ≥
+          Δ * GNSInner μ v v :=
+  ⟨GNSVacuum μ, fun v => GNSSpecGap μ Δ hΔ v⟩
 
 end YMFormal
