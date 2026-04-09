@@ -33,4 +33,5 @@ Prove that the lattice lower bound survives the continuum and infinite-volume li
 - Conclude persistence of a strictly positive spectral gap in the limit.
 
 ## Blocking lemma
+Conditional: A uniform coercive lower bound on the lattice quadratic forms is stable under the joint continuum limit \(a \downarrow 0\) and thermodynamic limit \(\Lambda_L \uparrow \mathbb{R}^d\), yielding the same positive lower spectral edge for the limit form.
 Uniform coercivity is stable under the joint continuum and thermodynamic limit.
