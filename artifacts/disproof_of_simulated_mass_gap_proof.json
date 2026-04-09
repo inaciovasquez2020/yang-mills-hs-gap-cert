@@ -1,0 +1,22 @@
+{
+  "facts": {
+    "interpretation_denies_full_proof": true,
+    "limitations_abelianized": true,
+    "limitations_finite_dimensional": true,
+    "limitations_no_continuum_limit": true,
+    "limitations_no_os_reconstruction": true,
+    "limitations_rg_imposed": true,
+    "model_is_surrogate": true,
+    "no_continuum_fields_symbol": true,
+    "no_gauge_group_symbol": true,
+    "no_path_integral_symbol": true,
+    "status_is_simulated": true,
+    "test_suite_confirms_surrogate_artifact": true,
+    "uses_only_scalar_torus_laplacian": true
+  },
+  "failed_checks": [],
+  "formal_conclusion": "The executable object certifies only a finite-dimensional abelianized surrogate.",
+  "minimal_obstruction": "A proof of the Yang\u2013Mills mass gap requires a non-abelian Wilson/Hamiltonian/coercivity theorem with continuum transfer; the present script contains only a scalar torus surrogate.",
+  "target": "scripts/run_simulated_mass_gap_proof.py",
+  "verdict": "DISPROVED_AS_A_YANG_MILLS_MASS_GAP_PROOF"
+}
