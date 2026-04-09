@@ -1955,3 +1955,412 @@ def test_zero_step_chain_empty_case_10() -> None:
     assert cert.rg_certificates == []
     assert cert.rg_protected_gap_lower_bound == cert.exact_gap
 
+def test_laplace_periodicity_k1_case_01() -> None:
+    a = laplace_eigenvalue_2d_torus(8, 1, 2)
+    b = laplace_eigenvalue_2d_torus(8, 9, 2)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_02() -> None:
+    a = laplace_eigenvalue_2d_torus(9, 2, 4)
+    b = laplace_eigenvalue_2d_torus(9, 11, 4)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_03() -> None:
+    a = laplace_eigenvalue_2d_torus(10, 3, 6)
+    b = laplace_eigenvalue_2d_torus(10, 13, 6)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_04() -> None:
+    a = laplace_eigenvalue_2d_torus(11, 4, 8)
+    b = laplace_eigenvalue_2d_torus(11, 15, 8)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_05() -> None:
+    a = laplace_eigenvalue_2d_torus(12, 5, 10)
+    b = laplace_eigenvalue_2d_torus(12, 17, 10)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_06() -> None:
+    a = laplace_eigenvalue_2d_torus(13, 6, 12)
+    b = laplace_eigenvalue_2d_torus(13, 19, 12)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_07() -> None:
+    a = laplace_eigenvalue_2d_torus(14, 7, 14)
+    b = laplace_eigenvalue_2d_torus(14, 21, 14)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_08() -> None:
+    a = laplace_eigenvalue_2d_torus(15, 8, 16)
+    b = laplace_eigenvalue_2d_torus(15, 23, 16)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_09() -> None:
+    a = laplace_eigenvalue_2d_torus(16, 9, 18)
+    b = laplace_eigenvalue_2d_torus(16, 25, 18)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k1_case_10() -> None:
+    a = laplace_eigenvalue_2d_torus(17, 10, 20)
+    b = laplace_eigenvalue_2d_torus(17, 27, 20)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_01() -> None:
+    a = laplace_eigenvalue_2d_torus(9, 3, 1)
+    b = laplace_eigenvalue_2d_torus(9, 3, 10)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_02() -> None:
+    a = laplace_eigenvalue_2d_torus(10, 6, 2)
+    b = laplace_eigenvalue_2d_torus(10, 6, 12)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_03() -> None:
+    a = laplace_eigenvalue_2d_torus(11, 9, 3)
+    b = laplace_eigenvalue_2d_torus(11, 9, 14)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_04() -> None:
+    a = laplace_eigenvalue_2d_torus(12, 12, 4)
+    b = laplace_eigenvalue_2d_torus(12, 12, 16)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_05() -> None:
+    a = laplace_eigenvalue_2d_torus(13, 15, 5)
+    b = laplace_eigenvalue_2d_torus(13, 15, 18)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_06() -> None:
+    a = laplace_eigenvalue_2d_torus(14, 18, 6)
+    b = laplace_eigenvalue_2d_torus(14, 18, 20)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_07() -> None:
+    a = laplace_eigenvalue_2d_torus(15, 21, 7)
+    b = laplace_eigenvalue_2d_torus(15, 21, 22)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_08() -> None:
+    a = laplace_eigenvalue_2d_torus(16, 24, 8)
+    b = laplace_eigenvalue_2d_torus(16, 24, 24)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_09() -> None:
+    a = laplace_eigenvalue_2d_torus(17, 27, 9)
+    b = laplace_eigenvalue_2d_torus(17, 27, 26)
+    assert abs(a - b) < 1e-12
+
+
+def test_laplace_periodicity_k2_case_10() -> None:
+    a = laplace_eigenvalue_2d_torus(18, 30, 10)
+    b = laplace_eigenvalue_2d_torus(18, 30, 28)
+    assert abs(a - b) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_01() -> None:
+    eig = hessian_eigenvalue(7, 0.25, 0.17, 0, 0)
+    assert abs(eig - 0.25) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_02() -> None:
+    eig = hessian_eigenvalue(8, 0.28, 0.34, 0, 0)
+    assert abs(eig - 0.28) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_03() -> None:
+    eig = hessian_eigenvalue(9, 0.31, 0.51, 0, 0)
+    assert abs(eig - 0.31) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_04() -> None:
+    eig = hessian_eigenvalue(10, 0.34, 0.68, 0, 0)
+    assert abs(eig - 0.34) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_05() -> None:
+    eig = hessian_eigenvalue(11, 0.37, 0.85, 0, 0)
+    assert abs(eig - 0.37) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_06() -> None:
+    eig = hessian_eigenvalue(12, 0.40, 1.02, 0, 0)
+    assert abs(eig - 0.40) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_07() -> None:
+    eig = hessian_eigenvalue(13, 0.43, 1.19, 0, 0)
+    assert abs(eig - 0.43) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_08() -> None:
+    eig = hessian_eigenvalue(14, 0.46, 1.36, 0, 0)
+    assert abs(eig - 0.46) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_09() -> None:
+    eig = hessian_eigenvalue(15, 0.49, 1.53, 0, 0)
+    assert abs(eig - 0.49) < 1e-12
+
+
+def test_hessian_zero_mode_equals_mass_case_10() -> None:
+    eig = hessian_eigenvalue(16, 0.52, 1.70, 0, 0)
+    assert abs(eig - 0.52) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_01() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.22,
+        coupling=0.27,
+        rg_steps=1,
+        rg_scale_floor=0.89,
+        rg_shift_floor=0.003,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_02() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.26,
+        coupling=0.33,
+        rg_steps=2,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.006,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_03() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.30,
+        coupling=0.39,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.009,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_04() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.34,
+        coupling=0.45,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.012,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_05() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.38,
+        coupling=0.51,
+        rg_steps=5,
+        rg_scale_floor=0.88,
+        rg_shift_floor=0.015,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_06() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.42,
+        coupling=0.57,
+        rg_steps=6,
+        rg_scale_floor=0.89,
+        rg_shift_floor=0.018,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_07() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.46,
+        coupling=0.63,
+        rg_steps=7,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.021,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_08() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.50,
+        coupling=0.69,
+        rg_steps=8,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.024,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_09() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.54,
+        coupling=0.75,
+        rg_steps=9,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.027,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_rg_final_gap_matches_last_outgoing_case_10() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.58,
+        coupling=0.81,
+        rg_steps=10,
+        rg_scale_floor=0.88,
+        rg_shift_floor=0.030,
+    )
+    assert abs(cert.rg_protected_gap_lower_bound - cert.rg_certificates[-1].outgoing_gap_lower_bound) < 1e-12
+
+
+def test_limitations_include_nonabelian_disclaimer_case_01() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.27,
+        coupling=0.14,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_02() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.29,
+        coupling=0.28,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_03() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.31,
+        coupling=0.42,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_04() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.33,
+        coupling=0.56,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_05() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.35,
+        coupling=0.70,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_06() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.37,
+        coupling=0.84,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_07() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.39,
+        coupling=0.98,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_08() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.41,
+        coupling=1.12,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_09() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.43,
+        coupling=1.26,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
+
+def test_limitations_include_nonabelian_disclaimer_case_10() -> None:
+    cert = build_certificate(
+        n=7,
+        mass=0.45,
+        coupling=1.40,
+        rg_steps=3,
+        rg_scale_floor=0.91,
+        rg_shift_floor=0.01,
+    )
+    assert "Abelianized spectrum, not full non-abelian Wilson Hessian" in cert.limitations
+
