@@ -46,4 +46,9 @@ theorem ym_3_physical_reconstruction_conditional
       SpectralLowerBound H_op m₀ :=
   reflection_reconstruction μ h_rp m₀
 
+
+/-- Micro-fix: positivity form for the YM-3 GNS step. -/
+axiom TestFunction : Type u
+axiom GNSInnerProduct : Measure (Connection P) → TestFunction → TestFunction → Scalar
+
 end YMFormal
