@@ -58,6 +58,7 @@ def main() -> None:
     missing = sorted(scaffold_open - set(axioms))
 
     print("YM3 axioms:", ", ".join(axioms))
+    print("Open scaffold count:", len(sorted(scaffold_open & set(axioms))))
     print("Unexpected axioms:", unexpected)
     print("Missing scaffold-open axioms:", missing)
 
