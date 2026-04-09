@@ -26,4 +26,5 @@ Prove a uniform strictly positive lower bound on the physical quotient after rem
   \]
 
 ## Blocking lemma
+Conditional: Every zero mode of the descended quadratic form on the quotient \(Q\) is gauge-induced, so the induced operator on \(Q\) has strictly positive bottom spectrum.
 No non-gauge zero mode survives in the physical quotient.
