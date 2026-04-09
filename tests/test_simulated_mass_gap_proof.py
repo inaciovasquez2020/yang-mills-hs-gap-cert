@@ -61,3 +61,23 @@ def test_rg_gap_dominates_uniform_scale_floor_bound() -> None:
     )
     assert cert.rg_protected_gap_lower_bound >= (0.90 ** 6) * cert.exact_gap
 
+def test_exact_gap_is_coupling_invariant_for_nonnegative_coupling() -> None:
+    cert1 = build_certificate(
+        n=8,
+        mass=0.6,
+        coupling=0.0,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.0,
+    )
+    cert2 = build_certificate(
+        n=8,
+        mass=0.6,
+        coupling=3.5,
+        rg_steps=4,
+        rg_scale_floor=0.92,
+        rg_shift_floor=0.0,
+    )
+    assert abs(cert1.exact_gap - cert2.exact_gap) < 1e-12
+    assert abs(cert1.exact_gap - 0.6) < 1e-12
+
