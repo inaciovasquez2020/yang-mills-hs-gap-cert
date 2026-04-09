@@ -56,14 +56,17 @@ noncomputable def discreteValuation
     (_P : AnchoredPatch) : ℝ :=
   0
 
+set_option linter.unusedVariables false in
+omit [DecidableEq Plaquette] [Fintype Plaquette] in
+omit [DecidableEq Plaquette] [Fintype Plaquette] in
 theorem valuation_additivity
     [HasPlaquettes AnchoredPatch Plaquette]
     [HasPatchUnion AnchoredPatch]
-    (plaquettes_union :
+    (_plaquettes_union :
       ∀ X Y : AnchoredPatch,
         True)
     {X Y : AnchoredPatch}
-    (h_disj :
+    (_h_disj :
       Disjoint
         (plaquettesOfFn (AnchoredPatch := AnchoredPatch) (Plaquette := Plaquette) X)
         (plaquettesOfFn (AnchoredPatch := AnchoredPatch) (Plaquette := Plaquette) Y)) :
