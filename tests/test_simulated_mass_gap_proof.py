@@ -81,3 +81,18 @@ def test_exact_gap_is_coupling_invariant_for_nonnegative_coupling() -> None:
     assert abs(cert1.exact_gap - cert2.exact_gap) < 1e-12
     assert abs(cert1.exact_gap - 0.6) < 1e-12
 
+def test_zero_shift_rg_matches_iterated_scale_recurrence() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.5,
+        coupling=1.0,
+        rg_steps=5,
+        rg_scale_floor=0.93,
+        rg_shift_floor=0.0,
+    )
+    gap = cert.exact_gap
+    for step in cert.rg_certificates:
+        expected = step.scale_factor * gap
+        assert abs(step.outgoing_gap_lower_bound - expected) < 1e-12
+        gap = step.outgoing_gap_lower_bound
+
