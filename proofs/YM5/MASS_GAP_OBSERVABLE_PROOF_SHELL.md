@@ -33,4 +33,5 @@ Identify a gauge-invariant correlator/observable whose decay is forced by the co
 - State the observable-level mass-gap conclusion.
 
 ## Blocking lemma
+Conditional: There exists a nontrivial gauge-invariant observable \(O\) whose vacuum-subtracted two-point function lies entirely in the positive spectral sector and therefore detects the strict lower spectral edge \(m_\ast > 0\).
 A nontrivial gauge-invariant observable exists whose vacuum-subtracted two-point function detects the physical spectral gap.
