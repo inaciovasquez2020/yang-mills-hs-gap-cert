@@ -34,7 +34,7 @@ axiom SpectralLowerBound :
   SelfAdjointOperator H → Scalar → Prop
 
 axiom reflection_reconstruction :
-  ∀ (μ : Measure (Connection P)) (h_rp : IsReflectionPositive μ) (m₀ : Scalar),
+  ∀ (μ : Measure (Connection P)) (_h_rp : IsReflectionPositive μ) (m₀ : Scalar),
     ∃ (H : PhysicalHilbertSpace) (H_op : SelfAdjointOperator H),
       SpectralLowerBound H_op m₀
 
