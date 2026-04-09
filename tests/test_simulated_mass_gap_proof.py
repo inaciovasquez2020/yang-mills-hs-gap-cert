@@ -96,3 +96,15 @@ def test_zero_shift_rg_matches_iterated_scale_recurrence() -> None:
         assert abs(step.outgoing_gap_lower_bound - expected) < 1e-12
         gap = step.outgoing_gap_lower_bound
 
+def test_smallest_mode_certificate_matches_exact_gap() -> None:
+    cert = build_certificate(
+        n=8,
+        mass=0.75,
+        coupling=1.25,
+        rg_steps=6,
+        rg_scale_floor=0.90,
+        rg_shift_floor=0.01,
+    )
+    assert abs(cert.mode_certificates[0].hessian_eigenvalue - cert.exact_gap) < 1e-12
+    assert (cert.mode_certificates[0].k1, cert.mode_certificates[0].k2) == (0, 0)
+
