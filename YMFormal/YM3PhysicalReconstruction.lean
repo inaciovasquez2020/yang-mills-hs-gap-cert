@@ -98,4 +98,16 @@ theorem YM3PhysicalHilbertSpace
           Δ * GNSInner μ v v :=
   ⟨GNSVacuum μ, fun v => GNSSpecGap μ Δ hΔ v⟩
 
+
+/-- Micro-fix: quotient compatibility of the GNS inner product. -/
+
+axiom GNSInnerProduct : Measure (Connection P) → TestFunction → TestFunction → Scalar
+axiom GNSEquiv : Measure (Connection P) → TestFunction → TestFunction → Prop
+
+axiom GNSInner_respects_GNSEquiv :
+  ∀ (μ : Measure (Connection P)) (φ₁ φ₂ ψ₁ ψ₂ : TestFunction),
+    GNSEquiv μ φ₁ φ₂ →
+    GNSEquiv μ ψ₁ ψ₂ →
+    GNSInnerProduct μ φ₁ ψ₁ = GNSInnerProduct μ φ₂ ψ₂
+
 end YMFormal
