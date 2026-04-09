@@ -30,4 +30,5 @@ Derive the positivity/coercivity statement from a bona fide Yang-Mills reflectio
 - State the bridge from reflection positivity to the spectral lower bound.
 
 ## Blocking lemma
+Conditional: Osterwalder--Schrader reconstruction for the Yang--Mills reflection-positive measure produces a physical Hilbert space and a positive self-adjoint generator whose quadratic form matches the quotient coercive form.
 Construction of the physical Hamiltonian/coercive form from the reflection-positive Yang-Mills measure.
