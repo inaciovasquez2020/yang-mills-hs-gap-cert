@@ -37,3 +37,15 @@ def test_ym3_open_axiom_status_is_stable() -> None:
         "GNSInner_respects_GNSEquiv",
     ]:
         assert eliminated not in axioms
+
+def test_ym3_constructed_objects_stay_non_axiomatic() -> None:
+    text = Path("YMFormal/YM3PhysicalReconstruction.lean").read_text()
+    for forbidden in [
+        "axiom GNSQuotient",
+        "axiom GNSProj",
+        "axiom GNSEquiv",
+        "axiom GNSInner :",
+        "axiom GNSVacuum :",
+        "axiom GNSHilbert",
+    ]:
+        assert forbidden not in text
