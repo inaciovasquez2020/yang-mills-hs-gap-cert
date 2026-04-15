@@ -19,3 +19,5 @@ Status = Negative Result Certified + Conditional Reduction Framework + Open Core
 ## Interpretation
 This repository does not solve the Yang–Mills mass gap unconditionally.
 It certifies obstructions, conditional reductions, and executable verification artifacts.
+
+Canonical target file: open_problems/BLOCK_SPECTRAL_GAP_CORE_LEMMA.md
