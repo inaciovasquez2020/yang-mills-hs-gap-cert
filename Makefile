@@ -1,5 +1,7 @@
-test-grd:
-	sh -c 'python3 scripts/grd_test.py --mode grd'
+.PHONY: verify test
 
-test-grd-violate:
-	sh -c 'python3 scripts/grd_test.py --mode violate'
+verify:
+	python3 scripts/check_monotonicity.py
+
+test:
+	python3 scripts/check_monotonicity.py
