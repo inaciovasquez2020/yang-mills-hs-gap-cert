@@ -1,5 +1,11 @@
-test-grd:
-	sh -c 'python3 scripts/grd_test.py --mode grd'
+.PHONY: verify test
 
-test-grd-violate:
-	sh -c 'python3 scripts/grd_test.py --mode violate'
+verify:
+	./scripts/verify_cert.sh certs/YM_HS_GAP_CERT_0001.json
+	./scripts/verify_cert.sh certs/YM_HS_GAP_CERT_0002.json
+	./scripts/verify_cert.sh certs/YM_HS_GAP_CERT_0003.json
+	python3 scripts/check_monotonicity.py
+
+test:
+	./scripts/verify_cert.sh certs/YM_HS_GAP_CERT_0001.json
+	python3 scripts/check_monotonicity.py
