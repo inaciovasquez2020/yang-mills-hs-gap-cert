@@ -222,3 +222,6 @@ It provides certified obstructions, conditional reductions, and verification art
 - Metrics: `reports/RPD/RPD_METRICS_2026_04.json`
 - Full stack check: `analysis/rpd_full_stack_check.py`
 
+## Lean proof portfolio classification
+
+This repository is governed by [`docs/status/LEAN_PROOF_PORTFOLIO_CLASSIFICATION.md`](docs/status/LEAN_PROOF_PORTFOLIO_CLASSIFICATION.md). Its role in the portfolio is explicitly classified as proof-facing, conditional frontier, infrastructure/documentation, or legacy/scaffold.

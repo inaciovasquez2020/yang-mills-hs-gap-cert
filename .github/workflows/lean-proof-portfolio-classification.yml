@@ -1,0 +1,13 @@
+name: lean-proof-portfolio-classification
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lean-proof-portfolio-classification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Lean proof portfolio classification
+        run: python3 scripts/verify_lean_proof_portfolio_classification.py
