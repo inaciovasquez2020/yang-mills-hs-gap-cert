@@ -222,3 +222,6 @@ It provides certified obstructions, conditional reductions, and verification art
 - Metrics: `reports/RPD/RPD_METRICS_2026_04.json`
 - Full stack check: `analysis/rpd_full_stack_check.py`
 
+## External status
+
+This repository is governed by [`docs/status/EXTERNAL_STATUS_LOCK.md`](docs/status/EXTERNAL_STATUS_LOCK.md). Build success, CI success, dashboards, ledgers, axioms, admits, `sorry`, or placeholder witnesses do not constitute theorem-level closure.
